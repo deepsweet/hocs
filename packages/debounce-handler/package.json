@@ -1,0 +1,28 @@
+{
+  "name": "@hocs/debounce-handler",
+  "library": "debounceHandler",
+  "version": "0.1.0",
+  "description": "Debounce handler HOC for React",
+  "keywords": [
+    "react",
+    "hoc",
+    "recompose"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist/",
+    "es/",
+    "lib/"
+  ],
+  "repository": "deepsweet/hocs",
+  "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
+  "license": "MIT",
+  "dependencies": {
+    "just-debounce-it": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "recompose": "^0.24.0"
+  }
+}

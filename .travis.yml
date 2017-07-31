@@ -1,0 +1,11 @@
+sudo: false
+language: node_js
+node_js:
+  - node
+env:
+  global:
+    - PATH=$HOME/.yarn/bin:$PATH
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+cache: yarn
+script: yarn start ci
