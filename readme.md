@@ -10,7 +10,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
   * :non-potable_water: [`omitProps`](#non-potable_water-omitprops--)
   * :recycle: [`withLifecycle`](#recycle-withlifecycle--)
   * :hourglass: [`debounceHandler`](#hourglass-debouncehandler--)
-  * :hourglass: [`throttleHandler`](#hourglass-throttlehandler)
+  * :hourglass: [`throttleHandler`](#hourglass-throttlehandler--)
 * [Development](#development)
 
 ## Packages
@@ -162,9 +162,44 @@ export default compose(
 yarn start demo debounce-handler
 ```
 
-### :hourglass: `throttleHandler`
+### :hourglass: [`throttleHandler`](packages/throttle-handler) [![npm](https://img.shields.io/npm/v/@hocs/throttle-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/throttle-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/throttle-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/throttle-handler)
 
-Coming soon.
+```
+yarn add recompose @hocs/throttle-handler
+```
+
+```js
+throttleHandler(
+  handlerName: string,
+  interval: ?number,
+  leadingCall: ?boolean
+): HigherOrderComponent
+```
+
+```js
+import React from 'react';
+import { compose, withState, withHandlers } fgrom 'recompose';
+import throttleHandler from '@hocs/throttle-handler';
+
+const Demo = ({ count, onButtonClick }) => (
+  <div>
+    <h1>{count}</h1>
+    <button onClick={onButtonClick}>CLICK ME FAST</button>
+  </div>
+);
+
+export default compose(
+  withState('count', 'setCount', 0),
+  withHandlers({
+    onButtonClick: ({ count, setCount }) => () => setCount(count + 1)
+  }),
+  throttleHandler('onButtonClick', 300)
+)(Demo);
+```
+
+```
+yarn start demo throttle-handler
+```
 
 ## Development
 
@@ -172,7 +207,7 @@ Coming soon.
 2. Create a new folder in `packages/`, let's say `with-foo`.
 3. Put source code in `with-foo/src/`, it will be transpiled and bundled into `with-foo/dist/`, `with-foo/lib/` and `with-foo/es/`.
 4. Put tests written with Jest in `with-foo/test/`.
-5. Put demo in `with-foo/demo/`, it will be rendered and wrapped with HMR automatically.
+5. Put demo in `with-foo/demo/`, it will be rendered and wrapped with HMR.
 6. See [Start](https://github.com/start-runner/start).
 6. Done.
 

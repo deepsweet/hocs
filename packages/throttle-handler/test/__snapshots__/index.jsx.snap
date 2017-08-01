@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throttleHandler should throttle handler with \`interval\` option 1`] = `
+Array [
+  Array [
+    "a",
+  ],
+  Array [
+    "d",
+  ],
+  Array [
+    "f",
+  ],
+]
+`;
+
+exports[`throttleHandler should throttle handler with \`leadingCall\` option 1`] = `
+Array [
+  Array [
+    "a",
+  ],
+  Array [
+    "a",
+  ],
+  Array [
+    "d",
+  ],
+  Array [
+    "d",
+  ],
+  Array [
+    "f",
+  ],
+  Array [
+    "f",
+  ],
+]
+`;
