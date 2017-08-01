@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debounceHandler should debounce handler with \`delay\` option 1`] = `
+Array [
+  Array [
+    "e",
+  ],
+  Array [
+    "f",
+  ],
+]
+`;
+
+exports[`debounceHandler should debounce handler with \`leadingCall\` option 1`] = `
+Array [
+  Array [
+    "a",
+  ],
+  Array [
+    "e",
+  ],
+  Array [
+    "f",
+  ],
+]
+`;

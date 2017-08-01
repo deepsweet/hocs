@@ -3,8 +3,6 @@ import { mount } from 'enzyme';
 
 import debounceHandler from '../src/';
 
-const DELAY = 20;
-const HALF_DELAY = DELAY / 2;
 const Target = () => null;
 
 describe('debounceHandler', () => {
@@ -42,7 +40,7 @@ describe('debounceHandler', () => {
   });
 
   it('should debounce handler with `delay` option', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler', DELAY)(Target);
+    const EnchancedTarget = debounceHandler('testHandler', 50)(Target);
     const mockTestHandler = jest.fn();
     const wrapper = mount(
       <EnchancedTarget testHandler={mockTestHandler}/>
@@ -50,32 +48,35 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler');
 
     testHandler('a');
-    expect(mockTestHandler).toHaveBeenCalledTimes(0);
 
     setTimeout(() => {
       testHandler('b');
-      expect(mockTestHandler).toHaveBeenCalledTimes(0);
 
       setTimeout(() => {
         testHandler('c');
-        expect(mockTestHandler).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
           testHandler('d');
-          expect(mockTestHandler).toHaveBeenCalledTimes(0);
 
           setTimeout(() => {
-            expect(mockTestHandler).toHaveBeenCalledTimes(1);
-            expect(mockTestHandler).toHaveBeenCalledWith('d');
-            done();
-          }, DELAY);
-        }, HALF_DELAY);
-      }, HALF_DELAY);
-    }, HALF_DELAY);
+            testHandler('e');
+
+            setTimeout(() => {
+              testHandler('f');
+
+              setTimeout(() => {
+                expect(mockTestHandler.mock.calls).toMatchSnapshot();
+                done();
+              }, 50);
+            }, 50);
+          }, 40);
+        }, 30);
+      }, 30);
+    }, 30);
   });
 
   it('should debounce handler with `leadingCall` option', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler', DELAY, true)(Target);
+    const EnchancedTarget = debounceHandler('testHandler', 50, true)(Target);
     const mockTestHandler = jest.fn();
     const wrapper = mount(
       <EnchancedTarget testHandler={mockTestHandler}/>
@@ -83,32 +84,31 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler');
 
     testHandler('a');
-    expect(mockTestHandler).toHaveBeenCalledTimes(1);
-    expect(mockTestHandler).toHaveBeenCalledWith('a');
 
     setTimeout(() => {
       testHandler('b');
-      expect(mockTestHandler).toHaveBeenCalledTimes(1);
-      expect(mockTestHandler).toHaveBeenCalledWith('a');
 
       setTimeout(() => {
         testHandler('c');
-        expect(mockTestHandler).toHaveBeenCalledTimes(1);
-        expect(mockTestHandler).toHaveBeenCalledWith('a');
 
         setTimeout(() => {
           testHandler('d');
-          expect(mockTestHandler).toHaveBeenCalledTimes(1);
-          expect(mockTestHandler).toHaveBeenCalledWith('a');
 
           setTimeout(() => {
-            expect(mockTestHandler).toHaveBeenCalledTimes(2);
-            expect(mockTestHandler).toHaveBeenCalledWith('d');
-            done();
-          }, DELAY);
-        }, HALF_DELAY);
-      }, HALF_DELAY);
-    }, HALF_DELAY);
+            testHandler('e');
+
+            setTimeout(() => {
+              testHandler('f');
+
+              setTimeout(() => {
+                expect(mockTestHandler.mock.calls).toMatchSnapshot();
+                done();
+              }, 50);
+            }, 50);
+          }, 20);
+        }, 20);
+      }, 20);
+    }, 20);
   });
 
   describe('display name', () => {
