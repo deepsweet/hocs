@@ -154,7 +154,7 @@ export default compose(
   withHandlers({
     onButtonClick: ({ count, setCount }) => () => setCount(count + 1)
   }),
-  debounceHandler('onButtonClick', 300, true)
+  debounceHandler('onButtonClick', 300)
 )(Demo);
 ```
 
