@@ -11,6 +11,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
   * :recycle: [`withLifecycle`](#recycle-withlifecycle--)
   * :hourglass: [`debounceHandler`](#hourglass-debouncehandler--)
   * :hourglass: [`throttleHandler`](#hourglass-throttlehandler--)
+  * …
 * [Development](#development)
 
 ## Packages
