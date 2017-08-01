@@ -7,15 +7,15 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 ## TOC
 
 * [Packages](#packages)
-  * [`omitProps`](#omitprops--)
-  * [`withLifecycle`](#withlifecycle--)
-  * [`debounceHandler`](#debouncehandler--)
-  * [`throttleHandler`](#throttlehandler)
+  * :non-potable_water: [`omitProps`](#non-potable_water-omitprops--)
+  * :recycle: [`withLifecycle`](#recycle-withlifecycle--)
+  * :hourglass: [`debounceHandler`](#hourglass-debouncehandler--)
+  * :hourglass: [`throttleHandler`](#hourglass-throttlehandler)
 * [Development](#development)
 
 ## Packages
 
-### [`omitProps`](packages/omit-props) [![npm](https://img.shields.io/npm/v/@hocs/omit-props.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/omit-props) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/omit-props&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/omit-props)
+### :non-potable_water: [`omitProps`](packages/omit-props) [![npm](https://img.shields.io/npm/v/@hocs/omit-props.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/omit-props) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/omit-props&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/omit-props)
 
 ```
 yarn add recompose @hocs/omit-props
@@ -46,7 +46,7 @@ export default compose(
 yarn start demo omit-props
 ```
 
-### [`withLifecycle`](packages/with-lifecycle) [![npm](https://img.shields.io/npm/v/@hocs/with-lifecycle.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/with-lifecycle) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/with-lifecycle&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/with-lifecycle)
+### :recycle: [`withLifecycle`](packages/with-lifecycle) [![npm](https://img.shields.io/npm/v/@hocs/with-lifecycle.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/with-lifecycle) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/with-lifecycle&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/with-lifecycle)
 
 Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison with [Recompose `lifecycle`](https://github.com/acdlite/recompose/blob/master/docs/API.md#lifecycle) this HOC provides a handy (and limited) way to use _some_ of [React Component Lifecycle](https://facebook.github.io/react/docs/react-component.html) methods such as:
 
@@ -123,7 +123,7 @@ yarn start demo with-lifecycle
 
 As a bonus you can "share" stuff across different lifecycle methods in that factory scope with `let mySharedStuff`, just like you did before with `this.mySharedStuff` using a class instance.
 
-### [`debounceHandler`](packages/debounce-handler) [![npm](https://img.shields.io/npm/v/@hocs/debounce-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/debounce-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/debounce-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/debounce-handler)
+### :hourglass: [`debounceHandler`](packages/debounce-handler) [![npm](https://img.shields.io/npm/v/@hocs/debounce-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/debounce-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/debounce-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/debounce-handler)
 
 ```
 yarn add recompose @hocs/debounce-handler
@@ -162,7 +162,7 @@ export default compose(
 yarn start demo debounce-handler
 ```
 
-### `throttleHandler`
+### :hourglass: `throttleHandler`
 
 Coming soon.
 
