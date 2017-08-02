@@ -140,7 +140,7 @@ debounceHandler(
 
 ```js
 import React from 'react';
-import { compose, withState, withHandlers } fgrom 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 import debounceHandler from '@hocs/debounce-handler';
 
 const Demo = ({ count, onButtonClick }) => (
@@ -179,7 +179,7 @@ throttleHandler(
 
 ```js
 import React from 'react';
-import { compose, withState, withHandlers } fgrom 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 import throttleHandler from '@hocs/throttle-handler';
 
 const Demo = ({ count, onButtonClick }) => (
