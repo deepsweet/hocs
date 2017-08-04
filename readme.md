@@ -168,7 +168,7 @@ yarn start demo with-match-media-props
  :information_source:
 
 * Check [json2mq](https://github.com/akiran/json2mq) for query syntax details. It supports much more complex stuff than in example above.
-* Target Component will be just passed through on unsupported platforms (i.e. `global.matchMedia` is not a function) like IE9 ([polyfill](https://github.com/paulirish/matchMedia.js/)), JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using [Recompose `defaultProps` HOC](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) if it's really necessary.
+* Target Component will be just passed through on unsupported platforms (i.e. `global.matchMedia` is not a function) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using [Recompose `defaultProps` HOC](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) if it's really necessary.
 
 ### :hourglass: [`debounceHandler`](packages/debounce-handler) [![npm](https://img.shields.io/npm/v/@hocs/debounce-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/debounce-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/debounce-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/debounce-handler)
 
