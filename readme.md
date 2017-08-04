@@ -9,6 +9,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 * [Packages](#packages)
   * :non-potable_water: [`omitProps`](#non-potable_water-omitprops--)
   * :recycle: [`withLifecycle`](#recycle-withlifecycle--)
+  * :left_right_arrow: [`withMatchMediaProps`](#left_right_arrow-withmatchmediaprops--)
   * :hourglass: [`debounceHandler`](#hourglass-debouncehandler--)
   * :hourglass: [`throttleHandler`](#hourglass-throttlehandler--)
   * …and more to come, you can [follow me on Twitter](https://twitter.com/deepsweet) for updates
@@ -35,6 +36,7 @@ import omitProps from '@hocs/omit-props';
 
 const Demo = (props) => (
   <h1>props: {JSON.stringify(props)}</h1>
+  // props: {"c":3}
 );
 
 export default compose(
@@ -123,6 +125,47 @@ yarn start demo with-lifecycle
 ```
 
 As a bonus you can "share" stuff across different lifecycle methods in that factory scope with `let mySharedStuff`, just like you did before with `this.mySharedStuff` using a class instance.
+
+### :left_right_arrow: [`withMatchMediaProps`](packages/with-match-media-props) [![npm](https://img.shields.io/npm/v/@hocs/with-match-media-props.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/with-match-media-props) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/with-match-media-props&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/with-match-media-props)
+
+Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+
+```
+yarn add recompose @hocs/with-match-media-props
+```
+
+```js
+withMatchMediaProps(
+  mediaMatchers: {
+    [propName: string]: Object
+  }
+): HigherOrderComponent
+```
+
+```js
+import React from 'react';
+import withMatchMediaProps from '@hocs/with-match-media-props';
+
+const Demo = (props) => (
+  <h1>props: {JSON.stringify(props)}</h1>
+  // props: {"isSmallScreen":false,"isRetina":true}
+);
+
+export default withMatchMediaProps({
+  isSmallScreen: {
+    maxWidth: 500
+  },
+  isHighDpiScreen: {
+    minResolution: '192dpi'
+  }
+})(Demo);
+```
+
+```
+yarn start demo with-match-media-props
+```
+
+Check [json2mq](https://github.com/akiran/json2mq) for query syntax details.
 
 ### :hourglass: [`debounceHandler`](packages/debounce-handler) [![npm](https://img.shields.io/npm/v/@hocs/debounce-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/debounce-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/debounce-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/debounce-handler)
 
