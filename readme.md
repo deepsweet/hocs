@@ -124,11 +124,11 @@ withLifecycle(
 yarn start demo with-lifecycle
 ```
 
-As a bonus you can "share" stuff across different lifecycle methods in that factory scope with `let mySharedStuff`, just like you did before with `this.mySharedStuff` using a class instance.
+ :information_source: As a bonus you can "share" stuff across different lifecycle methods in that factory scope with `let mySharedStuff`, just like you did before with `this.mySharedStuff` using a class instance.
 
 ### :left_right_arrow: [`withMatchMediaProps`](packages/with-match-media-props) [![npm](https://img.shields.io/npm/v/@hocs/with-match-media-props.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/with-match-media-props) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/with-match-media-props&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/with-match-media-props)
 
-Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using `window.matchMedia()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia), [Can I use](https://caniuse.com/#search=matchmedia)).
 
 ```
 yarn add recompose @hocs/with-match-media-props
@@ -165,7 +165,10 @@ export default withMatchMediaProps({
 yarn start demo with-match-media-props
 ```
 
-Check [json2mq](https://github.com/akiran/json2mq) for query syntax details.
+ :information_source:
+
+* Check [json2mq](https://github.com/akiran/json2mq) for query syntax details. It supports much more complex stuff than in example above.
+* Target Component will be just passed through on unsupported platforms (i.e. `global.matchMedia` is not a function) like IE9 ([polyfill](https://github.com/paulirish/matchMedia.js/)), JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using [Recompose `defaultProps` HOC](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) if it's really necessary.
 
 ### :hourglass: [`debounceHandler`](packages/debounce-handler) [![npm](https://img.shields.io/npm/v/@hocs/debounce-handler.svg?style=flat-square)](https://www.npmjs.com/package/@hocs/debounce-handler) [![deps](https://david-dm.org/deepsweet/hocs.svg?path=packages/debounce-handler&style=flat-square)](https://david-dm.org/deepsweet/hocs?path=packages/debounce-handler)
 

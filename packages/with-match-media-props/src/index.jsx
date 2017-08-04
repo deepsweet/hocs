@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { setDisplayName, wrapDisplayName } from 'recompose';
 import json2mq from 'json2mq';
 
+const isMatchMediaSupported = typeof global.matchMedia === 'function';
+
 const queryToMql = (query) => global.matchMedia(json2mq(query));
 const createMediaMatcher = (query) => {
   const mql = queryToMql(query);
@@ -17,6 +19,10 @@ const createMediaMatcher = (query) => {
 };
 
 const withMatchMediaProps = (propsQieries = {}) => (Target) => {
+  if (!isMatchMediaSupported) {
+    return Target;
+  }
+
   class WithMatchMediaProps extends Component {
     constructor(props, context) {
       super(props, context);

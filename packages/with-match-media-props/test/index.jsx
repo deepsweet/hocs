@@ -4,41 +4,44 @@ import { mount } from 'enzyme';
 const Target = () => null;
 
 describe('withMatchMediaProps', () => {
-  const mockJson2mq = jest.fn();
+  let mockJson2mq = null;
   let withMatchMediaProps = null;
 
-  beforeAll(() => {
-    withMatchMediaProps = require('../src/').default;
+  beforeEach(() => {
+    mockJson2mq = jest.fn();
 
     jest.mock('json2mq', () => mockJson2mq);
-  });
+    jest.resetModules();
 
-  beforeEach(() => {
-    mockJson2mq.mockClear();
+    withMatchMediaProps = require('../src/').default;
   });
 
   afterAll(() => {
     jest.unmock('json2mq');
   });
 
-  it('should just pass props through when called without arguments', () => {
-    const EnchancedTarget = withMatchMediaProps()(Target);
-    const wrapper = mount(
-      <EnchancedTarget a={1} b={2} c={3}/>
-    );
-
-    expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2, c: 3 });
-  });
-
-  describe('`window.matchMedia`', () => {
+  describe('`window.matchMedia` is supported', () => {
     let originMatchMedia = null;
 
     beforeAll(() => {
       originMatchMedia = global.matchMedia;
     });
 
+    beforeEach(() => {
+      global.matchMedia = () => {};
+    });
+
     afterAll(() => {
       global.matchMedia = originMatchMedia;
+    });
+
+    it('should just pass props through when called without arguments', () => {
+      const EnchancedTarget = withMatchMediaProps()(Target);
+      const wrapper = mount(
+        <EnchancedTarget a={1} b={2} c={3}/>
+      );
+
+      expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2, c: 3 });
     });
 
     it('should pass query object to json2mq', () => {
@@ -126,39 +129,51 @@ describe('withMatchMediaProps', () => {
       mockAddListener.mock.calls[0][0]({ matches: true });
       expect(wrapper.find(Target).prop('test')).toBe(true);
     });
+
+    describe('display name', () => {
+      let origNodeEnv = null;
+
+      beforeAll(() => {
+        origNodeEnv = process.env.NODE_ENV;
+      });
+
+      afterAll(() => {
+        process.env.NODE_ENV = origNodeEnv;
+      });
+
+      it('should wrap display name in non-production env', () => {
+        process.env.NODE_ENV = 'test';
+
+        const EnchancedTarget = withMatchMediaProps()(Target);
+        const wrapper = mount(
+          <EnchancedTarget/>
+        );
+
+        expect(wrapper.name()).toBe('withMatchMediaProps(Target)');
+      });
+
+      it('should not wrap display name in production env', () => {
+        process.env.NODE_ENV = 'production';
+
+        const EnchancedTarget = withMatchMediaProps()(Target);
+        const wrapper = mount(
+          <EnchancedTarget/>
+        );
+
+        expect(wrapper.name()).toBe('WithMatchMediaProps');
+      });
+    });
   });
 
-  describe('display name', () => {
-    let origNodeEnv = null;
-
-    beforeAll(() => {
-      origNodeEnv = process.env.NODE_ENV;
-    });
-
-    afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
-
-    it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
-
+  describe('`window.matchMedia` is not supported', () => {
+    it('should just pass Target component through', () => {
       const EnchancedTarget = withMatchMediaProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnchancedTarget a={1} b={2} c={3}/>
       );
 
-      expect(wrapper.name()).toBe('withMatchMediaProps(Target)');
-    });
-
-    it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
-
-      const EnchancedTarget = withMatchMediaProps()(Target);
-      const wrapper = mount(
-        <EnchancedTarget/>
-      );
-
-      expect(wrapper.name()).toBe('WithMatchMediaProps');
+      expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2, c: 3 });
+      expect(wrapper.name()).toBe('Target');
     });
   });
 });
