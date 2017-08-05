@@ -13,11 +13,11 @@ export default compose(
   withLifecycle({
     onDidMount({ setLoading }) {
       setLoading(true, () => {
-        setTimeout(() => setLoading(false), 2000);
+        setTimeout(() => setLoading(false), 3000);
       });
     },
-    onWillUnmount() {
-      console.log('bye');
+    onWillReceiveProps(props, nextProps) {
+      console.log(`isLoading: ${props.isLoading} → ${nextProps.isLoading}`);
     }
   })
 )(Demo);
