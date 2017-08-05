@@ -15,5 +15,5 @@ export default compose(
   withHandlers({
     onButtonClick: ({ count, setCount }) => () => setCount(count + 1)
   }),
-  throttleHandler('onButtonClick', 300)
+  throttleHandler('onButtonClick', 1000)
 )(Demo);
