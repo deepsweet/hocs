@@ -15,123 +15,81 @@ describe('withLifecycle', () => {
     expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2 });
   });
 
-  describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
-
-    afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
-
-    it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
-
-      const EnchancedTarget = withLifecycle()(Target);
-      const wrapper = mount(
-        <EnchancedTarget/>
-      );
-
-      expect(wrapper.name()).toBe('withLifecycle(Target)');
-    });
-
-    it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
-
-      const EnchancedTarget = withLifecycle()(Target);
-      const wrapper = mount(
-        <EnchancedTarget/>
-      );
-
-      expect(wrapper.name()).toBe('WithLifecycle');
-    });
-  });
-
   describe('as object', () => {
-    it('onWillMount', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onWillMount(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 } ]);
-          done();
-        }
-      })(Target);
+    it('onWillMount', () => {
+      const mockOnWillMount = jest.fn();
+      const EnchancedTarget = withLifecycle({ onWillMount: mockOnWillMount })(Target);
 
       mount(
         <EnchancedTarget a={1} b={2}/>
       );
+
+      expect(mockOnWillMount).toHaveBeenCalledTimes(1);
+      expect(mockOnWillMount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
-    it('onDidMount', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onDidMount(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 } ]);
-          done();
-        }
-      })(Target);
+    it('onDidMount', () => {
+      const mockOnDidMount = jest.fn();
+      const EnchancedTarget = withLifecycle({ onDidMount: mockOnDidMount })(Target);
 
       mount(
         <EnchancedTarget a={1} b={2}/>
       );
+
+      expect(mockOnDidMount).toHaveBeenCalledTimes(1);
+      expect(mockOnDidMount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
-    it('onWillReceiveProps', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onWillReceiveProps(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-          done();
-        }
-      })(Target);
+    it('onWillReceiveProps', () => {
+      const mockOnWillReceiveProps = jest.fn();
+      const EnchancedTarget = withLifecycle({ onWillReceiveProps: mockOnWillReceiveProps })(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnWillReceiveProps).toHaveBeenCalledTimes(1);
+      expect(mockOnWillReceiveProps).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onWillUpdate', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onWillUpdate(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-          done();
-        }
-      })(Target);
+    it('onWillUpdate', () => {
+      const mockOnWillUpdate = jest.fn();
+      const EnchancedTarget = withLifecycle({ onWillUpdate: mockOnWillUpdate })(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnWillUpdate).toHaveBeenCalledTimes(1);
+      expect(mockOnWillUpdate).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onDidUpdate', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onDidUpdate(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-          done();
-        }
-      })(Target);
+    it('onDidUpdate', () => {
+      const mockOnDidUpdate = jest.fn();
+      const EnchancedTarget = withLifecycle({ onDidUpdate: mockOnDidUpdate })(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnDidUpdate).toHaveBeenCalledTimes(1);
+      expect(mockOnDidUpdate).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onWillUnmount', (done) => {
-      const EnchancedTarget = withLifecycle({
-        onWillUnmount(...args) {
-          expect(this).toBeUndefined();
-          expect(args).toEqual([ { a: 1, b: 2 } ]);
-          done();
-        }
-      })(Target);
+    it('onWillUnmount', () => {
+      const mockOnWillUnmount = jest.fn();
+      const EnchancedTarget = withLifecycle({ onWillUnmount: mockOnWillUnmount })(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.unmount();
+
+      expect(mockOnWillUnmount).toHaveBeenCalledTimes(1);
+      expect(mockOnWillUnmount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
     it('multiple', () => {
@@ -163,104 +121,92 @@ describe('withLifecycle', () => {
       expect(mockFactory).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
-    it('onWillMount', (done) => {
+    it('onWillMount', () => {
+      const mockOnWillMount = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onWillMount(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 } ]);
-            done();
-          }
-        })
+        () => ({ onWillMount: mockOnWillMount })
       )(Target);
 
       mount(
         <EnchancedTarget a={1} b={2}/>
       );
+
+      expect(mockOnWillMount).toHaveBeenCalledTimes(1);
+      expect(mockOnWillMount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
-    it('onDidMount', (done) => {
+    it('onDidMount', () => {
+      const mockOnDidMount = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onDidMount(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 } ]);
-            done();
-          }
-        })
+        () => ({ onDidMount: mockOnDidMount })
       )(Target);
 
       mount(
         <EnchancedTarget a={1} b={2}/>
       );
+
+      expect(mockOnDidMount).toHaveBeenCalledTimes(1);
+      expect(mockOnDidMount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
-    it('onWillReceiveProps', (done) => {
+    it('onWillReceiveProps', () => {
+      const mockOnWillReceiveProps = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onWillReceiveProps(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-            done();
-          }
-        })
+        () => ({ onWillReceiveProps: mockOnWillReceiveProps })
       )(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnWillReceiveProps).toHaveBeenCalledTimes(1);
+      expect(mockOnWillReceiveProps).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onWillUpdate', (done) => {
+    it('onWillUpdate', () => {
+      const mockOnWillUpdate = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onWillUpdate(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-            done();
-          }
-        })
+        () => ({ onWillUpdate: mockOnWillUpdate })
       )(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnWillUpdate).toHaveBeenCalledTimes(1);
+      expect(mockOnWillUpdate).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onDidUpdate', (done) => {
+    it('onDidUpdate', () => {
+      const mockOnDidUpdate = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onDidUpdate(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 }, { a: 1, b: 2, c: 3 } ]);
-            done();
-          }
-        })
+        () => ({ onDidUpdate: mockOnDidUpdate })
       )(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.setProps({ c: 3 });
+
+      expect(mockOnDidUpdate).toHaveBeenCalledTimes(1);
+      expect(mockOnDidUpdate).toHaveBeenCalledWith({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 });
     });
 
-    it('onWillUnmount', (done) => {
+    it('onWillUnmount', () => {
+      const mockOnWillUnmount = jest.fn();
       const EnchancedTarget = withLifecycle(
-        () => ({
-          onWillUnmount(...args) {
-            expect(this).toBeUndefined();
-            expect(args).toEqual([ { a: 1, b: 2 } ]);
-            done();
-          }
-        })
+        () => ({ onWillUnmount: mockOnWillUnmount })
       )(Target);
       const wrapper = mount(
         <EnchancedTarget a={1} b={2}/>
       );
 
       wrapper.unmount();
+
+      expect(mockOnWillUnmount).toHaveBeenCalledTimes(1);
+      expect(mockOnWillUnmount).toHaveBeenCalledWith({ a: 1, b: 2 });
     });
 
     it('multiple', () => {
@@ -279,6 +225,36 @@ describe('withLifecycle', () => {
 
       expect(mockOnWillMount).toHaveBeenCalledTimes(1);
       expect(mockOnDidMount).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('display name', () => {
+    const origNodeEnv = process.env.NODE_ENV;
+
+    afterAll(() => {
+      process.env.NODE_ENV = origNodeEnv;
+    });
+
+    it('should wrap display name in non-production env', () => {
+      process.env.NODE_ENV = 'test';
+
+      const EnchancedTarget = withLifecycle()(Target);
+      const wrapper = mount(
+        <EnchancedTarget/>
+      );
+
+      expect(wrapper.name()).toBe('withLifecycle(Target)');
+    });
+
+    it('should not wrap display name in production env', () => {
+      process.env.NODE_ENV = 'production';
+
+      const EnchancedTarget = withLifecycle()(Target);
+      const wrapper = mount(
+        <EnchancedTarget/>
+      );
+
+      expect(wrapper.name()).toBe('WithLifecycle');
     });
   });
 });

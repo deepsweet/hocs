@@ -1,5 +1,3 @@
-/* eslint-disable no-void */
-/* eslint-disable space-unary-ops */
 import React, { Component } from 'react';
 import { setDisplayName, wrapDisplayName } from 'recompose';
 
@@ -11,41 +9,39 @@ export default (methodsArg) => (Target) => {
       const methods = typeof methodsArg === 'function' ? methodsArg(props) : methodsArg;
 
       if (methods) {
-        const undef = void(0);
-
         if (methods.onWillMount) {
           this.componentWillMount = () => {
-            methods.onWillMount.call(undef, this.props);
+            methods.onWillMount(this.props);
           };
         }
 
         if (methods.onDidMount) {
           this.componentDidMount = () => {
-            methods.onDidMount.call(undef, this.props);
+            methods.onDidMount(this.props);
           };
         }
 
         if (methods.onWillReceiveProps) {
           this.componentWillReceiveProps = (nextProps) => {
-            methods.onWillReceiveProps.call(undef, this.props, nextProps);
+            methods.onWillReceiveProps(this.props, nextProps);
           };
         }
 
         if (methods.onWillUpdate) {
           this.componentWillUpdate = (nextProps) => {
-            methods.onWillUpdate.call(undef, this.props, nextProps);
+            methods.onWillUpdate(this.props, nextProps);
           };
         }
 
         if (methods.onDidUpdate) {
           this.componentDidUpdate = (prevProps) => {
-            methods.onDidUpdate.call(undef, prevProps, this.props);
+            methods.onDidUpdate(prevProps, this.props);
           };
         }
 
         if (methods.onWillUnmount) {
           this.componentWillUnmount = () => {
-            methods.onWillUnmount.call(undef, this.props);
+            methods.onWillUnmount(this.props);
           };
         }
       }
