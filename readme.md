@@ -28,6 +28,10 @@ Helps to debounce handlers like `onChange`.
 
 Helps to throttle handlers like `onChange`.
 
+### :no_entry: [prevent-handlers-default](packages/prevent-handlers-default)
+
+Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) side effect from handlers like form submitting or clicking a link.
+
 ### …and more to come
 
 You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.

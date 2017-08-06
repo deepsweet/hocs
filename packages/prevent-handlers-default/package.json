@@ -1,0 +1,32 @@
+{
+  "name": "@hocs/prevent-handlers-default",
+  "library": "preventHandlersDefault",
+  "version": "0.1.0",
+  "description": "Prevent handlers default HOC for React",
+  "keywords": [
+    "react",
+    "hoc",
+    "recompose",
+    "sideeffects"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist/",
+    "es/",
+    "lib/"
+  ],
+  "repository": "deepsweet/hocs",
+  "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/deepsweet/hocs/blob/master/license.md"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "recompose": "^0.24.0"
+  }
+}
