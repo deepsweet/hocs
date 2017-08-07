@@ -10,7 +10,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 
 ### :non-potable_water: [omit-props](packages/omit-props)
 
-Helps to omit unnecessary context prop, state setters or anything else you don't want to propagate with `{...spread}`.
+Helps to omit unnecessary context, state setters or anything else you don't want to propagate with `{...spread}`.
 
 ### :recycle: [with-lifecycle](packages/with-lifecycle)
 
