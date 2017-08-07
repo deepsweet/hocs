@@ -23,6 +23,9 @@
     "type": "MIT",
     "url": "https://github.com/deepsweet/hocs/blob/master/license.md"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "json2mq": "^0.2.0"
   },
