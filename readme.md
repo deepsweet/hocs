@@ -10,7 +10,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 
 ### :non-potable_water: [omit-props](packages/omit-props)
 
-Helps to omit unnecessary context prop, state setters or anything else you don't want to propagate and `{...spread}` to Component.
+Helps to omit unnecessary context prop, state setters or anything else you don't want to propagate with `{...spread}`.
 
 ### :recycle: [with-lifecycle](packages/with-lifecycle)
 
@@ -18,7 +18,7 @@ Provides a handy way to use some of [React Component Lifecycle](https://facebook
 
 ### :left_right_arrow: [with-match-media-props](packages/with-match-media-props)
 
-Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using `window.matchMedia()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia), [Can I use](https://caniuse.com/#search=matchmedia)).
+Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using [`window.matchMedia()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) ([Can I use?](https://caniuse.com/#search=matchmedia)).
 
 ### :hourglass: [debounce-handler](packages/debounce-handler)
 
