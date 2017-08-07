@@ -5,7 +5,7 @@
   ],
   "devDependencies": {
     "start-babel-cli": "^4.0.2",
-    "start-deepsweet-react-components-monorepo-preset": "^0.0.3"
+    "start-deepsweet-react-components-monorepo-preset": "^0.0.4"
   },
   "scripts": {
     "start": "start-runner --preset start-deepsweet-react-components-monorepo-preset"
