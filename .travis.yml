@@ -11,5 +11,4 @@ cache:
   yarn: true
   directories:
     - node_modules
-    - .eslintcache
 script: yarn start ci

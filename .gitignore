@@ -3,6 +3,5 @@ dist/
 es/
 lib/
 coverage/
-.eslintcache
 .DS_Store
 *.log
