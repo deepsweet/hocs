@@ -1,0 +1,35 @@
+{
+  "name": "@hocs/safe-timers",
+  "library": "safeTimers",
+  "version": "0.1.0",
+  "description": "Safe timers HOCs for React",
+  "keywords": [
+    "react",
+    "hoc",
+    "recompose",
+    "timeout",
+    "interval",
+    "animationframe",
+    "idle"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist/",
+    "es/",
+    "lib/"
+  ],
+  "repository": "deepsweet/hocs",
+  "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/deepsweet/hocs/blob/master/license.md"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "recompose": "^0.24.0"
+  }
+}

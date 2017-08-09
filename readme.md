@@ -32,6 +32,10 @@ Helps to throttle handlers like `onChange`.
 
 Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) side effect from handlers like form submitting or clicking a link.
 
+### :watch: [safe-timers](packages/safe-timers)
+
+Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` and `requestIdleCallback` which will be cleared/cancelled automatically before component is unmounted.
+
 ### …and more to come
 
 You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.
