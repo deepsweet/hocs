@@ -92,13 +92,13 @@ clearSafeInterval();
 
 ## Notes
 
-### `requestSafeAnimationFrame`
+### `requestAnimationFrame`
 
-You might still need a [polyfill](https://github.com/chrisdickinson/raf) ([Can I use?](https://caniuse.com/#feat=requestanimationframe)).
+You might still need a [polyfill](https://github.com/chrisdickinson/raf) ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame), [Can I use?](https://caniuse.com/#feat=requestanimationframe)).
 
-### `requestSafeIdleCallback`
+### `requestIdleCallback`
 
-You might still need a [polyfill](https://github.com/aFarkas/requestIdleCallback) ([Can I use?](https://caniuse.com/#feat=requestidlecallback)).
+You might still need a [polyfill](https://github.com/aFarkas/requestIdleCallback) ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelIdleCallback), [Can I use?](https://caniuse.com/#feat=requestidlecallback)).
 
 ### `setImmediate`
 
