@@ -36,6 +36,10 @@ Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` and `requestIdleCallback` which will be cleared/cancelled automatically before component is unmounted.
 
+### :scroll: [with-log](packages/with-log)
+
+Helps to debug compositions of HOCs by logging the Component’s `displayName`, props and a custom message to the console.
+
 ### …and more to come
 
 You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.
