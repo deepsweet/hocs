@@ -40,6 +40,10 @@ Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` a
 
 Injects `console.log` with props or any custom message into render.
 
+### :mag: [with-debugger](packages/with-debugger)
+
+Injects `debugger` into render.
+
 ### …and more to come
 
 You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.
