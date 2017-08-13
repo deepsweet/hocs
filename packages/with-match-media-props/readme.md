@@ -22,6 +22,7 @@ withMatchMediaProps(
 ): HigherOrderComponent
 ```
 
+Where media matcher value is [json2mq](https://github.com/akiran/json2mq) object.
 ```js
 import React from 'react';
 import withMatchMediaProps from '@hocs/with-match-media-props';
@@ -41,8 +42,9 @@ export default withMatchMediaProps({
 })(Demo);
 ```
 
-Check out [json2mq](https://github.com/akiran/json2mq) for query syntax details. It supports much more complex stuff than in example above.
-
-:information_source: Target Component will be just passed through on unsupported platforms (i.e. `global.matchMedia` is not a function) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
-
 :tv: [Check out live demo](https://www.webpackbin.com/bins/-KqnRPrbih9tWCY9T1g5).
+
+## Notes
+
+* You still might need a polyfill but I can't find any.
+* Target Component will be just passed through on unsupported platforms (i.e. `global.matchMedia` is not a function) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
