@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withIntersectionObserverProps Intersection Observer API is not supported should just pass Target component through 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+>
+  <div
+    data-test={1}
+  />
+</Target>
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `
+<WithIntersectionObserverProps>
+  <Target>
+    <div
+      data-test={1}
+    />
+  </Target>
+</WithIntersectionObserverProps>
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported display name should wrap display name in non-production env 1`] = `
+<withIntersectionObserverProps(Target)>
+  <Target>
+    <div
+      data-test={1}
+    />
+  </Target>
+</withIntersectionObserverProps(Target)>
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 1`] = `Object {}`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 2`] = `
+Object {
+  "bar": false,
+  "foo": false,
+}
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 3`] = `
+Object {
+  "bar": false,
+  "foo": true,
+}
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 4`] = `
+Object {
+  "bar": true,
+  "foo": true,
+}
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should pass Intersection Observer options 1`] = `
+Array [
+  Array [
+    [Function],
+    Object {
+      "foo": "bar",
+      "threshold": Array [],
+    },
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node on mount 1`] = `
+Array [
+  Array [
+    [Function],
+    Object {
+      "threshold": Array [
+        0.5,
+        1,
+      ],
+    },
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node on mount 2`] = `
+Array [
+  Array [
+    <div
+      data-reactroot=""
+      data-test="1"
+/>,
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should unregister observer with DOM node on unmount 1`] = `
+Array [
+  Array [
+    <div
+      data-reactroot=""
+      data-test="1"
+/>,
+  ],
+]
+`;
