@@ -5090,9 +5090,9 @@ start-codecov@^2.0.0:
   dependencies:
     codecov-lite "^0.1.2"
 
-start-deepsweet-react-components-monorepo-preset@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/start-deepsweet-react-components-monorepo-preset/-/start-deepsweet-react-components-monorepo-preset-0.0.7.tgz#fe3b652ff9a45edb98d6c647025a991032682591"
+start-deepsweet-react-components-monorepo-preset@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/start-deepsweet-react-components-monorepo-preset/-/start-deepsweet-react-components-monorepo-preset-0.0.8.tgz#778fa4ae901087987e41de67778f3f8544920c14"
   dependencies:
     babel-jest "^20.0.3"
     babel-loader "^7.1.1"
