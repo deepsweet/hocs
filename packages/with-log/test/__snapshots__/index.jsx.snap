@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLog env should pass Target through in production env 1`] = `<Target />`;
+
+exports[`withLog env should wrap display name in non-production env 1`] = `
+<withLog(Target)>
+  <Target />
+</withLog(Target)>
+`;
+
+exports[`withLog should call provided \`getMessageToLog\` with props and log its result 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLog should call provided \`getMessageToLog\` with props and log its result 2`] = `
+Array [
+  Array [
+    "withLog(Target):",
+    "a = 1",
+  ],
+]
+`;
+
+exports[`withLog should log all props if no argument was passed in 1`] = `
+Array [
+  Array [
+    "withLog(Target):",
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;

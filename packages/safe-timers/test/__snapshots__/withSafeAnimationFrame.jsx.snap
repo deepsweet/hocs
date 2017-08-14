@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withSafeAnimationFrame display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    requestSafeAnimationFrame={[Function]}
+  />
+</SafeTimer>
+`;
+
+exports[`withSafeAnimationFrame display name should wrap display name in non-production env 1`] = `
+<withSafeAnimationFrame(Target)>
+  <Target
+    requestSafeAnimationFrame={[Function]}
+  />
+</withSafeAnimationFrame(Target)>
+`;
+
+exports[`withSafeAnimationFrame should clear all safe intervals on unmount 1`] = `
+Array [
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+]
+`;
+
+exports[`withSafeAnimationFrame should pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  requestSafeAnimationFrame={[Function]}
+/>
+`;
+
+exports[`withSafeAnimationFrame should provide \`requestSafeAnimationFrame\` prop and unsubscriber as its call return 1`] = `
+Array [
+  Array [
+    [Function],
+    "a",
+    "b",
+  ],
+]
+`;
+
+exports[`withSafeAnimationFrame should provide \`requestSafeAnimationFrame\` prop and unsubscriber as its call return 2`] = `
+Array [
+  Array [
+    "id",
+  ],
+]
+`;

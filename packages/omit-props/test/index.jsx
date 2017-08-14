@@ -7,25 +7,21 @@ const Target = () => null;
 
 describe('omitProps', () => {
   it('should omit multiple props passed in as arguments', () => {
-    const EnchancedTarget = omitProps('a', 'b')(Target);
+    const EnhancedTarget = omitProps('a', 'b')(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2} c={3}/>
+      <EnhancedTarget a={1} b={2} c={3}/>
     );
 
-    expect(wrapper.find(Target).props()).toEqual({ c: 3 });
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   it('should do nothing with props if nothing has been passed in', () => {
-    const EnchancedTarget = omitProps()(Target);
+    const EnhancedTarget = omitProps()(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2} c={3}/>
+      <EnhancedTarget a={1} b={2} c={3}/>
     );
 
-    expect(wrapper.find(Target).props()).toEqual({
-      a: 1,
-      b: 2,
-      c: 3
-    });
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   describe('display name', () => {
@@ -38,23 +34,23 @@ describe('omitProps', () => {
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = omitProps()(Target);
+      const EnhancedTarget = omitProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('omitProps(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = omitProps()(Target);
+      const EnhancedTarget = omitProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('OmitProps');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

@@ -32,37 +32,33 @@ describe('withSafeAnimationFrame', () => {
   });
 
   it('should pass props through', () => {
-    const EnchancedTarget = withSafeAnimationFrame(Target);
+    const EnhancedTarget = withSafeAnimationFrame(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2}/>
+      <EnhancedTarget a={1} b={2}/>
     );
-    const target = wrapper.find(Target);
 
-    expect(target.prop('a')).toBe(1);
-    expect(target.prop('b')).toBe(2);
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   it('should provide `requestSafeAnimationFrame` prop and unsubscriber as its call return', () => {
     const callback = () => {};
-    const EnchancedTarget = withSafeAnimationFrame(Target);
+    const EnhancedTarget = withSafeAnimationFrame(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const cancelSafeAnimationFrame = wrapper.find(Target).prop('requestSafeAnimationFrame')(callback, 'a', 'b');
 
-    expect(global.requestAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(global.requestAnimationFrame).toHaveBeenCalledWith(callback, 'a', 'b');
+    expect(global.requestAnimationFrame.mock.calls).toMatchSnapshot();
 
     cancelSafeAnimationFrame();
 
-    expect(global.cancelAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(global.cancelAnimationFrame).toHaveBeenCalledWith('id');
+    expect(global.cancelAnimationFrame.mock.calls).toMatchSnapshot();
   });
 
   it('should clear all safe intervals on unmount', () => {
-    const EnchancedTarget = withSafeAnimationFrame(Target);
+    const EnhancedTarget = withSafeAnimationFrame(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const requestSafeAnimationFrame = wrapper.find(Target).prop('requestSafeAnimationFrame');
 
@@ -72,8 +68,7 @@ describe('withSafeAnimationFrame', () => {
 
     wrapper.unmount();
 
-    expect(global.cancelAnimationFrame).toHaveBeenCalledTimes(3);
-    expect(global.cancelAnimationFrame).toHaveBeenCalledWith('id');
+    expect(global.cancelAnimationFrame.mock.calls).toMatchSnapshot();
   });
 
   describe('display name', () => {
@@ -86,23 +81,23 @@ describe('withSafeAnimationFrame', () => {
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = withSafeAnimationFrame(Target);
+      const EnhancedTarget = withSafeAnimationFrame(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withSafeAnimationFrame(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = withSafeAnimationFrame(Target);
+      const EnhancedTarget = withSafeAnimationFrame(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('SafeTimer');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

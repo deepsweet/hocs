@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`throttleHandler display name should not wrap display name in production env 1`] = `
+<ThrottleHandler>
+  <Target
+    undefined={[Function]}
+  />
+</ThrottleHandler>
+`;
+
+exports[`throttleHandler display name should wrap display name in non-production env 1`] = `
+<throttleHandler(Target)>
+  <Target
+    undefined={[Function]}
+  />
+</throttleHandler(Target)>
+`;
+
+exports[`throttleHandler should call \`e.persist()\` if it has been passed 1`] = `
+Array [
+  Array [
+    Object {
+      "persist": [Function],
+    },
+  ],
+]
+`;
+
+exports[`throttleHandler should call \`e.persist()\` if it has been passed 2`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`throttleHandler should pass handler arguments through 1`] = `
+Array [
+  Array [
+    "a",
+    "b",
+    "c",
+  ],
+]
+`;
+
 exports[`throttleHandler should throttle handler with \`interval\` option 1`] = `
 Array [
   Array [

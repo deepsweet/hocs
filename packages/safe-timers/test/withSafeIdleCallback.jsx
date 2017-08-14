@@ -32,37 +32,31 @@ describe('withSafeIdleCallback', () => {
   });
 
   it('should pass props through', () => {
-    const EnchancedTarget = withSafeIdleCallback(Target);
+    const EnhancedTarget = withSafeIdleCallback(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2}/>
+      <EnhancedTarget a={1} b={2}/>
     );
-    const target = wrapper.find(Target);
 
-    expect(target.prop('a')).toBe(1);
-    expect(target.prop('b')).toBe(2);
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   it('should provide `requestSafeIdleCallback` prop and unsubscriber as its call return', () => {
     const callback = () => {};
-    const EnchancedTarget = withSafeIdleCallback(Target);
+    const EnhancedTarget = withSafeIdleCallback(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const cancelSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback')(callback, 'a', 'b');
 
-    expect(global.requestIdleCallback).toHaveBeenCalledTimes(1);
-    expect(global.requestIdleCallback).toHaveBeenCalledWith(callback, 'a', 'b');
-
+    expect(global.requestIdleCallback.mock.calls).toMatchSnapshot();
     cancelSafeIdleCallback();
-
-    expect(global.cancelIdleCallback).toHaveBeenCalledTimes(1);
-    expect(global.cancelIdleCallback).toHaveBeenCalledWith('id');
+    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot();
   });
 
   it('should clear all safe intervals on unmount', () => {
-    const EnchancedTarget = withSafeIdleCallback(Target);
+    const EnhancedTarget = withSafeIdleCallback(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const requestSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback');
 
@@ -72,8 +66,7 @@ describe('withSafeIdleCallback', () => {
 
     wrapper.unmount();
 
-    expect(global.cancelIdleCallback).toHaveBeenCalledTimes(3);
-    expect(global.cancelIdleCallback).toHaveBeenCalledWith('id');
+    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot();
   });
 
   describe('display name', () => {
@@ -86,23 +79,23 @@ describe('withSafeIdleCallback', () => {
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = withSafeIdleCallback(Target);
+      const EnhancedTarget = withSafeIdleCallback(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withSafeIdleCallback(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = withSafeIdleCallback(Target);
+      const EnhancedTarget = withSafeIdleCallback(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('SafeTimer');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

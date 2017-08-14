@@ -7,43 +7,42 @@ const Target = () => null;
 
 describe('debounceHandler', () => {
   it('should pass handler arguments through', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler')(Target);
+    const EnhancedTarget = debounceHandler('testHandler')(Target);
     const mockTestHandler = jest.fn();
     const wrapper = mount(
-      <EnchancedTarget testHandler={mockTestHandler}/>
+      <EnhancedTarget testHandler={mockTestHandler}/>
     );
     const testHandler = wrapper.find(Target).prop('testHandler');
 
     testHandler('a', 'b', 'c');
     setTimeout(() => {
-      expect(mockTestHandler).toHaveBeenCalledTimes(1);
-      expect(mockTestHandler).toHaveBeenCalledWith('a', 'b', 'c');
+      expect(mockTestHandler.mock.calls).toMatchSnapshot();
       done();
     });
   });
 
   it('should call `e.persist()` if it has been passed', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler')(Target);
+    const EnhancedTarget = debounceHandler('testHandler')(Target);
     const mockTestHandler = jest.fn();
     const mockPersist = jest.fn();
     const wrapper = mount(
-      <EnchancedTarget testHandler={mockTestHandler}/>
+      <EnhancedTarget testHandler={mockTestHandler}/>
     );
     const testHandler = wrapper.find(Target).prop('testHandler');
 
     testHandler({ persist: mockPersist });
     setTimeout(() => {
-      expect(mockTestHandler).toHaveBeenCalledTimes(1);
-      expect(mockPersist).toHaveBeenCalledTimes(1);
+      expect(mockTestHandler.mock.calls).toMatchSnapshot();
+      expect(mockPersist.mock.calls).toMatchSnapshot();
       done();
     }, 0);
   });
 
   it('should debounce handler with `delay` option', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler', 50)(Target);
+    const EnhancedTarget = debounceHandler('testHandler', 50)(Target);
     const mockTestHandler = jest.fn();
     const wrapper = mount(
-      <EnchancedTarget testHandler={mockTestHandler}/>
+      <EnhancedTarget testHandler={mockTestHandler}/>
     );
     const testHandler = wrapper.find(Target).prop('testHandler');
 
@@ -76,10 +75,10 @@ describe('debounceHandler', () => {
   });
 
   it('should debounce handler with `leadingCall` option', (done) => {
-    const EnchancedTarget = debounceHandler('testHandler', 50, true)(Target);
+    const EnhancedTarget = debounceHandler('testHandler', 50, true)(Target);
     const mockTestHandler = jest.fn();
     const wrapper = mount(
-      <EnchancedTarget testHandler={mockTestHandler}/>
+      <EnhancedTarget testHandler={mockTestHandler}/>
     );
     const testHandler = wrapper.find(Target).prop('testHandler');
 
@@ -114,30 +113,30 @@ describe('debounceHandler', () => {
   describe('display name', () => {
     const origNodeEnv = process.env.NODE_ENV;
 
-    afterAll(() => {
+    afterEach(() => {
       process.env.NODE_ENV = origNodeEnv;
     });
 
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = debounceHandler()(Target);
+      const EnhancedTarget = debounceHandler('test')(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('debounceHandler(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = debounceHandler()(Target);
+      const EnhancedTarget = debounceHandler('test')(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('DebounceHandler');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

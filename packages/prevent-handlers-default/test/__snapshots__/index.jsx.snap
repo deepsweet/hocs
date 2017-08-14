@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`preventHandlersDefault display name should not wrap display name in production env 1`] = `
+<PreventHandlersDefault
+  testHandler={[Function]}
+>
+  <Target
+    testHandler={[Function]}
+  />
+</PreventHandlersDefault>
+`;
+
+exports[`preventHandlersDefault display name should wrap display name in non-production env 1`] = `
+<preventHandlersDefault(Target)
+  testHandler={[Function]}
+>
+  <Target
+    testHandler={[Function]}
+  />
+</preventHandlersDefault(Target)>
+`;
+
+exports[`preventHandlersDefault should call \`preventDefault\` from first argument if it has been passed to handler 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`preventHandlersDefault should not fail if there is no \`preventDefault\` in first handler argument 1`] = `
+Array [
+  Array [
+    undefined,
+  ],
+]
+`;
+
+exports[`preventHandlersDefault should not wrap non-existing handler 1`] = `<Target />`;
+
+exports[`preventHandlersDefault should pass props through if there are no arguments 1`] = `
+<Target
+  a={1}
+  b={2}
+/>
+`;

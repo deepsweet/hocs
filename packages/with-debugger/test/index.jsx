@@ -21,7 +21,7 @@ describe('withDebugger', () => {
         <EnhancedTarget/>
       );
 
-      expect(wrapper.is(Target)).toBe(true);
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should wrap display name in non-production env', () => {
@@ -32,7 +32,7 @@ describe('withDebugger', () => {
         <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withDebugger(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

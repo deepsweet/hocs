@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withDebugger env should pass Target through in production env 1`] = `<Target />`;
+
+exports[`withDebugger env should wrap display name in non-production env 1`] = `
+<withDebugger(Target)>
+  <Target />
+</withDebugger(Target)>
+`;

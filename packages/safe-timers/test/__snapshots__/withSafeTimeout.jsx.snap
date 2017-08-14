@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withSafeTimeout display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    setSafeTimeout={[Function]}
+  />
+</SafeTimer>
+`;
+
+exports[`withSafeTimeout display name should wrap display name in non-production env 1`] = `
+<withSafeTimeout(Target)>
+  <Target
+    setSafeTimeout={[Function]}
+  />
+</withSafeTimeout(Target)>
+`;
+
+exports[`withSafeTimeout should clear all safe timeouts on unmount 1`] = `
+Array [
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+]
+`;
+
+exports[`withSafeTimeout should pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  setSafeTimeout={[Function]}
+/>
+`;
+
+exports[`withSafeTimeout should provide \`setSafeTimeout\` prop and unsubscriber as its call return 1`] = `
+Array [
+  Array [
+    [Function],
+    "a",
+    "b",
+  ],
+]
+`;
+
+exports[`withSafeTimeout should provide \`setSafeTimeout\` prop and unsubscriber as its call return 2`] = `
+Array [
+  Array [
+    "id",
+  ],
+]
+`;

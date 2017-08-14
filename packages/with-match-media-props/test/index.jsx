@@ -35,13 +35,13 @@ describe('withMatchMediaProps', () => {
       global.matchMedia = originMatchMedia;
     });
 
-    it('should just pass props through when called without arguments', () => {
-      const EnchancedTarget = withMatchMediaProps()(Target);
+    it('should just pass props through', () => {
+      const EnhancedTarget = withMatchMediaProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget a={1} b={2} c={3}/>
+        <EnhancedTarget a={1} b={2} c={3}/>
       );
 
-      expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2, c: 3 });
+      expect(wrapper.find(Target)).toMatchSnapshot();
     });
 
     it('should pass query object to json2mq', () => {
@@ -51,18 +51,17 @@ describe('withMatchMediaProps', () => {
         matches: true
       }));
 
-      const EnchancedTarget = withMatchMediaProps({
+      const EnhancedTarget = withMatchMediaProps({
         test: {
           maxWidth: 300
         }
       })(Target);
 
       mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(mockJson2mq).toHaveBeenCalledTimes(1);
-      expect(mockJson2mq).toHaveBeenCalledWith({ maxWidth: 300 });
+      expect(mockJson2mq.mock.calls).toMatchSnapshot();
     });
 
     it('should set initial state and provide props with matched queries', () => {
@@ -72,16 +71,16 @@ describe('withMatchMediaProps', () => {
         matches: true
       }));
 
-      const EnchancedTarget = withMatchMediaProps({
+      const EnhancedTarget = withMatchMediaProps({
         test: {
           maxWidth: 300
         }
       })(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.find(Target).prop('test')).toBe(true);
+      expect(wrapper.find(Target)).toMatchSnapshot();
     });
 
     it('should subscribe on mount and unsubscribe on unmount', () => {
@@ -93,18 +92,18 @@ describe('withMatchMediaProps', () => {
         removeListener: mockRemoveListener
       }));
 
-      const EnchancedTarget = withMatchMediaProps({
+      const EnhancedTarget = withMatchMediaProps({
         test: {
           maxWidth: 300
         }
       })(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(mockAddListener).toHaveBeenCalledTimes(1);
+      expect(mockAddListener.mock.calls).toMatchSnapshot();
       wrapper.unmount();
-      expect(mockRemoveListener).toHaveBeenCalledTimes(1);
+      expect(mockRemoveListener.mock.calls).toMatchSnapshot();
       expect(mockRemoveListener).toHaveBeenCalledWith(mockAddListener.mock.calls[0][0]);
     });
 
@@ -117,25 +116,22 @@ describe('withMatchMediaProps', () => {
         matches: false
       }));
 
-      const EnchancedTarget = withMatchMediaProps({
+      const EnhancedTarget = withMatchMediaProps({
         test: {
           maxWidth: 300
         }
       })(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
       mockAddListener.mock.calls[0][0]({ matches: true });
-      expect(wrapper.find(Target).prop('test')).toBe(true);
+
+      expect(wrapper.find(Target)).toMatchSnapshot();
     });
 
     describe('display name', () => {
-      let origNodeEnv = null;
-
-      beforeAll(() => {
-        origNodeEnv = process.env.NODE_ENV;
-      });
+      const origNodeEnv = process.env.NODE_ENV;
 
       afterAll(() => {
         process.env.NODE_ENV = origNodeEnv;
@@ -144,36 +140,35 @@ describe('withMatchMediaProps', () => {
       it('should wrap display name in non-production env', () => {
         process.env.NODE_ENV = 'test';
 
-        const EnchancedTarget = withMatchMediaProps()(Target);
+        const EnhancedTarget = withMatchMediaProps()(Target);
         const wrapper = mount(
-          <EnchancedTarget/>
+          <EnhancedTarget/>
         );
 
-        expect(wrapper.name()).toBe('withMatchMediaProps(Target)');
+        expect(wrapper).toMatchSnapshot();
       });
 
       it('should not wrap display name in production env', () => {
         process.env.NODE_ENV = 'production';
 
-        const EnchancedTarget = withMatchMediaProps()(Target);
+        const EnhancedTarget = withMatchMediaProps()(Target);
         const wrapper = mount(
-          <EnchancedTarget/>
+          <EnhancedTarget/>
         );
 
-        expect(wrapper.name()).toBe('WithMatchMediaProps');
+        expect(wrapper).toMatchSnapshot();
       });
     });
   });
 
   describe('`window.matchMedia` is not supported', () => {
     it('should just pass Target component through', () => {
-      const EnchancedTarget = withMatchMediaProps()(Target);
+      const EnhancedTarget = withMatchMediaProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget a={1} b={2} c={3}/>
+        <EnhancedTarget a={1} b={2} c={3}/>
       );
 
-      expect(wrapper.find(Target).props()).toEqual({ a: 1, b: 2, c: 3 });
-      expect(wrapper.name()).toBe('Target');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

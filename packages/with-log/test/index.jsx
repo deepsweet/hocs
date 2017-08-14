@@ -7,11 +7,8 @@ import withLog from '../src/';
 const Target = () => null;
 
 describe('withLog', () => {
-  let origConsoleLog = null;
-
   beforeAll(() => {
-    origConsoleLog = console.log;
-    console.log = jest.fn();
+    jest.spyOn(console, 'log').mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -19,7 +16,7 @@ describe('withLog', () => {
   });
 
   afterAll(() => {
-    console.log = origConsoleLog;
+    console.log.mockRestore();
   });
 
   it('should log all props if no argument was passed in', () => {
@@ -29,8 +26,7 @@ describe('withLog', () => {
       <EnhancedTarget a={1} b={2} c={3}/>
     );
 
-    expect(console.log).toHaveBeenCalledTimes(1);
-    expect(console.log).toHaveBeenCalledWith('withLog(Target):', { a: 1, b: 2, c: 3 });
+    expect(console.log.mock.calls).toMatchSnapshot();
   });
 
   it('should call provided `getMessageToLog` with props and log its result', () => {
@@ -41,10 +37,8 @@ describe('withLog', () => {
       <EnhancedTarget a={1} b={2} c={3}/>
     );
 
-    expect(mockGetMessageToLog).toHaveBeenCalledTimes(1);
-    expect(mockGetMessageToLog).toHaveBeenCalledWith({ a: 1, b: 2, c: 3 });
-    expect(console.log).toHaveBeenCalledTimes(1);
-    expect(console.log).toHaveBeenCalledWith('withLog(Target):', 'a = 1');
+    expect(mockGetMessageToLog.mock.calls).toMatchSnapshot();
+    expect(console.log.mock.calls).toMatchSnapshot();
   });
 
   describe('env', () => {
@@ -62,7 +56,7 @@ describe('withLog', () => {
         <EnhancedTarget/>
       );
 
-      expect(wrapper.is(Target)).toBe(true);
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should wrap display name in non-production env', () => {
@@ -73,7 +67,7 @@ describe('withLog', () => {
         <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withLog(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withSafeIdleCallback display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    requestSafeIdleCallback={[Function]}
+  />
+</SafeTimer>
+`;
+
+exports[`withSafeIdleCallback display name should wrap display name in non-production env 1`] = `
+<withSafeIdleCallback(Target)>
+  <Target
+    requestSafeIdleCallback={[Function]}
+  />
+</withSafeIdleCallback(Target)>
+`;
+
+exports[`withSafeIdleCallback should clear all safe intervals on unmount 1`] = `
+Array [
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+]
+`;
+
+exports[`withSafeIdleCallback should pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  requestSafeIdleCallback={[Function]}
+/>
+`;
+
+exports[`withSafeIdleCallback should provide \`requestSafeIdleCallback\` prop and unsubscriber as its call return 1`] = `
+Array [
+  Array [
+    [Function],
+    "a",
+    "b",
+  ],
+]
+`;
+
+exports[`withSafeIdleCallback should provide \`requestSafeIdleCallback\` prop and unsubscriber as its call return 2`] = `
+Array [
+  Array [
+    "id",
+  ],
+]
+`;

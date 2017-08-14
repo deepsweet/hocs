@@ -4,18 +4,12 @@ import { mount } from 'enzyme';
 const Target = () => null;
 
 describe('withSafeTimeout', () => {
-  let origSetTimeout = null;
-  let origClearTimeout = null;
   let withSafeTimeout = null;
 
   beforeAll(() => {
-    origSetTimeout = global.setTimeout;
-    origClearTimeout = global.clearTimeout;
-
+    jest.spyOn(global, 'setTimeout').mockImplementation(() => 'id');
+    jest.spyOn(global, 'clearTimeout');
     jest.resetModules();
-
-    global.setTimeout = jest.fn(() => 'id');
-    global.clearTimeout = jest.fn();
 
     withSafeTimeout = require('../src').withSafeTimeout;
   });
@@ -26,42 +20,36 @@ describe('withSafeTimeout', () => {
   });
 
   afterAll(() => {
-    global.setTimeout = origSetTimeout;
-    global.clearTimeout = origClearTimeout;
+    global.setTimeout.mockRestore();
+    global.clearTimeout.mockRestore();
   });
 
   it('should pass props through', () => {
-    const EnchancedTarget = withSafeTimeout(Target);
+    const EnhancedTarget = withSafeTimeout(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2}/>
+      <EnhancedTarget a={1} b={2}/>
     );
-    const target = wrapper.find(Target);
 
-    expect(target.prop('a')).toBe(1);
-    expect(target.prop('b')).toBe(2);
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   it('should provide `setSafeTimeout` prop and unsubscriber as its call return', () => {
     const callback = () => {};
-    const EnchancedTarget = withSafeTimeout(Target);
+    const EnhancedTarget = withSafeTimeout(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const clearSafeTimeout = wrapper.find(Target).prop('setSafeTimeout')(callback, 'a', 'b');
 
-    expect(global.setTimeout).toHaveBeenCalledTimes(1);
-    expect(global.setTimeout).toHaveBeenCalledWith(callback, 'a', 'b');
-
+    expect(global.setTimeout.mock.calls).toMatchSnapshot();
     clearSafeTimeout();
-
-    expect(global.clearTimeout).toHaveBeenCalledTimes(1);
-    expect(global.clearTimeout).toHaveBeenCalledWith('id');
+    expect(global.clearTimeout.mock.calls).toMatchSnapshot();
   });
 
   it('should clear all safe timeouts on unmount', () => {
-    const EnchancedTarget = withSafeTimeout(Target);
+    const EnhancedTarget = withSafeTimeout(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const setSafeTimeout = wrapper.find(Target).prop('setSafeTimeout');
 
@@ -71,8 +59,7 @@ describe('withSafeTimeout', () => {
 
     wrapper.unmount();
 
-    expect(global.clearTimeout).toHaveBeenCalledTimes(3);
-    expect(global.clearTimeout).toHaveBeenCalledWith('id');
+    expect(global.clearTimeout.mock.calls).toMatchSnapshot();
   });
 
   describe('display name', () => {
@@ -85,23 +72,23 @@ describe('withSafeTimeout', () => {
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = withSafeTimeout(Target);
+      const EnhancedTarget = withSafeTimeout(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withSafeTimeout(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = withSafeTimeout(Target);
+      const EnhancedTarget = withSafeTimeout(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('SafeTimer');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

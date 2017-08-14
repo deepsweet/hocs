@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`omitProps display name should not wrap display name in production env 1`] = `
+<OmitProps>
+  <Target />
+</OmitProps>
+`;
+
+exports[`omitProps display name should wrap display name in non-production env 1`] = `
+<omitProps(Target)>
+  <Target />
+</omitProps(Target)>
+`;
+
+exports[`omitProps should do nothing with props if nothing has been passed in 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
+
+exports[`omitProps should omit multiple props passed in as arguments 1`] = `
+<Target
+  c={3}
+/>
+`;

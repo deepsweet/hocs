@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLifecycle as factory multiple 1`] = `
+Array [
+  Array [
+    Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as factory multiple 2`] = `
+Array [
+  Array [
+    Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onDidMount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onDidUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onWillMount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onWillReceiveProps 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onWillUnmount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onWillUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory should call factory functions with props 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object multiple 1`] = `
+Array [
+  Array [
+    Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as object multiple 2`] = `
+Array [
+  Array [
+    Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as object onDidMount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onDidUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onWillMount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onWillReceiveProps 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onWillUnmount 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onWillUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle display name should not wrap display name in production env 1`] = `
+<WithLifecycle>
+  <Target />
+</WithLifecycle>
+`;
+
+exports[`withLifecycle display name should wrap display name in non-production env 1`] = `
+<withLifecycle(Target)>
+  <Target />
+</withLifecycle(Target)>
+`;
+
+exports[`withLifecycle should pass props through to the Target 1`] = `
+<Target
+  a={1}
+  b={2}
+/>
+`;

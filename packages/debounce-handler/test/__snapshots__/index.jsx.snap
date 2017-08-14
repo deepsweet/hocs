@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`debounceHandler display name should not wrap display name in production env 1`] = `
+<DebounceHandler>
+  <Target
+    test={[Function]}
+  />
+</DebounceHandler>
+`;
+
+exports[`debounceHandler display name should wrap display name in non-production env 1`] = `
+<debounceHandler(Target)>
+  <Target
+    test={[Function]}
+  />
+</debounceHandler(Target)>
+`;
+
+exports[`debounceHandler should call \`e.persist()\` if it has been passed 1`] = `
+Array [
+  Array [
+    Object {
+      "persist": [Function],
+    },
+  ],
+]
+`;
+
+exports[`debounceHandler should call \`e.persist()\` if it has been passed 2`] = `
+Array [
+  Array [],
+]
+`;
+
 exports[`debounceHandler should debounce handler with \`delay\` option 1`] = `
 Array [
   Array [
@@ -21,6 +53,16 @@ Array [
   ],
   Array [
     "f",
+  ],
+]
+`;
+
+exports[`debounceHandler should pass handler arguments through 1`] = `
+Array [
+  Array [
+    "a",
+    "b",
+    "c",
   ],
 ]
 `;

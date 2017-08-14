@@ -127,9 +127,9 @@ describe('withIntersectionObserverProps', () => {
       it('should wrap display name in non-production env', () => {
         process.env.NODE_ENV = 'test';
 
-        const EnchancedTarget = withIntersectionObserverProps({ test: 0 })(Target);
+        const EnhancedTarget = withIntersectionObserverProps({ test: 0 })(Target);
         const wrapper = mount(
-          <EnchancedTarget/>
+          <EnhancedTarget/>
         );
 
         expect(wrapper).toMatchSnapshot();
@@ -138,9 +138,9 @@ describe('withIntersectionObserverProps', () => {
       it('should not wrap display name in production env', () => {
         process.env.NODE_ENV = 'production';
 
-        const EnchancedTarget = withIntersectionObserverProps({ test: 0 })(Target);
+        const EnhancedTarget = withIntersectionObserverProps({ test: 0 })(Target);
         const wrapper = mount(
-          <EnchancedTarget/>
+          <EnhancedTarget/>
         );
 
         expect(wrapper).toMatchSnapshot();
@@ -158,9 +158,9 @@ describe('withIntersectionObserverProps', () => {
     });
 
     it('should just pass Target component through', () => {
-      const EnchancedTarget = withIntersectionObserverProps()(Target);
+      const EnhancedTarget = withIntersectionObserverProps()(Target);
       const wrapper = mount(
-        <EnchancedTarget a={1} b={2} c={3}/>
+        <EnhancedTarget a={1} b={2} c={3}/>
       );
 
       expect(wrapper).toMatchSnapshot();

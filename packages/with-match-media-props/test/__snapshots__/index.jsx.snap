@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withMatchMediaProps \`window.matchMedia\` is not supported should just pass Target component through 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported display name should not wrap display name in production env 1`] = `
+<WithMatchMediaProps>
+  <Target />
+</WithMatchMediaProps>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported display name should wrap display name in non-production env 1`] = `
+<withMatchMediaProps(Target)>
+  <Target />
+</withMatchMediaProps(Target)>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should change state and provide props when query has been matched 1`] = `
+<Target
+  test={true}
+/>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should just pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should pass query object to json2mq 1`] = `
+Array [
+  Array [
+    Object {
+      "maxWidth": 300,
+    },
+  ],
+]
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should set initial state and provide props with matched queries 1`] = `
+<Target
+  test={true}
+/>
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should subscribe on mount and unsubscribe on unmount 1`] = `
+Array [
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`withMatchMediaProps \`window.matchMedia\` is supported should subscribe on mount and unsubscribe on unmount 2`] = `
+Array [
+  Array [
+    [Function],
+  ],
+]
+`;

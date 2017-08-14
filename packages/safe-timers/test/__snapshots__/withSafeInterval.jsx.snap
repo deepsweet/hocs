@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withSafeInterval display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    setSafeInterval={[Function]}
+  />
+</SafeTimer>
+`;
+
+exports[`withSafeInterval display name should wrap display name in non-production env 1`] = `
+<withSafeInterval(Target)>
+  <Target
+    setSafeInterval={[Function]}
+  />
+</withSafeInterval(Target)>
+`;
+
+exports[`withSafeInterval should clear all safe intervals on unmount 1`] = `
+Array [
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+  Array [
+    "id",
+  ],
+]
+`;
+
+exports[`withSafeInterval should pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  setSafeInterval={[Function]}
+/>
+`;
+
+exports[`withSafeInterval should provide \`setSafeInterval\` prop and unsubscriber as its call return 1`] = `
+Array [
+  Array [
+    [Function],
+    "a",
+    "b",
+  ],
+]
+`;
+
+exports[`withSafeInterval should provide \`setSafeInterval\` prop and unsubscriber as its call return 2`] = `
+Array [
+  Array [
+    "id",
+  ],
+]
+`;

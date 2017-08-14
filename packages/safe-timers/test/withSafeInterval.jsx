@@ -4,18 +4,12 @@ import { mount } from 'enzyme';
 const Target = () => null;
 
 describe('withSafeInterval', () => {
-  let origSetInterval = null;
-  let origClearInterval = null;
   let withSafeInterval = null;
 
   beforeAll(() => {
-    origSetInterval = global.setInterval;
-    origClearInterval = global.clearInterval;
-
+    jest.spyOn(global, 'setInterval').mockImplementation(() => 'id');
+    jest.spyOn(global, 'clearInterval');
     jest.resetModules();
-
-    global.setInterval = jest.fn(() => 'id');
-    global.clearInterval = jest.fn();
 
     withSafeInterval = require('../src').withSafeInterval;
   });
@@ -26,42 +20,38 @@ describe('withSafeInterval', () => {
   });
 
   afterAll(() => {
-    global.setInterval = origSetInterval;
-    global.clearInterval = origClearInterval;
+    global.setInterval.mockRestore();
+    global.clearInterval.mockRestore();
   });
 
   it('should pass props through', () => {
-    const EnchancedTarget = withSafeInterval(Target);
+    const EnhancedTarget = withSafeInterval(Target);
     const wrapper = mount(
-      <EnchancedTarget a={1} b={2}/>
+      <EnhancedTarget a={1} b={2}/>
     );
-    const target = wrapper.find(Target);
 
-    expect(target.prop('a')).toBe(1);
-    expect(target.prop('b')).toBe(2);
+    expect(wrapper.find(Target)).toMatchSnapshot();
   });
 
   it('should provide `setSafeInterval` prop and unsubscriber as its call return', () => {
     const callback = () => {};
-    const EnchancedTarget = withSafeInterval(Target);
+    const EnhancedTarget = withSafeInterval(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const clearSafeInterval = wrapper.find(Target).prop('setSafeInterval')(callback, 'a', 'b');
 
-    expect(global.setInterval).toHaveBeenCalledTimes(1);
-    expect(global.setInterval).toHaveBeenCalledWith(callback, 'a', 'b');
+    expect(global.setInterval.mock.calls).toMatchSnapshot();
 
     clearSafeInterval();
 
-    expect(global.clearInterval).toHaveBeenCalledTimes(1);
-    expect(global.clearInterval).toHaveBeenCalledWith('id');
+    expect(global.clearInterval.mock.calls).toMatchSnapshot();
   });
 
   it('should clear all safe intervals on unmount', () => {
-    const EnchancedTarget = withSafeInterval(Target);
+    const EnhancedTarget = withSafeInterval(Target);
     const wrapper = mount(
-      <EnchancedTarget/>
+      <EnhancedTarget/>
     );
     const setSafeInterval = wrapper.find(Target).prop('setSafeInterval');
 
@@ -71,8 +61,7 @@ describe('withSafeInterval', () => {
 
     wrapper.unmount();
 
-    expect(global.clearInterval).toHaveBeenCalledTimes(3);
-    expect(global.clearInterval).toHaveBeenCalledWith('id');
+    expect(global.clearInterval.mock.calls).toMatchSnapshot();
   });
 
   describe('display name', () => {
@@ -85,23 +74,23 @@ describe('withSafeInterval', () => {
     it('should wrap display name in non-production env', () => {
       process.env.NODE_ENV = 'test';
 
-      const EnchancedTarget = withSafeInterval(Target);
+      const EnhancedTarget = withSafeInterval(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('withSafeInterval(Target)');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('should not wrap display name in production env', () => {
       process.env.NODE_ENV = 'production';
 
-      const EnchancedTarget = withSafeInterval(Target);
+      const EnhancedTarget = withSafeInterval(Target);
       const wrapper = mount(
-        <EnchancedTarget/>
+        <EnhancedTarget/>
       );
 
-      expect(wrapper.name()).toBe('SafeTimer');
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });
