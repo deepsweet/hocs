@@ -40,6 +40,10 @@ Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` and `requestIdleCallback` which will be cleared/cancelled automatically before component is unmounted.
 
+### :bell: [with-callback-on-change](packages/with-callback-on-change)
+
+Invokes a callback on prop change, useful to decouple side effects in a declarative way.
+
 ### :mag: [with-log](packages/with-log)
 
 Injects `console.log` with props or any custom message into render.

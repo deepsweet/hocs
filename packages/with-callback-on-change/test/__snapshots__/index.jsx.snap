@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withCallbackOnChange display name should not wrap display name in production env 1`] = `<WithCallbackOnChange />`;
+
+exports[`withCallbackOnChange display name should wrap display name in non-production env 1`] = `<withCallbackOnChange(Target) />`;
+
+exports[`withCallbackOnChange should invoke a callback on prop change 1`] = `Array []`;
+
+exports[`withCallbackOnChange should invoke a callback on prop change 2`] = `
+Array [
+  Array [
+    Object {
+      "a": 11,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withCallbackOnChange should no-op if prop is the same 1`] = `Array []`;
+
+exports[`withCallbackOnChange should no-op if prop is the same 2`] = `Array []`;
+
+exports[`withCallbackOnChange should pass props through 1`] = `
+<withCallbackOnChange(Target)
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
