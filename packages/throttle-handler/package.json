@@ -30,6 +30,6 @@
   },
   "peerDependencies": {
     "react": "^15.6.1",
-    "recompose": "^0.24.0"
+    "recompose": "^0.25.0"
   }
 }
