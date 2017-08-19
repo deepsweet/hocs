@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 import json2mq from 'json2mq';
 
 const isMatchMediaSupported = typeof global.matchMedia === 'function';
@@ -22,6 +22,8 @@ const withMatchMediaProps = (propsQieries = {}) => (Target) => {
   if (!isMatchMediaSupported) {
     return Target;
   }
+
+  const factory = createEagerFactory(Target);
 
   class WithMatchMediaProps extends Component {
     constructor(props, context) {
@@ -51,9 +53,10 @@ const withMatchMediaProps = (propsQieries = {}) => (Target) => {
     }
 
     render() {
-      return (
-        <Target {...this.props} {...this.state}/>
-      );
+      return factory({
+        ...this.props,
+        ...this.state
+      });
     }
   }
 
