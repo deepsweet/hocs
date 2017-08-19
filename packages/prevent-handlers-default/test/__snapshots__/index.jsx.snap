@@ -3,11 +3,7 @@
 exports[`preventHandlersDefault display name should not wrap display name in production env 1`] = `
 <PreventHandlersDefault
   testHandler={[Function]}
->
-  <Target
-    testHandler={[Function]}
-  />
-</PreventHandlersDefault>
+/>
 `;
 
 exports[`preventHandlersDefault display name should wrap display name in non-production env 1`] = `

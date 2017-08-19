@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 
 const preventHandlersDefault = (...handlers) => (Target) => {
+  const factory = createEagerFactory(Target);
+
   class PreventHandlersDefault extends Component {
     constructor(props, context) {
       super(props, context);
@@ -22,9 +24,10 @@ const preventHandlersDefault = (...handlers) => (Target) => {
     }
 
     render() {
-      return (
-        <Target {...this.props} {...this.handlers}/>
-      );
+      return factory({
+        ...this.props,
+        ...this.handlers
+      });
     }
   }
 
