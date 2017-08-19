@@ -2,7 +2,11 @@
 
 exports[`withCallbackOnChange display name should not wrap display name in production env 1`] = `<WithCallbackOnChange />`;
 
-exports[`withCallbackOnChange display name should wrap display name in non-production env 1`] = `<withCallbackOnChange(Target) />`;
+exports[`withCallbackOnChange display name should wrap display name in non-production env 1`] = `
+<withCallbackOnChange(Target)>
+  <Target />
+</withCallbackOnChange(Target)>
+`;
 
 exports[`withCallbackOnChange should invoke a callback on prop change 1`] = `Array []`;
 
@@ -27,5 +31,11 @@ exports[`withCallbackOnChange should pass props through 1`] = `
   a={1}
   b={2}
   c={3}
-/>
+>
+  <Target
+    a={1}
+    b={2}
+    c={3}
+  />
+</withCallbackOnChange(Target)>
 `;
