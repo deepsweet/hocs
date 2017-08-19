@@ -1,7 +1,7 @@
 {
   "name": "@hocs/prevent-handlers-default",
   "library": "preventHandlersDefault",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Prevent handlers default HOC for React",
   "keywords": [
     "react",
