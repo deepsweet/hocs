@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`omitProps display name should not wrap display name in production env 1`] = `
-<OmitProps>
-  <Target />
-</OmitProps>
-`;
+exports[`omitProps display name should not wrap display name in production env 1`] = `<OmitProps />`;
 
 exports[`omitProps display name should wrap display name in non-production env 1`] = `
 <omitProps(Target)>

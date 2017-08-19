@@ -1,11 +1,9 @@
-import React from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 import omit from 'just-omit';
 
 const omitProps = (...propsToOmit) => (Target) => {
-  const OmitProps = (props) => (
-    <Target {...omit(props, propsToOmit)}/>
-  );
+  const factory = createEagerFactory(Target);
+  const OmitProps = (props) => factory(omit(props, propsToOmit));
 
   if (process.env.NODE_ENV !== 'production') {
     return setDisplayName(wrapDisplayName(Target, 'omitProps'))(OmitProps);
