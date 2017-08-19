@@ -1,7 +1,7 @@
 {
   "name": "@hocs/with-intersection-observer-props",
   "library": "withIntersectionObserverProps",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Intersection Observer HOC for React",
   "keywords": [
     "react",
