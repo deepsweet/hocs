@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withSafeAnimationFrame display name should not wrap display name in production env 1`] = `
-<SafeTimer>
-  <Target
-    requestSafeAnimationFrame={[Function]}
-  />
-</SafeTimer>
-`;
+exports[`withSafeAnimationFrame display name should not wrap display name in production env 1`] = `<SafeTimer />`;
 
 exports[`withSafeAnimationFrame display name should wrap display name in non-production env 1`] = `
 <withSafeAnimationFrame(Target)>

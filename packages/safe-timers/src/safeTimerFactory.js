@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 
 const safeTimerFactory = (setFn, clearFn, propName, hocName) => (Target) => {
+  const factory = createEagerFactory(Target);
+
   class SafeTimer extends Component {
     constructor(props, context) {
       super(props, context);
@@ -26,14 +28,10 @@ const safeTimerFactory = (setFn, clearFn, propName, hocName) => (Target) => {
     }
 
     render() {
-      const props = {
+      return factory({
         ...this.props,
         [propName]: this[propName]
-      };
-
-      return (
-        <Target {...props}/>
-      );
+      });
     }
   }
 
