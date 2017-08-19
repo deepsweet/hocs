@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 import debounce from 'just-debounce-it';
 
 const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
+  const factory = createEagerFactory(Target);
+
   class DebounceHandler extends Component {
     constructor(props, context) {
       super(props, context);
@@ -19,14 +21,10 @@ const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
     }
 
     render() {
-      const newProps = {
+      return factory({
         ...this.props,
         [handlerName]: this[handlerName]
-      };
-
-      return (
-        <Target {...newProps}/>
-      );
+      });
     }
   }
 
