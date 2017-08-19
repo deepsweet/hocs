@@ -14,11 +14,9 @@ exports[`withIntersectionObserverProps Intersection Observer API is not supporte
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `
 <WithIntersectionObserverProps>
-  <Target>
-    <div
-      data-test={1}
-    />
-  </Target>
+  <div
+    data-test={1}
+  />
 </WithIntersectionObserverProps>
 `;
 
