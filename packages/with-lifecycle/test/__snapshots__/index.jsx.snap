@@ -205,11 +205,7 @@ Array [
 ]
 `;
 
-exports[`withLifecycle display name should not wrap display name in production env 1`] = `
-<WithLifecycle>
-  <Target />
-</WithLifecycle>
-`;
+exports[`withLifecycle display name should not wrap display name in production env 1`] = `<WithLifecycle />`;
 
 exports[`withLifecycle display name should wrap display name in non-production env 1`] = `
 <withLifecycle(Target)>

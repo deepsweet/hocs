@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 
 export default (methodsArg) => (Target) => {
+  const factory = createEagerFactory(Target);
+
   class WithLifecycle extends Component {
     constructor(props, context) {
       super(props, context);
@@ -48,9 +50,7 @@ export default (methodsArg) => (Target) => {
     }
 
     render() {
-      return (
-        <Target {...this.props}/>
-      );
+      return factory(this.props);
     }
   }
 
