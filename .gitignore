@@ -3,5 +3,6 @@ dist/
 es/
 lib/
 coverage/
+.npmrc
 .DS_Store
 *.log
