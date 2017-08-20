@@ -1,5 +1,5 @@
 {
-  "private": "true",
+  "private": true,
   "description": "A day without a new HOC is a day wasted",
   "workspaces": [
     "packages/*"
