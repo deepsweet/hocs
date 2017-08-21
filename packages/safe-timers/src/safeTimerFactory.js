@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 import { Component } from 'react';
 import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 

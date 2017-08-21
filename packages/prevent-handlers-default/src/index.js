@@ -32,7 +32,9 @@ const preventHandlersDefault = (...handlers) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'preventHandlersDefault'))(PreventHandlersDefault);
+    return setDisplayName(
+      wrapDisplayName(Target, 'preventHandlersDefault')
+    )(PreventHandlersDefault);
   }
 
   return PreventHandlersDefault;
