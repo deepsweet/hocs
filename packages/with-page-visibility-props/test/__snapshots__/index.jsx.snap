@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withPageVisibilityProps Page Visibility API is not supported should just pass Target component through 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
+
+exports[`withPageVisibilityProps Page Visibility API is supported display name should not wrap display name in production env 1`] = `<WithPageVisibilityProps />`;
+
+exports[`withPageVisibilityProps Page Visibility API is supported display name should wrap display name in non-production env 1`] = `
+<withPageVisibilityProps(Target)>
+  <Target />
+</withPageVisibilityProps(Target)>
+`;
+
+exports[`withPageVisibilityProps Page Visibility API is supported should handle page visibility state change 1`] = `
+<Target
+  isHidden={true}
+  isVisible={false}
+/>
+`;
+
+exports[`withPageVisibilityProps Page Visibility API is supported should remove event listener on unmount 1`] = `
+Array [
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+]
+`;
+
+exports[`withPageVisibilityProps Page Visibility API is supported should set initial state 1`] = `
+<Target
+  isHidden={false}
+  isVisible={true}
+/>
+`;

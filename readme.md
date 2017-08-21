@@ -24,6 +24,10 @@ Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web
 
 Dynamically map visibility of a component to boolean props using [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) ([Can I use?](https://caniuse.com/#feat=intersectionobserver)).
 
+### :see_no_evil: [with-page-visibility-props](packages/with-page-visibility-props)
+
+Dynamically map page visibility state to boolean props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
+
 ### :hourglass: [debounce-handler](packages/debounce-handler)
 
 Helps to debounce handlers like `onChange`.
