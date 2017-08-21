@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withCallbackOnChangeWhile display name should not wrap display name in production env 1`] = `<WithCallbackOnChangeWhile />`;
+
+exports[`withCallbackOnChangeWhile display name should wrap display name in non-production env 1`] = `
+<withCallbackOnChangeWhile(Target)>
+  <Target />
+</withCallbackOnChangeWhile(Target)>
+`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 1`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 2`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 3`] = `
+Array [
+  Array [
+    Object {
+      "a": 11,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 4`] = `
+Array [
+  Array [
+    Object {
+      "a": 11,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 5`] = `
+Array [
+  Array [
+    Object {
+      "a": 11,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+  Array [
+    Object {
+      "a": 111,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withCallbackOnChangeWhile should invoke a callback on prop change and match condition 6`] = `
+Array [
+  Array [
+    Object {
+      "a": 11,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withCallbackOnChangeWhile should no-op if prop is the same 1`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should no-op if prop is the same 2`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should no-op if prop is the same 3`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should no-op if prop is the same 4`] = `Array []`;
+
+exports[`withCallbackOnChangeWhile should pass props through 1`] = `
+<withCallbackOnChangeWhile(Target)
+  a={1}
+  b={2}
+  c={3}
+>
+  <Target
+    a={1}
+    b={2}
+    c={3}
+  />
+</withCallbackOnChangeWhile(Target)>
+`;

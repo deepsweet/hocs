@@ -48,6 +48,10 @@ Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` a
 
 Invokes a callback on prop change, useful to decouple side effects in a declarative way.
 
+### :bell: [with-callback-on-change-while](packages/with-callback-on-change-while)
+
+Invokes a callback on prop change while condition is true, useful to decouple side effects in a declarative way.
+
 ### :mag: [with-log](packages/with-log)
 
 Injects `console.log` with props or any custom message into render.
