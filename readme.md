@@ -46,11 +46,11 @@ Provides safe versions of `setTimeout`, `setInterval`, `requestAnimationFrame` a
 
 ### :bell: [with-callback-on-change](packages/with-callback-on-change)
 
-Invokes a callback on prop change, useful to decouple side effects in a declarative way.
+Invokes a callback on prop change, useful to decouple side effects like `onChange` handler in a declarative way.
 
 ### :bell: [with-callback-on-change-while](packages/with-callback-on-change-while)
 
-Invokes a callback on prop change while condition is true, useful to decouple side effects in a declarative way.
+Invokes a callback on prop change while condition is true, useful to decouple side effects like `onChange` handler in a declarative way and control loops.
 
 ### :bell: [with-callback-once](packages/with-callback-once)
 

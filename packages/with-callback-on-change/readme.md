@@ -4,7 +4,7 @@
 
 Part of a [collection](https://github.com/deepsweet/hocs) of Higher-Order Components for React, especially useful with [Recompose](https://github.com/acdlite/recompose).
 
-Invokes a callback on prop change, useful to decouple side effects in a declarative way.
+Invokes a callback on prop change, useful to decouple side effects like `onChange` handler in a declarative way.
 
 ## Install
 
