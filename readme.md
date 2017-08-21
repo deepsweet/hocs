@@ -52,6 +52,10 @@ Invokes a callback on prop change, useful to decouple side effects in a declarat
 
 Invokes a callback on prop change while condition is true, useful to decouple side effects in a declarative way.
 
+### :bell: [with-callback-once](packages/with-callback-once)
+
+Invokes a callback once condition is true (while previous check should was false), useful to decouple side effects like `onSuccess` or `onError` handlers in a declarative way.
+
 ### :mag: [with-log](packages/with-log)
 
 Injects `console.log` with props or any custom message into render.
