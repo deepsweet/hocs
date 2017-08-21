@@ -4,7 +4,7 @@
 
 Part of a [collection](https://github.com/deepsweet/hocs) of Higher-Order Components for React, especially useful with [Recompose](https://github.com/acdlite/recompose).
 
-Invokes a callback once condition is true (while previous check should was false), useful to decouple side effects like `onSuccess` or `onError` handlers in a declarative way.
+Invokes a callback once condition is true (while previous check was false), useful to decouple side effects like `onSuccess` or `onError` handlers in a declarative way.
 
 ## Install
 

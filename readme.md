@@ -54,7 +54,7 @@ Invokes a callback on prop change while condition is true, useful to decouple si
 
 ### :bell: [with-callback-once](packages/with-callback-once)
 
-Invokes a callback once condition is true (while previous check should was false), useful to decouple side effects like `onSuccess` or `onError` handlers in a declarative way.
+Invokes a callback once condition is true (while previous check was false), useful to decouple side effects like `onSuccess` or `onError` handlers in a declarative way.
 
 ### :mag: [with-log](packages/with-log)
 
