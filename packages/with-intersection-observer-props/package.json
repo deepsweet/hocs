@@ -28,7 +28,9 @@
   },
   "peerDependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "recompose": "^0.25.0"
+  },
+  "devDependencies": {
+    "intersection-observer": "^0.4.0"
   }
 }

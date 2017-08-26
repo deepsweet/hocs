@@ -1,12 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-const Target = () => (
-  <div data-test={1}/>
-);
-
 describe('withIntersectionObserverProps', () => {
   describe('Intersection Observer API is supported', () => {
+    const Target = ({ onRef }) => {
+      onRef('ref');
+
+      return null;
+    };
     let withIntersectionObserverProps = null;
     let origIntersectionObserver = null;
 
@@ -19,7 +20,7 @@ describe('withIntersectionObserverProps', () => {
 
       global.IntersectionObserver = () => ({
         observe: () => {},
-        unobserve: () => {}
+        disconnect: () => {}
       });
       withIntersectionObserverProps = require('../src/').default;
     });
@@ -28,7 +29,7 @@ describe('withIntersectionObserverProps', () => {
       global.IntersectionObserver = origIntersectionObserver;
     });
 
-    it('should register observer with DOM node on mount', () => {
+    it('should register observer with DOM node from `onRef`', () => {
       const mockObserve = jest.fn();
 
       global.IntersectionObserver = jest.fn(() => ({
@@ -48,13 +49,51 @@ describe('withIntersectionObserverProps', () => {
       expect(mockObserve.mock.calls).toMatchSnapshot();
     });
 
+    it('should register observer with DOM node from `onRef` with a custom handler name', () => {
+      const CustomTarget = ({ onMyRef }) => {
+        onMyRef('my-ref');
+
+        return null;
+      };
+      const mockObserve = jest.fn();
+
+      global.IntersectionObserver = jest.fn(() => ({
+        observe: mockObserve
+      }));
+
+      const EnhancedCustomTarget = withIntersectionObserverProps({}, {}, 'onMyRef')(CustomTarget);
+
+      mount(
+        <EnhancedCustomTarget/>
+      );
+
+      expect(global.IntersectionObserver.mock.calls).toMatchSnapshot();
+      expect(mockObserve.mock.calls).toMatchSnapshot();
+    });
+
+    it('should call external `onRef` if it has been passed in', () => {
+      const mockOnRef = jest.fn();
+
+      global.ResizeObserver = jest.fn(() => ({
+        observe: () => {}
+      }));
+
+      const EnhancedTarget = withIntersectionObserverProps({})(Target);
+
+      mount(
+        <EnhancedTarget onRef={mockOnRef}/>
+      );
+
+      expect(mockOnRef.mock.calls).toMatchSnapshot();
+    });
+
     it('should unregister observer with DOM node on unmount', () => {
       const mockObserve = jest.fn();
       const mockUnobserve = jest.fn();
 
       global.IntersectionObserver = jest.fn(() => ({
         observe: mockObserve,
-        unobserve: mockUnobserve
+        disconnect: mockUnobserve
       }));
 
       const EnhancedTarget = withIntersectionObserverProps({
@@ -149,6 +188,7 @@ describe('withIntersectionObserverProps', () => {
   });
 
   describe('Intersection Observer API is not supported', () => {
+    const Target = () => null;
     let withIntersectionObserverProps = null;
 
     beforeEach(() => {

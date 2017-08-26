@@ -5,37 +5,38 @@ exports[`withIntersectionObserverProps Intersection Observer API is not supporte
   a={1}
   b={2}
   c={3}
->
-  <div
-    data-test={1}
-  />
-</Target>
+/>
 `;
 
-exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `
-<WithIntersectionObserverProps>
-  <div
-    data-test={1}
-  />
-</WithIntersectionObserverProps>
-`;
+exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `<WithIntersectionObserverProps />`;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported display name should wrap display name in non-production env 1`] = `
 <withIntersectionObserverProps(Target)>
-  <Target>
-    <div
-      data-test={1}
-    />
-  </Target>
+  <Target
+    onRef={[Function]}
+  />
 </withIntersectionObserverProps(Target)>
 `;
 
-exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 1`] = `Object {}`;
+exports[`withIntersectionObserverProps Intersection Observer API is supported should call external \`onRef\` if it has been passed in 1`] = `
+Array [
+  Array [
+    "ref",
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 1`] = `
+Object {
+  "onRef": [Function],
+}
+`;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 2`] = `
 Object {
   "bar": false,
   "foo": false,
+  "onRef": [Function],
 }
 `;
 
@@ -43,6 +44,7 @@ exports[`withIntersectionObserverProps Intersection Observer API is supported sh
 Object {
   "bar": false,
   "foo": true,
+  "onRef": [Function],
 }
 `;
 
@@ -50,6 +52,7 @@ exports[`withIntersectionObserverProps Intersection Observer API is supported sh
 Object {
   "bar": true,
   "foo": true,
+  "onRef": [Function],
 }
 `;
 
@@ -65,7 +68,7 @@ Array [
 ]
 `;
 
-exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node on mount 1`] = `
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node from \`onRef\` 1`] = `
 Array [
   Array [
     [Function],
@@ -79,24 +82,35 @@ Array [
 ]
 `;
 
-exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node on mount 2`] = `
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node from \`onRef\` 2`] = `
 Array [
   Array [
-    <div
-      data-reactroot=""
-      data-test="1"
-/>,
+    "ref",
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node from \`onRef\` with a custom handler name 1`] = `
+Array [
+  Array [
+    [Function],
+    Object {
+      "threshold": Array [],
+    },
+  ],
+]
+`;
+
+exports[`withIntersectionObserverProps Intersection Observer API is supported should register observer with DOM node from \`onRef\` with a custom handler name 2`] = `
+Array [
+  Array [
+    "my-ref",
   ],
 ]
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should unregister observer with DOM node on unmount 1`] = `
 Array [
-  Array [
-    <div
-      data-reactroot=""
-      data-test="1"
-/>,
-  ],
+  Array [],
 ]
 `;

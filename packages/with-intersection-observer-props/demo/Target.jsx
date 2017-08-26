@@ -1,9 +1,10 @@
 import React from 'react';
+import 'intersection-observer';
 
 import withIntersectionObserverProps from '../src/';
 
-const Target = ({ isOnePixelVisible, isHalfVisible, isFullVisible, ...props }) => (
-  <div {...props}>
+const Target = ({ isOnePixelVisible, isHalfVisible, isFullVisible, onRef }) => (
+  <div ref={onRef} style={{ backgroundColor: 'RebeccaPurple', color: 'white' }}>
     <p>{JSON.stringify({ isOnePixelVisible })}</p>
     <p>{JSON.stringify({ isHalfVisible })}</p>
     <p>{JSON.stringify({ isFullVisible })}</p>

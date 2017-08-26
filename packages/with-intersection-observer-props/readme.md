@@ -19,11 +19,15 @@ withIntersectionObserverProps(
   intersectionMatchers: {
     [propName: string]: number
   },
-  options?: Object
+  options?: Object,
+  onRefName?: string
 ): HigherOrderComponent
 ```
 
-Where intersection matcher's value is a single [`threshold`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Thresholds), and `options` is an optional object with [`root` and `rootMargin`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#The_intersection_root_and_root_margin).
+Where:
+* intersection matcher's value is a single [`threshold`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Thresholds)
+* `options` – object with [`root` and `rootMargin`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#The_intersection_root_and_root_margin).
+* `onRefName` – in some cases you might want to change it. `'onRef'` by default.
 
 Basic wrapper to make Target component hidden behind scroll by default:
 
@@ -47,10 +51,11 @@ Target component which is using Intersection Observer:
 
 ```js
 import React from 'react';
+import 'intersection-observer';
 import withIntersectionObserverProps from '@hocs/with-intersection-observer-props';
 
-const Target = ({ isOnePixelVisible, isHalfVisible, isFullVisible, ...props }) => (
-  <div {...props}>
+const Target = ({ isOnePixelVisible, isHalfVisible, isFullVisible, onRef }) => (
+  <div ref={onRef} style={{ backgroundColor: 'RebeccaPurple', color: 'white' }}>
     <p>{JSON.stringify({ isOnePixelVisible })}</p>
     <p>{JSON.stringify({ isHalfVisible })}</p>
     <p>{JSON.stringify({ isFullVisible })}</p>
