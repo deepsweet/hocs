@@ -76,3 +76,8 @@ export default withIntersectionObserverProps({
 * You might still need a [polyfill](https://github.com/WICG/IntersectionObserver/tree/gh-pages/polyfill).
 * It's impossible to avoid first render with undefined intersection props.
 * Target Component will be just passed through on unsupported platforms (i.e. `global.IntersectionObserver` is not a function) like JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
+
+## Related
+
+* :left_right_arrow: [with-resize-observer-props](../with-resize-observer-props)
+* :left_right_arrow: [with-match-media-props](../with-match-media-props)
