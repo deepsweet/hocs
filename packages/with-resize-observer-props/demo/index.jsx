@@ -5,12 +5,13 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global';
 import withResizeObserverProps from '../src/';
 
 const Demo = ({ onRef, hasNarrowWidth, hasLongHeight }) => (
-  <textarea
-    readOnly={true}
+  <div
     ref={onRef}
-    style={{ width: 400, height: 100 }}
-    value={`resize me!\n${JSON.stringify({ hasNarrowWidth, hasLongHeight })}`}
-  />
+    style={{ width: 400, resize: 'both', overflow: 'hidden', border: '1px solid #000' }}
+  >
+    <h2>resize me!</h2>
+    {JSON.stringify({ hasNarrowWidth, hasLongHeight })}
+  </div>
 );
 
 export default compose(
