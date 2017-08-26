@@ -20,6 +20,10 @@ Provides a handy way to use some of [React Component Lifecycle](https://facebook
 
 Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) matches to boolean props using [`window.matchMedia()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) ([Can I use?](https://caniuse.com/#search=matchmedia)).
 
+### :left_right_arrow: [with-resize-observer-props](packages/with-resize-observer-props)
+
+Dynamically map *component* size and position changes to props using [Resize Observer API](https://github.com/WICG/ResizeObserver) ([Can I use?](https://caniuse.com/#feat=resizeobserver) :see_no_evil:).
+
 ### :eyes: [with-intersection-observer-props](packages/with-intersection-observer-props)
 
 Dynamically map visibility of a component to boolean props using [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) ([Can I use?](https://caniuse.com/#feat=intersectionobserver)).

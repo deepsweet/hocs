@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withResizeObserverProps Resize Observer API is not supported should just pass Target component through 1`] = `
+<Target
+  a={1}
+  b={2}
+/>
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported display name should not wrap display name in production env 1`] = `<WithResizeObserverProps />`;
+
+exports[`withResizeObserverProps Resize Observer API is supported display name should wrap display name in non-production env 1`] = `
+<withResizeObserverProps(Target)>
+  <Target
+    onRef={[Function]}
+  />
+</withResizeObserverProps(Target)>
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should call external \`onRef\` if it has been passed in 1`] = `
+Array [
+  Array [
+    "ref",
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+      "onRef": [Function],
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 2`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 3`] = `
+Array [
+  Array [
+    Object {
+      "height": 200,
+      "width": 100,
+    },
+  ],
+  Array [
+    Object {
+      "height": 300,
+      "width": 200,
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+      "onRef": [Function],
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+      "height": 200,
+      "onRef": [Function],
+      "width": 100,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+      "height": 300,
+      "onRef": [Function],
+      "width": 200,
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 2`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 3`] = `
+Array [
+  Array [
+    Object {
+      "height": 200,
+      "width": 100,
+    },
+  ],
+  Array [
+    Object {
+      "height": 300,
+      "width": 200,
+    },
+  ],
+  Array [
+    Object {
+      "height": 300,
+      "width": 200,
+    },
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should register observer with DOM node from \`onRef\` 1`] = `
+Array [
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should register observer with DOM node from \`onRef\` 2`] = `
+Array [
+  Array [
+    "ref",
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should register observer with DOM node from \`onRef\` with a custom handler name 1`] = `
+Array [
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should register observer with DOM node from \`onRef\` with a custom handler name 2`] = `
+Array [
+  Array [
+    "my-ref",
+  ],
+]
+`;
+
+exports[`withResizeObserverProps Resize Observer API is supported should unregister observer with DOM node on unmount 1`] = `
+Array [
+  Array [],
+]
+`;
