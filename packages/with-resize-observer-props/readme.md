@@ -17,14 +17,14 @@ yarn add recompose @hocs/with-resize-observer-props
 ```js
 withResizeObserverProps(
   callback: (ownerProps: Object) => (observerState: Object) => Object | void,
-  onRefHandlerName?: string
+  onRefName?: string
 ): HigherOrderComponent
 ```
 
 Where:
 
 * `observerState` – [`contentRect` object](https://wicg.github.io/ResizeObserver/#dom-resizeobserverentry-contentrect) with `width`, `height`, `top` and `left` properties.
-* `onRefHandlerName` – in some cases you might want to change it. `'onRef'` by default.
+* `onRefName` – in some cases you might want to change it. `'onRef'` by default.
 
 ```js
 import React from 'react';
@@ -70,6 +70,7 @@ withResizeObserverProps(
 ## Notes
 
 * You still might need a [polyfill](https://github.com/que-etc/resize-observer-polyfill) – contains many details on why this particular polyfill is just technically amazing.
+* It's impossible to avoid first render with undefined resize observer state.
 * "`ref` approach" is used instead of `findDOMNode(this)` because it's just [less evil](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components). Also it's more flexible so you can pass it to whatever children you want.
 * Target Component will be just passed through on unsupported platforms (i.e. `global.ResizeObserver` is not a function) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
 

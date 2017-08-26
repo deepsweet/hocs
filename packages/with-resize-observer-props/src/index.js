@@ -4,7 +4,7 @@ import shallowEqual from 'shallowequal';
 
 const isResizeObserverSupported = typeof global.ResizeObserver === 'function';
 
-const withResizeObserverProps = (propsCallback, onRefHandlerName = 'onRef') => (Target) => {
+const withResizeObserverProps = (propsCallback, onRefName = 'onRef') => (Target) => {
   if (!isResizeObserverSupported) {
     return Target;
   }
@@ -32,8 +32,8 @@ const withResizeObserverProps = (propsCallback, onRefHandlerName = 'onRef') => (
     onRef(ref) {
       this.domNode = ref;
 
-      if (typeof this.props[onRefHandlerName] === 'function') {
-        this.props[onRefHandlerName](ref);
+      if (typeof this.props[onRefName] === 'function') {
+        this.props[onRefName](ref);
       }
     }
 
@@ -56,7 +56,7 @@ const withResizeObserverProps = (propsCallback, onRefHandlerName = 'onRef') => (
       return factory({
         ...this.props,
         ...this.state,
-        [onRefHandlerName]: this.onRef
+        [onRefName]: this.onRef
       });
     }
   }
