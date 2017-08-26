@@ -1,10 +1,9 @@
 import { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 
 const isIntersectionObserverSupported = typeof global.IntersectionObserver === 'function';
 
-const withIntersectionObserverProps = (propsThresholds, options) => (Target) => {
+const withIntersectionObserverProps = (thresholds, options, onRefName = 'onRef') => (Target) => {
   if (!isIntersectionObserverSupported) {
     return Target;
   }
@@ -15,31 +14,38 @@ const withIntersectionObserverProps = (propsThresholds, options) => (Target) => 
     constructor(props, context) {
       super(props, context);
 
-      this.options = {
-        ...options,
-        threshold: Object.keys(propsThresholds).map((prop) => propsThresholds[prop])
-      };
+      this.state = {};
       this.onObserve = this.onObserve.bind(this);
+      this.onRef = this.onRef.bind(this);
+      this.observer = new global.IntersectionObserver(this.onObserve, {
+        ...options,
+        threshold: Object.keys(thresholds).map((prop) => thresholds[prop])
+      });
     }
 
     componentDidMount() {
-      this.domNode = findDOMNode(this);
-      this.observer = new global.IntersectionObserver(this.onObserve, this.options);
-
       this.observer.observe(this.domNode);
     }
 
     componentWillUnmount() {
-      this.observer.unobserve(this.domNode);
+      this.observer.disconnect();
+    }
+
+    onRef(ref) {
+      this.domNode = ref;
+
+      if (typeof this.props[onRefName] === 'function') {
+        this.props[onRefName](ref);
+      }
     }
 
     onObserve(entries) {
       this.setState(
-        Object.keys(propsThresholds).reduce((totalResult, prop) => ({
+        Object.keys(thresholds).reduce((totalResult, prop) => ({
           ...totalResult,
           ...entries.reduce((entriesResult, entry) => ({
             ...entriesResult,
-            [prop]: entry.isIntersecting && entry.intersectionRatio >= propsThresholds[prop]
+            [prop]: entry.isIntersecting && entry.intersectionRatio >= thresholds[prop]
           }), {})
         }), {})
       );
@@ -48,7 +54,8 @@ const withIntersectionObserverProps = (propsThresholds, options) => (Target) => 
     render() {
       return factory({
         ...this.props,
-        ...this.state
+        ...this.state,
+        [onRefName]: this.onRef
       });
     }
   }
