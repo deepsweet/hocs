@@ -17,8 +17,8 @@ yarn add recompose @hocs/throttle-handler
 ```js
 throttleHandler(
   handlerName: string,
-  interval: ?number,
-  leadingCall: ?boolean
+  interval?: number,
+  leadingCall?: boolean
 ): HigherOrderComponent
 ```
 

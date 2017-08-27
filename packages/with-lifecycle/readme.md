@@ -57,7 +57,7 @@ In addition, it can handle a factory function which works like Recompose [`withH
 
 ```js
 withLifecycle(
-  methodsFactory: (initialProps: Object) => methods: Object
+  methodsFactory: (initialProps: Object) => Object
 ): HigherOrderComponent
 ```
 

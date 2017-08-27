@@ -17,8 +17,8 @@ yarn add recompose @hocs/debounce-handler
 ```js
 debounceHandler(
   handlerName: string,
-  delay: ?number,
-  leadingCall: ?boolean
+  delay?: number,
+  leadingCall?: boolean
 ): HigherOrderComponent
 ```
 
