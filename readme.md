@@ -1,4 +1,4 @@
-# @hocs
+# [@hocs](http://funkyimg.com/i/2wUmy.jpg)
 
 [![ci](https://img.shields.io/travis/deepsweet/hocs/master.svg?style=flat-square)](https://travis-ci.org/deepsweet/hocs) [![coverage](https://img.shields.io/codecov/c/github/deepsweet/hocs/master.svg?style=flat-square)](https://codecov.io/github/deepsweet/hocs)
 
