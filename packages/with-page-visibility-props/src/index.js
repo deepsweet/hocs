@@ -4,13 +4,14 @@ import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
 const isPageVisibiitySupported = global.document &&
                                  typeof global.document.visibilityState !== 'undefined';
 
-const mapVisibilityToProps = (propsVisibility = {}) => Object.keys(propsVisibility)
-  .reduce((result, prop) => ({
-    ...result,
-    [prop]: propsVisibility[prop] === global.document.visibilityState
-  }), {});
+const getVisibilityStatus = (visibilityState) => ({
+  isVisible: visibilityState === 'visible',
+  isHidden: visibilityState === 'hidden',
+  isPrerendered: visibilityState === 'prerender',
+  isUnloaded: visibilityState === 'unloaded'
+});
 
-const withPageVisibilityProps = (propsVisibility) => (Target) => {
+const withPageVisibilityProps = (mapStatusToProps) => (Target) => {
   if (!isPageVisibiitySupported) {
     return Target;
   }
@@ -21,7 +22,9 @@ const withPageVisibilityProps = (propsVisibility) => (Target) => {
     constructor(props, context) {
       super(props, context);
 
-      this.state = mapVisibilityToProps(propsVisibility);
+      this.state = mapStatusToProps(
+        getVisibilityStatus(global.document.visibilityState)
+      );
       this.onVibisilityChange = this.onVibisilityChange.bind(this);
     }
 
@@ -35,7 +38,9 @@ const withPageVisibilityProps = (propsVisibility) => (Target) => {
 
     onVibisilityChange() {
       this.setState(
-        mapVisibilityToProps(propsVisibility)
+        mapStatusToProps(
+          getVisibilityStatus(global.document.visibilityState)
+        )
       );
     }
 

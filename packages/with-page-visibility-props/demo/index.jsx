@@ -9,11 +9,18 @@ const Demo = () => (
 );
 
 export default compose(
-  withPageVisibilityProps({
-    isVisible: 'visible',
-    isHidden: 'hidden',
-    isPrerendering: 'prerender',
-    isUnloaded: 'unloaded'
-  }),
+  withPageVisibilityProps(
+    ({
+      isVisible,
+      isHidden,
+      isPrerendered,
+      isUnloaded
+    }) => ({
+      isVisible,
+      isHidden,
+      isPrerendered,
+      isUnloaded
+    })
+  ),
   withLog()
 )(Demo);

@@ -30,7 +30,7 @@ Dynamically map visibility of a component to boolean props using [Intersection O
 
 ### :see_no_evil: [with-page-visibility-props](packages/with-page-visibility-props)
 
-Dynamically map page visibility state to boolean props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
+Dynamically map page visibility status to props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
 
 ### :electric_plug: [with-online-status-props](packages/with-online-status-props)
 

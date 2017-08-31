@@ -2,6 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 const Target = () => null;
+const dummyMapStatusToProps = () => {};
+const fullMapStatusToProps = ({ isVisible, isHidden, isPrerendered, isUnloaded }) => ({
+  isVisible,
+  isHidden,
+  isPrerendered,
+  isUnloaded
+});
 
 describe('withPageVisibilityProps', () => {
   describe('Page Visibility API is supported', () => {
@@ -29,10 +36,7 @@ describe('withPageVisibilityProps', () => {
     });
 
     it('should set initial state', () => {
-      const EnhancedTarget = withPageVisibilityProps({
-        isVisible: 'visible',
-        isHidden: 'hidden'
-      })(Target);
+      const EnhancedTarget = withPageVisibilityProps(fullMapStatusToProps)(Target);
       const wrapper = mount(
         <EnhancedTarget/>
       );
@@ -41,10 +45,7 @@ describe('withPageVisibilityProps', () => {
     });
 
     it('should handle page visibility state change', () => {
-      const EnhancedTarget = withPageVisibilityProps({
-        isVisible: 'visible',
-        isHidden: 'hidden'
-      })(Target);
+      const EnhancedTarget = withPageVisibilityProps(fullMapStatusToProps)(Target);
       const wrapper = mount(
         <EnhancedTarget/>
       );
@@ -60,10 +61,7 @@ describe('withPageVisibilityProps', () => {
 
     it('should remove event listener on unmount', () => {
       const mockVisibility = jest.fn(() => 'hidden');
-      const EnhancedTarget = withPageVisibilityProps({
-        isVisible: 'visible',
-        isHidden: 'hidden'
-      })(Target);
+      const EnhancedTarget = withPageVisibilityProps(fullMapStatusToProps)(Target);
       const wrapper = mount(
         <EnhancedTarget/>
       );
@@ -93,7 +91,7 @@ describe('withPageVisibilityProps', () => {
       it('should wrap display name in non-production env', () => {
         process.env.NODE_ENV = 'test';
 
-        const EnhancedTarget = withPageVisibilityProps()(Target);
+        const EnhancedTarget = withPageVisibilityProps(dummyMapStatusToProps)(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -104,7 +102,7 @@ describe('withPageVisibilityProps', () => {
       it('should not wrap display name in production env', () => {
         process.env.NODE_ENV = 'production';
 
-        const EnhancedTarget = withPageVisibilityProps()(Target);
+        const EnhancedTarget = withPageVisibilityProps(dummyMapStatusToProps)(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -139,7 +137,7 @@ describe('withPageVisibilityProps', () => {
     });
 
     it('should just pass Target component through', () => {
-      const EnhancedTarget = withPageVisibilityProps()(Target);
+      const EnhancedTarget = withPageVisibilityProps(dummyMapStatusToProps)(Target);
       const wrapper = mount(
         <EnhancedTarget a={1} b={2} c={3}/>
       );

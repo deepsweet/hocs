@@ -4,7 +4,7 @@
 
 Part of a [collection](https://github.com/deepsweet/hocs) of Higher-Order Components for React, especially useful with [Recompose](https://github.com/acdlite/recompose).
 
-Dynamically map page visibility state to boolean props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
+Dynamically map page visibility status to props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
 
 > A few examples:
 >
@@ -24,13 +24,11 @@ yarn add recompose @hocs/with-page-visibility-props
 
 ```js
 withPageVisibilityProps(
-  pageVisibilityMatchers: {
-    [propName: string]: string
-  }
+  mapStatusToProps: (visibilityStatus: Object) => Object,
 ): HigherOrderComponent
 ```
 
-Where page visibility matcher's value is one of the [`visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) possible values such as `'visible'`, `'hidden'` and so on.
+Where `visibilityStatus` is an `{ isVivisble, isHidden, isPrerendered, isUnloaded }` object, check out [`visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) documentation for details.
 
 ```js
 import React from 'react';
@@ -43,12 +41,19 @@ const Demo = () => (
 );
 
 export default compose(
-  withPageVisibilityProps({
-    isVisible: 'visible',
-    isHidden: 'hidden',
-    isPrerendering: 'prerender',
-    isUnloaded: 'unloaded'
-  }),
+  withPageVisibilityProps(
+    ({
+      isVisible,
+      isHidden,
+      isPrerendered,
+      isUnloaded
+    }) => ({
+      isVisible,
+      isHidden,
+      isPrerendered,
+      isUnloaded
+    })
+  ),
   withLog()
 )(Demo);
 ```
@@ -57,4 +62,4 @@ export default compose(
 
 ## Notes
 
-* Target Component will be just passed through on unsupported platforms (i.e. `global.document.visibilityState` is `undefined`) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no boolean props (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
+* Target Component will be just passed through on unsupported platforms (i.e. `global.document.visibilityState` is `undefined`) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no visibiulity status (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.

@@ -19,6 +19,8 @@ exports[`withPageVisibilityProps Page Visibility API is supported display name s
 exports[`withPageVisibilityProps Page Visibility API is supported should handle page visibility state change 1`] = `
 <Target
   isHidden={true}
+  isPrerendered={false}
+  isUnloaded={false}
   isVisible={false}
 />
 `;
@@ -27,14 +29,14 @@ exports[`withPageVisibilityProps Page Visibility API is supported should remove 
 Array [
   Array [],
   Array [],
-  Array [],
-  Array [],
 ]
 `;
 
 exports[`withPageVisibilityProps Page Visibility API is supported should set initial state 1`] = `
 <Target
   isHidden={false}
+  isPrerendered={false}
+  isUnloaded={false}
   isVisible={true}
 />
 `;
