@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withOnlineStatusProps Online Status API is not supported should just pass Target component through 1`] = `
+<Target
+  a={1}
+  b={2}
+  c={3}
+/>
+`;
+
+exports[`withOnlineStatusProps Online Status API is supported display name should not wrap display name in production env 1`] = `<WithOnlineStatusProps />`;
+
+exports[`withOnlineStatusProps Online Status API is supported display name should wrap display name in non-production env 1`] = `
+<withOnlineStatusProps(Target)>
+  <Target />
+</withOnlineStatusProps(Target)>
+`;
+
+exports[`withOnlineStatusProps Online Status API is supported should handle online status change 1`] = `
+<Target
+  isOffline={true}
+  isOnline={false}
+/>
+`;
+
+exports[`withOnlineStatusProps Online Status API is supported should handle online status change 2`] = `
+<Target
+  isOffline={false}
+  isOnline={true}
+/>
+`;
+
+exports[`withOnlineStatusProps Online Status API is supported should remove event listener on unmount 1`] = `
+Object {
+  "isOffline": false,
+  "isOnline": true,
+}
+`;
+
+exports[`withOnlineStatusProps Online Status API is supported should set initial state 1`] = `
+<Target
+  isOffline={false}
+  isOnline={true}
+/>
+`;
