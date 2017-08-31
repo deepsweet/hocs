@@ -32,6 +32,10 @@ Dynamically map visibility of a component to boolean props using [Intersection O
 
 Dynamically map page visibility state to boolean props using [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) ([Can I use?](https://caniuse.com/#feat=pagevisibility)).
 
+### :electric_plug: [with-online-status-props](packages/with-online-status-props)
+
+Dynamically map online/offline status to props using [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine) ([Can I use?](https://caniuse.com/#feat=online-status)).
+
 ### :hourglass: [debounce-handler](packages/debounce-handler)
 
 Helps to debounce handlers like `onChange`.
