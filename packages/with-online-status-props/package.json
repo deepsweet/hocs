@@ -1,7 +1,7 @@
 {
   "name": "@hocs/with-online-status-props",
   "library": "withOnlineStatusProps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Online status HOC for React",
   "keywords": [
     "react",
