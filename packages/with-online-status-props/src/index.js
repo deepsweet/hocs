@@ -14,10 +14,10 @@ const withOnlineStatusProps = (mapStatusToProps) => (Target) => {
     constructor(props, context) {
       super(props, context);
 
-      this.state = {
+      this.state = mapStatusToProps({
         isOnline: global.navigator.onLine,
         isOffline: !global.navigator.onLine
-      };
+      });
       this.handleOnline = this.handleOnline.bind(this);
       this.handleOffline = this.handleOffline.bind(this);
     }
@@ -33,23 +33,27 @@ const withOnlineStatusProps = (mapStatusToProps) => (Target) => {
     }
 
     handleOnline() {
-      this.setState({
-        isOnline: true,
-        isOffline: false
-      });
+      this.setState(
+        mapStatusToProps({
+          isOnline: true,
+          isOffline: false
+        })
+      );
     }
 
     handleOffline() {
-      this.setState({
-        isOnline: false,
-        isOffline: true
-      });
+      this.setState(
+        mapStatusToProps({
+          isOnline: false,
+          isOffline: true
+        })
+      );
     }
 
     render() {
       return factory({
         ...this.props,
-        ...mapStatusToProps(this.state)
+        ...this.state
       });
     }
   }

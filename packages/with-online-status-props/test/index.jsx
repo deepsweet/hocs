@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 const Target = () => null;
-const dummyMapStateToProps = () => {};
+const dummyMapStatusToProps = () => {};
 
 describe('withOnlineStatusProps', () => {
   describe('Online Status API is supported', () => {
@@ -85,7 +85,7 @@ describe('withOnlineStatusProps', () => {
       it('should wrap display name in non-production env', () => {
         process.env.NODE_ENV = 'test';
 
-        const EnhancedTarget = withOnlineStatusProps(dummyMapStateToProps)(Target);
+        const EnhancedTarget = withOnlineStatusProps(dummyMapStatusToProps)(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -96,7 +96,7 @@ describe('withOnlineStatusProps', () => {
       it('should not wrap display name in production env', () => {
         process.env.NODE_ENV = 'production';
 
-        const EnhancedTarget = withOnlineStatusProps(dummyMapStateToProps)(Target);
+        const EnhancedTarget = withOnlineStatusProps(dummyMapStatusToProps)(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -132,7 +132,7 @@ describe('withOnlineStatusProps', () => {
     });
 
     it('should just pass Target component through', () => {
-      const EnhancedTarget = withOnlineStatusProps(dummyMapStateToProps)(Target);
+      const EnhancedTarget = withOnlineStatusProps(dummyMapStatusToProps)(Target);
       const wrapper = mount(
         <EnhancedTarget a={1} b={2} c={3}/>
       );
