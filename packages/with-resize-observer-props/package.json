@@ -1,7 +1,7 @@
 {
   "name": "@hocs/with-resize-observer-props",
   "library": "withResizeObserverProps",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Resize Observer HOC for React",
   "keywords": [
     "react",
