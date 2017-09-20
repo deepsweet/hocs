@@ -3,8 +3,6 @@ import React from 'react';
 import { compose } from 'recompose';
 import { mount } from 'enzyme';
 
-const dummyCallbacks = () => () => {};
-
 describe('withResizeObserverProps', () => {
   describe('Resize Observer API is supported', () => {
     const Target = ({ onRef }) => {
@@ -41,7 +39,7 @@ describe('withResizeObserverProps', () => {
         observe: mockObserve
       }));
 
-      const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
 
       mount(
         <EnhancedTarget/>
@@ -63,7 +61,7 @@ describe('withResizeObserverProps', () => {
         observe: mockObserve
       }));
 
-      const EnhancedCustomTarget = withResizeObserverProps(dummyCallbacks, 'onMyRef')(CustomTarget);
+      const EnhancedCustomTarget = withResizeObserverProps(() => {}, 'onMyRef')(CustomTarget);
 
       mount(
         <EnhancedCustomTarget/>
@@ -80,7 +78,7 @@ describe('withResizeObserverProps', () => {
         observe: () => {}
       }));
 
-      const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
 
       mount(
         <EnhancedTarget onRef={mockOnRef}/>
@@ -97,7 +95,7 @@ describe('withResizeObserverProps', () => {
         disconnect: mockDisconnect
       }));
 
-      const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
       const wrapper = mount(
         <EnhancedTarget/>
       );
@@ -105,42 +103,6 @@ describe('withResizeObserverProps', () => {
       wrapper.unmount();
 
       expect(mockDisconnect.mock.calls).toMatchSnapshot();
-    });
-
-    it('should invoke provided callback with observer state and not expect any return', () => {
-      let observerCallback = null;
-
-      global.ResizeObserver = jest.fn((callback) => {
-        observerCallback = callback;
-
-        return {
-          observe: () => {}
-        };
-      });
-
-      const mockStateCallback = jest.fn();
-      const mockPropsCallback = jest.fn(() => mockStateCallback);
-      const mockRender = jest.fn();
-      const EnhancedTarget = compose(
-        withResizeObserverProps(mockPropsCallback),
-        (Component) => (props) => {
-          mockRender(props);
-
-          return (
-            <Component {...props}/>
-          );
-        }
-      )(Target);
-
-      mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
-
-      observerCallback([ { contentRect: { width: 100, height: 200 } } ]);
-      observerCallback([ { contentRect: { width: 200, height: 300 } } ]);
-      expect(mockRender.mock.calls).toMatchSnapshot();
-      expect(mockPropsCallback.mock.calls).toMatchSnapshot();
-      expect(mockStateCallback.mock.calls).toMatchSnapshot();
     });
 
     it('should map observer state to props with shallow equal check', () => {
@@ -154,11 +116,10 @@ describe('withResizeObserverProps', () => {
         };
       });
 
-      const mockStateCallback = jest.fn((state) => state);
-      const mockPropsCallback = jest.fn(() => mockStateCallback);
+      const mockStateToProps = jest.fn((state) => state);
       const mockRender = jest.fn();
       const EnhancedTarget = compose(
-        withResizeObserverProps(mockPropsCallback),
+        withResizeObserverProps(mockStateToProps),
         (Component) => (props) => {
           mockRender(props);
 
@@ -176,8 +137,7 @@ describe('withResizeObserverProps', () => {
       observerCallback([ { contentRect: { width: 200, height: 300 } } ]);
       observerCallback([ { contentRect: { width: 200, height: 300 } } ]);
       expect(mockRender.mock.calls).toMatchSnapshot();
-      expect(mockPropsCallback.mock.calls).toMatchSnapshot();
-      expect(mockStateCallback.mock.calls).toMatchSnapshot();
+      expect(mockStateToProps.mock.calls).toMatchSnapshot();
     });
 
     describe('display name', () => {
@@ -194,7 +154,7 @@ describe('withResizeObserverProps', () => {
       it('should wrap display name in non-production env', () => {
         process.env.NODE_ENV = 'test';
 
-        const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+        const EnhancedTarget = withResizeObserverProps(() => {})(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -205,7 +165,7 @@ describe('withResizeObserverProps', () => {
       it('should not wrap display name in production env', () => {
         process.env.NODE_ENV = 'production';
 
-        const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+        const EnhancedTarget = withResizeObserverProps(() => {})(Target);
         const wrapper = mount(
           <EnhancedTarget/>
         );
@@ -226,7 +186,7 @@ describe('withResizeObserverProps', () => {
     });
 
     it('should just pass Target component through', () => {
-      const EnhancedTarget = withResizeObserverProps(dummyCallbacks)(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
       const wrapper = mount(
         <EnhancedTarget a={1} b={2}/>
       );

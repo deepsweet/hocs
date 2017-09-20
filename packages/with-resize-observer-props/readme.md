@@ -16,7 +16,7 @@ yarn add recompose @hocs/with-resize-observer-props
 
 ```js
 withResizeObserverProps(
-  callback: (ownerProps: Object) => (observerState: Object) => Object | void,
+  mapStateToProps: (observerState: Object) => Object
   onRefName?: string
 ): HigherOrderComponent
 ```
@@ -28,50 +28,39 @@ Where:
 
 ```js
 import React from 'react';
-import { compose, withProps } from 'recompose';
 import 'resize-observer-polyfill/dist/ResizeObserver.global';
 import withResizeObserverProps from '@hocs/with-resize-observer-props';
 
+const styles = {
+  width: 400,
+  resize: 'both',
+  overflow: 'hidden',
+  border: '1px solid #000'
+};
+
 const Demo = ({ onRef, hasNarrowWidth, hasLongHeight }) => (
-  <div
-    ref={onRef}
-    style={{ width: 400, resize: 'both', overflow: 'hidden', border: '1px solid #000' }}
-  >
+  <div ref={onRef} style={styles}>
     <h2>resize me!</h2>
     {JSON.stringify({ hasNarrowWidth, hasLongHeight })}
   </div>
 );
 
-export default compose(
-  withProps({
-    myWidthBreakpoint: 500,
-    myHeightBreakpoint: 300
-  }),
-  withResizeObserverProps(
-    ({ myWidthBreakpoint, myHeightBreakpoint }) => ({ width, height }) => ({
-      hasNarrowWidth: width < myWidthBreakpoint,
-      hasLongHeight: height >= myHeightBreakpoint
-    })
-  )
+export default withResizeObserverProps(
+  ({ width, height }) => ({
+    hasNarrowWidth: width < 500,
+    hasLongHeight: height >= 300
+  })
 )(Demo);
 ```
 
 It uses "shallow equal" under the hood to compare computed props so target component will be re-rendered only when it needs to.
-
-In addition, it's possible to not return computed props from a callback at all. It's very usefull if you need just to propagate size changes to "outside" of component without self re-renders, for example to animate width/height with [react-motion](https://github.com/chenglou/react-motion) or similar libs.
-
-```js
-withResizeObserverProps(
-  ({ onResize }) => onResize
-)
-```
 
 :tv: [Check out live demo](https://www.webpackbin.com/bins/-KsUVUj_IHaULBEW0oKx).
 
 ## Notes
 
 * You still might need a [polyfill](https://github.com/que-etc/resize-observer-polyfill) – contains many details on why this particular polyfill is just technically amazing.
-* It's impossible to avoid first render with undefined resize observer state.
+* It's impossible to avoid first render with undefined observer state.
 * "`ref` approach" is used instead of `findDOMNode(this)` because it's just [less evil](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components). Also it's more flexible so you can pass it to whatever children you want.
 * Target Component will be just passed through on unsupported platforms (i.e. `global.ResizeObserver` is not a function) like IE9, JSDOM (so Jest as well) or with Server-Side Rendering. This means that there will be no state (i.e. `undefined`) which might be expected, but you can take care of it using Recompose [`defaultProps`](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC if it's really necessary.
 

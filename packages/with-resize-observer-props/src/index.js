@@ -4,7 +4,7 @@ import shallowEqual from 'shallowequal';
 
 const isResizeObserverSupported = typeof global.ResizeObserver === 'function';
 
-const withResizeObserverProps = (propsCallback, onRefName = 'onRef') => (Target) => {
+const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Target) => {
   if (!isResizeObserverSupported) {
     return Target;
   }
@@ -38,16 +38,12 @@ const withResizeObserverProps = (propsCallback, onRefName = 'onRef') => (Target)
     }
 
     onObserve(entries) {
-      const stateCallback = propsCallback(this.props);
       const nextState = entries.reduce((result, entry) => ({
         ...result,
-        ...stateCallback(entry.contentRect)
+        ...mapStateToProps(entry.contentRect)
       }), {});
 
-      if (
-        typeof nextState !== 'undefined' &&
-        shallowEqual(this.state, nextState) === false
-      ) {
+      if (shallowEqual(this.state, nextState) === false) {
         this.setState(nextState);
       }
     }

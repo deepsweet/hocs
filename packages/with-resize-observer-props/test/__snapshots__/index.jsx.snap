@@ -25,52 +25,6 @@ Array [
 ]
 `;
 
-exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 1`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-      "onRef": [Function],
-    },
-  ],
-]
-`;
-
-exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 2`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-  ],
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-  ],
-]
-`;
-
-exports[`withResizeObserverProps Resize Observer API is supported should invoke provided callback with observer state and not expect any return 3`] = `
-Array [
-  Array [
-    Object {
-      "height": 200,
-      "width": 100,
-    },
-  ],
-  Array [
-    Object {
-      "height": 300,
-      "width": 200,
-    },
-  ],
-]
-`;
-
 exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 1`] = `
 Array [
   Array [
@@ -102,29 +56,6 @@ Array [
 `;
 
 exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 2`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-  ],
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-  ],
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-  ],
-]
-`;
-
-exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 3`] = `
 Array [
   Array [
     Object {
