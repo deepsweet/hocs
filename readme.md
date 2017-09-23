@@ -8,7 +8,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 
 ## Packages
 
-### General
+### General purpose
 
 #### :non-potable_water: [omit-props](packages/omit-props)
 
@@ -75,6 +75,12 @@ Dynamically map online/offline status to props using [`navigator.onLine`](https:
 #### :no_entry: [prevent-handlers-default](packages/prevent-handlers-default)
 
 Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) side effect from handlers like form submitting or clicking a link.
+
+### React Native
+
+#### :left_right_arrow: [with-view-layout-props](packages/with-view-layout-props)
+
+Dynamically map View layout dimensions to props using [`onLayout()`](https://facebook.github.io/react-native/docs/view.html#onlayout) handler.
 
 ### …and more to come
 

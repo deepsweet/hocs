@@ -4,7 +4,7 @@
 
 Part of a [collection](https://github.com/deepsweet/hocs) of Higher-Order Components for React, especially useful with [Recompose](https://github.com/acdlite/recompose).
 
-Dynamically map result of React Native [`onLayout()`](https://facebook.github.io/react-native/docs/view.html#onlayout) View handler to props.
+Dynamically map View layout dimensions to props using [`onLayout()`](https://facebook.github.io/react-native/docs/view.html#onlayout) handler.
 
 ## Install
 
@@ -41,8 +41,6 @@ export default withViewLayoutProps(
   ({ width, height, x, y }) => ({ width, height, x, y })
 )(Demo);
 ```
-
-:tv: Have some idea on how to create a live demo? Please tell me.
 
 ## Related
 
