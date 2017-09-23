@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withViewLayoutProps display name should not wrap display name in production env 1`] = `<WithViewLayoutProps />`;
+
+exports[`withViewLayoutProps display name should wrap display name in non-production env 1`] = `
+<withViewLayoutProps(Target)>
+  <Target
+    onLayout={[Function]}
+  />
+</withViewLayoutProps(Target)>
+`;
+
+exports[`withViewLayoutProps should map layout dimensions to props 1`] = `
+<Target
+  _heigth={2}
+  _width={1}
+  _x={3}
+  _y={4}
+  onLayout={[Function]}
+/>
+`;
+
+exports[`withViewLayoutProps should pass props through 1`] = `
+<Target
+  a={1}
+  b={2}
+  onLayout={[Function]}
+/>
+`;
+
+exports[`withViewLayoutProps should use provided custom \`onLayout\` handler name 1`] = `
+<Target
+  onMyViewLayout={[Function]}
+/>
+`;
