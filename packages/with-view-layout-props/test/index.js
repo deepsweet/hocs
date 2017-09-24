@@ -1,28 +1,28 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-import withViewLayoutProps from '../src/';
+import withViewLayoutProps from '../src/'
 
-const Target = () => null;
+const Target = () => null
 
 describe('withViewLayoutProps', () => {
   it('should pass props through', () => {
-    const EnhancedTarget = withViewLayoutProps((state) => state)(Target);
+    const EnhancedTarget = withViewLayoutProps((state) => state)(Target)
     const wrapper = mount(
-      <EnhancedTarget a={1} b={2}/>
-    );
+      <EnhancedTarget a={1} b={2} />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   it('should map layout dimensions to props', () => {
     const EnhancedTarget = withViewLayoutProps(
       ({ width, height, x, y }) => ({ _width: width, _heigth: height, _x: x, _y: y })
-    )(Target);
+    )(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const target = wrapper.find(Target);
+      <EnhancedTarget />
+    )
+    const target = wrapper.find(Target)
 
     target.prop('onLayout')({
       nativeEvent: {
@@ -33,47 +33,47 @@ describe('withViewLayoutProps', () => {
           y: 4
         }
       }
-    });
+    })
 
-    expect(target).toMatchSnapshot();
-  });
+    expect(target).toMatchSnapshot()
+  })
 
   it('should use provided custom `onLayout` handler name', () => {
-    const EnhancedTarget = withViewLayoutProps(() => {}, 'onMyViewLayout')(Target);
+    const EnhancedTarget = withViewLayoutProps(() => {}, 'onMyViewLayout')(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
+      <EnhancedTarget />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = withViewLayoutProps(() => {})(Target);
+      const EnhancedTarget = withViewLayoutProps(() => {})(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = withViewLayoutProps(() => {})(Target);
+      const EnhancedTarget = withViewLayoutProps(() => {})(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

@@ -66,11 +66,18 @@
       "standard",
       "standard-react"
     ],
+    "rules": {
+      "react/prop-types": 0
+    },
     "env": {
-      "jest": true
+      "jest": true,
+      "browser": true,
+      "node": true
     }
   },
   "eslintIgnore": [
-    "build/"
+    "build/",
+    "coverage/",
+    "node_modules/"
   ]
 }

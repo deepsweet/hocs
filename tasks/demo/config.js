@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import HTMLWebpackPlugin from 'html-webpack-plugin'
 
-import { babelConfigBrowserESM } from '../babel/config';
+import { babelConfigBrowserESM } from '../babel/config'
 
 export default (packageName) => ({
   entry: [
@@ -57,4 +57,4 @@ export default (packageName) => ({
     }),
     new webpack.HotModuleReplacementPlugin()
   ]
-});
+})

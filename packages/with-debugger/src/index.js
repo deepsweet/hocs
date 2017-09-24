@@ -1,19 +1,19 @@
 /* eslint-disable no-debugger */
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
 
 const withDebugger = (Target) => {
   if (process.env.NODE_ENV === 'production') {
-    return Target;
+    return Target
   }
 
-  const factory = createEagerFactory(Target);
+  const factory = createEagerFactory(Target)
   const WithDebugger = (props) => {
-    debugger;
+    debugger
 
-    return factory(props);
-  };
+    return factory(props)
+  }
 
-  return setDisplayName(wrapDisplayName(Target, 'withDebugger'))(WithDebugger);
-};
+  return setDisplayName(wrapDisplayName(Target, 'withDebugger'))(WithDebugger)
+}
 
-export default withDebugger;
+export default withDebugger

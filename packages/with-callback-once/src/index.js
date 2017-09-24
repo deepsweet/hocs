@@ -1,29 +1,29 @@
-import { Component } from 'react';
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react'
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
 
 const withCallbackOnce = (shouldCall, callback) => (Target) => {
-  const factory = createEagerFactory(Target);
+  const factory = createEagerFactory(Target)
 
   class WithCallbackOnce extends Component {
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
       if (
         shouldCall(this.props) === false &&
         shouldCall(nextProps) === true
       ) {
-        callback(nextProps);
+        callback(nextProps)
       }
     }
 
-    render() {
-      return factory(this.props);
+    render () {
+      return factory(this.props)
     }
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withCallbackOnce'))(WithCallbackOnce);
+    return setDisplayName(wrapDisplayName(Target, 'withCallbackOnce'))(WithCallbackOnce)
   }
 
-  return WithCallbackOnce;
-};
+  return WithCallbackOnce
+}
 
-export default withCallbackOnce;
+export default withCallbackOnce

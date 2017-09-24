@@ -1,142 +1,142 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-import throttleHandler from '../src/';
+import throttleHandler from '../src/'
 
-const Target = () => null;
+const Target = () => null
 
 describe('throttleHandler', () => {
   it('should pass handler arguments through', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler')(Target);
-    const mockTestHandler = jest.fn();
+    const EnhancedTarget = throttleHandler('testHandler')(Target)
+    const mockTestHandler = jest.fn()
     const wrapper = mount(
-      <EnhancedTarget testHandler={mockTestHandler}/>
-    );
-    const testHandler = wrapper.find(Target).prop('testHandler');
+      <EnhancedTarget testHandler={mockTestHandler} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a', 'b', 'c');
+    testHandler('a', 'b', 'c')
     setTimeout(() => {
-      expect(mockTestHandler.mock.calls).toMatchSnapshot();
-      done();
-    });
-  });
+      expect(mockTestHandler.mock.calls).toMatchSnapshot()
+      done()
+    })
+  })
 
   it('should call `e.persist()` if it has been passed', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler')(Target);
-    const mockTestHandler = jest.fn();
-    const mockPersist = jest.fn();
+    const EnhancedTarget = throttleHandler('testHandler')(Target)
+    const mockTestHandler = jest.fn()
+    const mockPersist = jest.fn()
     const wrapper = mount(
-      <EnhancedTarget testHandler={mockTestHandler}/>
-    );
-    const testHandler = wrapper.find(Target).prop('testHandler');
+      <EnhancedTarget testHandler={mockTestHandler} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler({ persist: mockPersist });
+    testHandler({ persist: mockPersist })
     setTimeout(() => {
-      expect(mockTestHandler.mock.calls).toMatchSnapshot();
-      expect(mockPersist.mock.calls).toMatchSnapshot();
-      done();
-    }, 0);
-  });
+      expect(mockTestHandler.mock.calls).toMatchSnapshot()
+      expect(mockPersist.mock.calls).toMatchSnapshot()
+      done()
+    }, 0)
+  })
 
   it('should throttle handler with `interval` option', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler', 50)(Target);
-    const mockTestHandler = jest.fn();
+    const EnhancedTarget = throttleHandler('testHandler', 50)(Target)
+    const mockTestHandler = jest.fn()
     const wrapper = mount(
-      <EnhancedTarget testHandler={mockTestHandler}/>
-    );
-    const testHandler = wrapper.find(Target).prop('testHandler');
+      <EnhancedTarget testHandler={mockTestHandler} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a');
+    testHandler('a')
 
     setTimeout(() => {
-      testHandler('b');
+      testHandler('b')
 
       setTimeout(() => {
-        testHandler('c');
+        testHandler('c')
 
         setTimeout(() => {
-          testHandler('d');
+          testHandler('d')
 
           setTimeout(() => {
-            testHandler('e');
+            testHandler('e')
 
             setTimeout(() => {
-              testHandler('f');
+              testHandler('f')
 
               setTimeout(() => {
-                expect(mockTestHandler.mock.calls).toMatchSnapshot();
-                done();
-              }, 50);
-            }, 50);
-          }, 20);
-        }, 20);
-      }, 20);
-    }, 20);
-  });
+                expect(mockTestHandler.mock.calls).toMatchSnapshot()
+                done()
+              }, 50)
+            }, 50)
+          }, 20)
+        }, 20)
+      }, 20)
+    }, 20)
+  })
 
   it('should throttle handler with `leadingCall` option', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler', 50, true)(Target);
-    const mockTestHandler = jest.fn();
+    const EnhancedTarget = throttleHandler('testHandler', 50, true)(Target)
+    const mockTestHandler = jest.fn()
     const wrapper = mount(
-      <EnhancedTarget testHandler={mockTestHandler}/>
-    );
-    const testHandler = wrapper.find(Target).prop('testHandler');
+      <EnhancedTarget testHandler={mockTestHandler} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a');
+    testHandler('a')
 
     setTimeout(() => {
-      testHandler('b');
+      testHandler('b')
 
       setTimeout(() => {
-        testHandler('c');
+        testHandler('c')
 
         setTimeout(() => {
-          testHandler('d');
+          testHandler('d')
 
           setTimeout(() => {
-            testHandler('e');
+            testHandler('e')
 
             setTimeout(() => {
-              testHandler('f');
+              testHandler('f')
 
               setTimeout(() => {
-                expect(mockTestHandler.mock.calls).toMatchSnapshot();
-                done();
-              }, 50);
-            }, 50);
-          }, 20);
-        }, 20);
-      }, 20);
-    }, 20);
-  });
+                expect(mockTestHandler.mock.calls).toMatchSnapshot()
+                done()
+              }, 50)
+            }, 50)
+          }, 20)
+        }, 20)
+      }, 20)
+    }, 20)
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = throttleHandler()(Target);
+      const EnhancedTarget = throttleHandler()(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = throttleHandler()(Target);
+      const EnhancedTarget = throttleHandler()(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

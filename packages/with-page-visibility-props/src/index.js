@@ -1,64 +1,64 @@
-import { Component } from 'react';
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
+import { Component } from 'react'
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
 
 const isPageVisibiitySupported = global.document &&
-                                 typeof global.document.visibilityState !== 'undefined';
+                                 typeof global.document.visibilityState !== 'undefined'
 
 const getVisibilityStatus = (visibilityState) => ({
   isVisible: visibilityState === 'visible',
   isHidden: visibilityState === 'hidden',
   isPrerendered: visibilityState === 'prerender',
   isUnloaded: visibilityState === 'unloaded'
-});
+})
 
 const withPageVisibilityProps = (mapStatusToProps) => (Target) => {
   if (!isPageVisibiitySupported) {
-    return Target;
+    return Target
   }
 
-  const factory = createEagerFactory(Target);
+  const factory = createEagerFactory(Target)
 
   class WithPageVisibilityProps extends Component {
-    constructor(props, context) {
-      super(props, context);
+    constructor (props, context) {
+      super(props, context)
 
       this.state = mapStatusToProps(
         getVisibilityStatus(global.document.visibilityState)
-      );
-      this.onVibisilityChange = this.onVibisilityChange.bind(this);
+      )
+      this.onVibisilityChange = this.onVibisilityChange.bind(this)
     }
 
-    componentDidMount() {
-      global.document.addEventListener('visibilitychange', this.onVibisilityChange, false);
+    componentDidMount () {
+      global.document.addEventListener('visibilitychange', this.onVibisilityChange, false)
     }
 
-    componentWillUnmount() {
-      global.document.removeEventListener('visibilitychange', this.onVibisilityChange);
+    componentWillUnmount () {
+      global.document.removeEventListener('visibilitychange', this.onVibisilityChange)
     }
 
-    onVibisilityChange() {
+    onVibisilityChange () {
       this.setState(
         mapStatusToProps(
           getVisibilityStatus(global.document.visibilityState)
         )
-      );
+      )
     }
 
-    render() {
+    render () {
       return factory({
         ...this.props,
         ...this.state
-      });
+      })
     }
   }
 
   if (process.env.NODE_ENV !== 'production') {
     return setDisplayName(
       wrapDisplayName(Target, 'withPageVisibilityProps')
-    )(WithPageVisibilityProps);
+    )(WithPageVisibilityProps)
   }
 
-  return WithPageVisibilityProps;
-};
+  return WithPageVisibilityProps
+}
 
-export default withPageVisibilityProps;
+export default withPageVisibilityProps

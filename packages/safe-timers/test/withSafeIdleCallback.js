@@ -1,101 +1,101 @@
 /* eslint-disable max-len */
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-const Target = () => null;
+const Target = () => null
 
 describe('withSafeIdleCallback', () => {
-  let origRequestIdleCallback = null;
-  let origCancelIdleCallback = null;
-  let withSafeIdleCallback = null;
+  let origRequestIdleCallback = null
+  let origCancelIdleCallback = null
+  let withSafeIdleCallback = null
 
   beforeAll(() => {
-    origRequestIdleCallback = global.requestIdleCallback;
-    origCancelIdleCallback = global.cancelIdleCallback;
+    origRequestIdleCallback = global.requestIdleCallback
+    origCancelIdleCallback = global.cancelIdleCallback
 
-    jest.resetModules();
+    jest.resetModules()
 
-    global.requestIdleCallback = jest.fn(() => 'id');
-    global.cancelIdleCallback = jest.fn();
+    global.requestIdleCallback = jest.fn(() => 'id')
+    global.cancelIdleCallback = jest.fn()
 
-    withSafeIdleCallback = require('../src').withSafeIdleCallback;
-  });
+    withSafeIdleCallback = require('../src').withSafeIdleCallback
+  })
 
   afterEach(() => {
-    global.requestIdleCallback.mockClear();
-    global.cancelIdleCallback.mockClear();
-  });
+    global.requestIdleCallback.mockClear()
+    global.cancelIdleCallback.mockClear()
+  })
 
   afterAll(() => {
-    global.requestIdleCallback = origRequestIdleCallback;
-    global.cancelIdleCallback = origCancelIdleCallback;
-  });
+    global.requestIdleCallback = origRequestIdleCallback
+    global.cancelIdleCallback = origCancelIdleCallback
+  })
 
   it('should pass props through', () => {
-    const EnhancedTarget = withSafeIdleCallback(Target);
+    const EnhancedTarget = withSafeIdleCallback(Target)
     const wrapper = mount(
-      <EnhancedTarget a={1} b={2}/>
-    );
+      <EnhancedTarget a={1} b={2} />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   it('should provide `requestSafeIdleCallback` prop and unsubscriber as its call return', () => {
-    const callback = () => {};
-    const EnhancedTarget = withSafeIdleCallback(Target);
+    const callback = () => {}
+    const EnhancedTarget = withSafeIdleCallback(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const cancelSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback')(callback, 'a', 'b');
+      <EnhancedTarget />
+    )
+    const cancelSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback')(callback, 'a', 'b')
 
-    expect(global.requestIdleCallback.mock.calls).toMatchSnapshot();
-    cancelSafeIdleCallback();
-    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot();
-  });
+    expect(global.requestIdleCallback.mock.calls).toMatchSnapshot()
+    cancelSafeIdleCallback()
+    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot()
+  })
 
   it('should clear all safe intervals on unmount', () => {
-    const EnhancedTarget = withSafeIdleCallback(Target);
+    const EnhancedTarget = withSafeIdleCallback(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const requestSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback');
+      <EnhancedTarget />
+    )
+    const requestSafeIdleCallback = wrapper.find(Target).prop('requestSafeIdleCallback')
 
-    requestSafeIdleCallback();
-    requestSafeIdleCallback();
-    requestSafeIdleCallback();
+    requestSafeIdleCallback()
+    requestSafeIdleCallback()
+    requestSafeIdleCallback()
 
-    wrapper.unmount();
+    wrapper.unmount()
 
-    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot();
-  });
+    expect(global.cancelIdleCallback.mock.calls).toMatchSnapshot()
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = withSafeIdleCallback(Target);
+      const EnhancedTarget = withSafeIdleCallback(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = withSafeIdleCallback(Target);
+      const EnhancedTarget = withSafeIdleCallback(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

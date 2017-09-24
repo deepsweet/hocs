@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import withMatchMediaProps from '../src/';
+import withMatchMediaProps from '../src/'
 
 const Demo = (props) => (
   <h1>props: {JSON.stringify(props)}</h1>
-);
+)
 
 export default withMatchMediaProps({
   isSmallScreen: {
@@ -13,4 +13,4 @@ export default withMatchMediaProps({
   isHighDpiScreen: {
     minResolution: '192dpi'
   }
-})(Demo);
+})(Demo)

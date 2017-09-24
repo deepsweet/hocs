@@ -1,70 +1,70 @@
-import { Component } from 'react';
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
-import json2mq from 'json2mq';
+import { Component } from 'react'
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import json2mq from 'json2mq'
 
-const isMatchMediaSupported = typeof global.matchMedia === 'function';
+const isMatchMediaSupported = typeof global.matchMedia === 'function'
 
-const queryToMql = (query) => global.matchMedia(json2mq(query));
+const queryToMql = (query) => global.matchMedia(json2mq(query))
 const createMediaMatcher = (query) => {
-  const mql = queryToMql(query);
+  const mql = queryToMql(query)
 
   return {
     matches: mql.matches,
-    subscribe(handler) {
-      mql.addListener(handler);
+    subscribe (handler) {
+      mql.addListener(handler)
 
-      return () => mql.removeListener(handler);
+      return () => mql.removeListener(handler)
     }
-  };
-};
+  }
+}
 
 const withMatchMediaProps = (propsQieries = {}) => (Target) => {
   if (!isMatchMediaSupported) {
-    return Target;
+    return Target
   }
 
-  const factory = createEagerFactory(Target);
+  const factory = createEagerFactory(Target)
 
   class WithMatchMediaProps extends Component {
-    constructor(props, context) {
-      super(props, context);
+    constructor (props, context) {
+      super(props, context)
 
       this.propsMatchers = Object.keys(propsQieries).map((prop) => ({
         prop,
         ...createMediaMatcher(propsQieries[prop])
-      }));
+      }))
 
       this.state = this.propsMatchers.reduce((result, propMatcher) => ({
         ...result,
         [propMatcher.prop]: propMatcher.matches
-      }), {});
+      }), {})
     }
 
-    componentDidMount() {
+    componentDidMount () {
       this.unsubscribers = this.propsMatchers.map((propMatcher) => propMatcher.subscribe((e) => {
         this.setState({
           [propMatcher.prop]: e.matches
-        });
-      }));
+        })
+      }))
     }
 
-    componentWillUnmount() {
-      this.unsubscribers.forEach((unsubscribe) => unsubscribe());
+    componentWillUnmount () {
+      this.unsubscribers.forEach((unsubscribe) => unsubscribe())
     }
 
-    render() {
+    render () {
       return factory({
         ...this.props,
         ...this.state
-      });
+      })
     }
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withMatchMediaProps'))(WithMatchMediaProps);
+    return setDisplayName(wrapDisplayName(Target, 'withMatchMediaProps'))(WithMatchMediaProps)
   }
 
-  return WithMatchMediaProps;
-};
+  return WithMatchMediaProps
+}
 
-export default withMatchMediaProps;
+export default withMatchMediaProps

@@ -1,248 +1,248 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-import withLifecycle from '../src/';
+import withLifecycle from '../src/'
 
-const Target = () => null;
+const Target = () => null
 
 describe('withLifecycle', () => {
   it('should pass props through to the Target', () => {
-    const EnhancedTarget = withLifecycle()(Target);
+    const EnhancedTarget = withLifecycle()(Target)
     const wrapper = mount(
-      <EnhancedTarget a={1} b={2}/>
-    );
+      <EnhancedTarget a={1} b={2} />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   describe('as object', () => {
     it('onWillMount', () => {
-      const mockOnWillMount = jest.fn();
-      const EnhancedTarget = withLifecycle({ onWillMount: mockOnWillMount })(Target);
+      const mockOnWillMount = jest.fn()
+      const EnhancedTarget = withLifecycle({ onWillMount: mockOnWillMount })(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(mockOnWillMount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillMount.mock.calls).toMatchSnapshot()
+    })
 
     it('onDidMount', () => {
-      const mockOnDidMount = jest.fn();
-      const EnhancedTarget = withLifecycle({ onDidMount: mockOnDidMount })(Target);
+      const mockOnDidMount = jest.fn()
+      const EnhancedTarget = withLifecycle({ onDidMount: mockOnDidMount })(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(mockOnDidMount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnDidMount.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillReceiveProps', () => {
-      const mockOnWillReceiveProps = jest.fn();
-      const EnhancedTarget = withLifecycle({ onWillReceiveProps: mockOnWillReceiveProps })(Target);
+      const mockOnWillReceiveProps = jest.fn()
+      const EnhancedTarget = withLifecycle({ onWillReceiveProps: mockOnWillReceiveProps })(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillUpdate', () => {
-      const mockOnWillUpdate = jest.fn();
-      const EnhancedTarget = withLifecycle({ onWillUpdate: mockOnWillUpdate })(Target);
+      const mockOnWillUpdate = jest.fn()
+      const EnhancedTarget = withLifecycle({ onWillUpdate: mockOnWillUpdate })(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot()
+    })
 
     it('onDidUpdate', () => {
-      const mockOnDidUpdate = jest.fn();
-      const EnhancedTarget = withLifecycle({ onDidUpdate: mockOnDidUpdate })(Target);
+      const mockOnDidUpdate = jest.fn()
+      const EnhancedTarget = withLifecycle({ onDidUpdate: mockOnDidUpdate })(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillUnmount', () => {
-      const mockOnWillUnmount = jest.fn();
-      const EnhancedTarget = withLifecycle({ onWillUnmount: mockOnWillUnmount })(Target);
+      const mockOnWillUnmount = jest.fn()
+      const EnhancedTarget = withLifecycle({ onWillUnmount: mockOnWillUnmount })(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.unmount();
+      wrapper.unmount()
 
-      expect(mockOnWillUnmount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillUnmount.mock.calls).toMatchSnapshot()
+    })
 
     it('multiple', () => {
-      const mockOnWillMount = jest.fn();
-      const mockOnDidMount = jest.fn();
+      const mockOnWillMount = jest.fn()
+      const mockOnDidMount = jest.fn()
       const EnhancedTarget = withLifecycle({
         onWillMount: mockOnWillMount,
         onDidMount: mockOnDidMount
-      })(Target);
+      })(Target)
 
       mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(mockOnWillMount.mock.calls).toMatchSnapshot();
-      expect(mockOnDidMount.mock.calls).toMatchSnapshot();
-    });
-  });
+      expect(mockOnWillMount.mock.calls).toMatchSnapshot()
+      expect(mockOnDidMount.mock.calls).toMatchSnapshot()
+    })
+  })
 
   describe('as factory', () => {
     it('should call factory functions with props', () => {
-      const mockFactory = jest.fn();
-      const EnhancedTarget = withLifecycle(mockFactory)(Target);
+      const mockFactory = jest.fn()
+      const EnhancedTarget = withLifecycle(mockFactory)(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(mockFactory.mock.calls).toMatchSnapshot();
-    });
+      expect(mockFactory.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillMount', () => {
-      const mockOnWillMount = jest.fn();
+      const mockOnWillMount = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onWillMount: mockOnWillMount })
-      )(Target);
+      )(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(mockOnWillMount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillMount.mock.calls).toMatchSnapshot()
+    })
 
     it('onDidMount', () => {
-      const mockOnDidMount = jest.fn();
+      const mockOnDidMount = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onDidMount: mockOnDidMount })
-      )(Target);
+      )(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(mockOnDidMount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnDidMount.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillReceiveProps', () => {
-      const mockOnWillReceiveProps = jest.fn();
+      const mockOnWillReceiveProps = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onWillReceiveProps: mockOnWillReceiveProps })
-      )(Target);
+      )(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillUpdate', () => {
-      const mockOnWillUpdate = jest.fn();
+      const mockOnWillUpdate = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onWillUpdate: mockOnWillUpdate })
-      )(Target);
+      )(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot()
+    })
 
     it('onDidUpdate', () => {
-      const mockOnDidUpdate = jest.fn();
+      const mockOnDidUpdate = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onDidUpdate: mockOnDidUpdate })
-      )(Target);
+      )(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.setProps({ c: 3 });
+      wrapper.setProps({ c: 3 })
 
-      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot()
+    })
 
     it('onWillUnmount', () => {
-      const mockOnWillUnmount = jest.fn();
+      const mockOnWillUnmount = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({ onWillUnmount: mockOnWillUnmount })
-      )(Target);
+      )(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      wrapper.unmount();
+      wrapper.unmount()
 
-      expect(mockOnWillUnmount.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnWillUnmount.mock.calls).toMatchSnapshot()
+    })
 
     it('multiple', () => {
-      const mockOnWillMount = jest.fn();
-      const mockOnDidMount = jest.fn();
+      const mockOnWillMount = jest.fn()
+      const mockOnDidMount = jest.fn()
       const EnhancedTarget = withLifecycle(
         () => ({
           onWillMount: mockOnWillMount,
           onDidMount: mockOnDidMount
         })
-      )(Target);
+      )(Target)
 
       mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(mockOnWillMount.mock.calls).toMatchSnapshot();
-      expect(mockOnDidMount.mock.calls).toMatchSnapshot();
-    });
-  });
+      expect(mockOnWillMount.mock.calls).toMatchSnapshot()
+      expect(mockOnDidMount.mock.calls).toMatchSnapshot()
+    })
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = withLifecycle()(Target);
+      const EnhancedTarget = withLifecycle()(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = withLifecycle()(Target);
+      const EnhancedTarget = withLifecycle()(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

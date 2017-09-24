@@ -1,94 +1,94 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-const Target = () => null;
+const Target = () => null
 
 describe('withSafeTimeout', () => {
-  let withSafeTimeout = null;
+  let withSafeTimeout = null
 
   beforeAll(() => {
-    jest.spyOn(global, 'setTimeout').mockImplementation(() => 'id');
-    jest.spyOn(global, 'clearTimeout');
-    jest.resetModules();
+    jest.spyOn(global, 'setTimeout').mockImplementation(() => 'id')
+    jest.spyOn(global, 'clearTimeout')
+    jest.resetModules()
 
-    withSafeTimeout = require('../src').withSafeTimeout;
-  });
+    withSafeTimeout = require('../src').withSafeTimeout
+  })
 
   afterEach(() => {
-    global.setTimeout.mockClear();
-    global.clearTimeout.mockClear();
-  });
+    global.setTimeout.mockClear()
+    global.clearTimeout.mockClear()
+  })
 
   afterAll(() => {
-    global.setTimeout.mockRestore();
-    global.clearTimeout.mockRestore();
-  });
+    global.setTimeout.mockRestore()
+    global.clearTimeout.mockRestore()
+  })
 
   it('should pass props through', () => {
-    const EnhancedTarget = withSafeTimeout(Target);
+    const EnhancedTarget = withSafeTimeout(Target)
     const wrapper = mount(
-      <EnhancedTarget a={1} b={2}/>
-    );
+      <EnhancedTarget a={1} b={2} />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   it('should provide `setSafeTimeout` prop and unsubscriber as its call return', () => {
-    const callback = () => {};
-    const EnhancedTarget = withSafeTimeout(Target);
+    const callback = () => {}
+    const EnhancedTarget = withSafeTimeout(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const clearSafeTimeout = wrapper.find(Target).prop('setSafeTimeout')(callback, 'a', 'b');
+      <EnhancedTarget />
+    )
+    const clearSafeTimeout = wrapper.find(Target).prop('setSafeTimeout')(callback, 'a', 'b')
 
-    expect(global.setTimeout.mock.calls).toMatchSnapshot();
-    clearSafeTimeout();
-    expect(global.clearTimeout.mock.calls).toMatchSnapshot();
-  });
+    expect(global.setTimeout.mock.calls).toMatchSnapshot()
+    clearSafeTimeout()
+    expect(global.clearTimeout.mock.calls).toMatchSnapshot()
+  })
 
   it('should clear all safe timeouts on unmount', () => {
-    const EnhancedTarget = withSafeTimeout(Target);
+    const EnhancedTarget = withSafeTimeout(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const setSafeTimeout = wrapper.find(Target).prop('setSafeTimeout');
+      <EnhancedTarget />
+    )
+    const setSafeTimeout = wrapper.find(Target).prop('setSafeTimeout')
 
-    setSafeTimeout();
-    setSafeTimeout();
-    setSafeTimeout();
+    setSafeTimeout()
+    setSafeTimeout()
+    setSafeTimeout()
 
-    wrapper.unmount();
+    wrapper.unmount()
 
-    expect(global.clearTimeout.mock.calls).toMatchSnapshot();
-  });
+    expect(global.clearTimeout.mock.calls).toMatchSnapshot()
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = withSafeTimeout(Target);
+      const EnhancedTarget = withSafeTimeout(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = withSafeTimeout(Target);
+      const EnhancedTarget = withSafeTimeout(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

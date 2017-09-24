@@ -1,20 +1,20 @@
 /* eslint-disable no-console */
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose';
+import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
 
 const withLog = (getMessageToLog = (props) => props) => (Target) => {
   if (process.env.NODE_ENV === 'production') {
-    return Target;
+    return Target
   }
 
-  const factory = createEagerFactory(Target);
-  const displayName = wrapDisplayName(Target, 'withLog');
+  const factory = createEagerFactory(Target)
+  const displayName = wrapDisplayName(Target, 'withLog')
   const WithLog = (props) => {
-    console.log(`${displayName}:`, getMessageToLog(props));
+    console.log(`${displayName}:`, getMessageToLog(props))
 
-    return factory(props);
-  };
+    return factory(props)
+  }
 
-  return setDisplayName(displayName)(WithLog);
-};
+  return setDisplayName(displayName)(WithLog)
+}
 
-export default withLog;
+export default withLog

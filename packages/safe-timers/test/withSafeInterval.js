@@ -1,96 +1,96 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import React from 'react'
+import { mount } from 'enzyme'
 
-const Target = () => null;
+const Target = () => null
 
 describe('withSafeInterval', () => {
-  let withSafeInterval = null;
+  let withSafeInterval = null
 
   beforeAll(() => {
-    jest.spyOn(global, 'setInterval').mockImplementation(() => 'id');
-    jest.spyOn(global, 'clearInterval');
-    jest.resetModules();
+    jest.spyOn(global, 'setInterval').mockImplementation(() => 'id')
+    jest.spyOn(global, 'clearInterval')
+    jest.resetModules()
 
-    withSafeInterval = require('../src').withSafeInterval;
-  });
+    withSafeInterval = require('../src').withSafeInterval
+  })
 
   afterEach(() => {
-    global.setInterval.mockClear();
-    global.clearInterval.mockClear();
-  });
+    global.setInterval.mockClear()
+    global.clearInterval.mockClear()
+  })
 
   afterAll(() => {
-    global.setInterval.mockRestore();
-    global.clearInterval.mockRestore();
-  });
+    global.setInterval.mockRestore()
+    global.clearInterval.mockRestore()
+  })
 
   it('should pass props through', () => {
-    const EnhancedTarget = withSafeInterval(Target);
+    const EnhancedTarget = withSafeInterval(Target)
     const wrapper = mount(
-      <EnhancedTarget a={1} b={2}/>
-    );
+      <EnhancedTarget a={1} b={2} />
+    )
 
-    expect(wrapper.find(Target)).toMatchSnapshot();
-  });
+    expect(wrapper.find(Target)).toMatchSnapshot()
+  })
 
   it('should provide `setSafeInterval` prop and unsubscriber as its call return', () => {
-    const callback = () => {};
-    const EnhancedTarget = withSafeInterval(Target);
+    const callback = () => {}
+    const EnhancedTarget = withSafeInterval(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const clearSafeInterval = wrapper.find(Target).prop('setSafeInterval')(callback, 'a', 'b');
+      <EnhancedTarget />
+    )
+    const clearSafeInterval = wrapper.find(Target).prop('setSafeInterval')(callback, 'a', 'b')
 
-    expect(global.setInterval.mock.calls).toMatchSnapshot();
+    expect(global.setInterval.mock.calls).toMatchSnapshot()
 
-    clearSafeInterval();
+    clearSafeInterval()
 
-    expect(global.clearInterval.mock.calls).toMatchSnapshot();
-  });
+    expect(global.clearInterval.mock.calls).toMatchSnapshot()
+  })
 
   it('should clear all safe intervals on unmount', () => {
-    const EnhancedTarget = withSafeInterval(Target);
+    const EnhancedTarget = withSafeInterval(Target)
     const wrapper = mount(
-      <EnhancedTarget/>
-    );
-    const setSafeInterval = wrapper.find(Target).prop('setSafeInterval');
+      <EnhancedTarget />
+    )
+    const setSafeInterval = wrapper.find(Target).prop('setSafeInterval')
 
-    setSafeInterval();
-    setSafeInterval();
-    setSafeInterval();
+    setSafeInterval()
+    setSafeInterval()
+    setSafeInterval()
 
-    wrapper.unmount();
+    wrapper.unmount()
 
-    expect(global.clearInterval.mock.calls).toMatchSnapshot();
-  });
+    expect(global.clearInterval.mock.calls).toMatchSnapshot()
+  })
 
   describe('display name', () => {
-    const origNodeEnv = process.env.NODE_ENV;
+    const origNodeEnv = process.env.NODE_ENV
 
     afterAll(() => {
-      process.env.NODE_ENV = origNodeEnv;
-    });
+      process.env.NODE_ENV = origNodeEnv
+    })
 
     it('should wrap display name in non-production env', () => {
-      process.env.NODE_ENV = 'test';
+      process.env.NODE_ENV = 'test'
 
-      const EnhancedTarget = withSafeInterval(Target);
+      const EnhancedTarget = withSafeInterval(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
+      expect(wrapper).toMatchSnapshot()
+    })
 
     it('should not wrap display name in production env', () => {
-      process.env.NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production'
 
-      const EnhancedTarget = withSafeInterval(Target);
+      const EnhancedTarget = withSafeInterval(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

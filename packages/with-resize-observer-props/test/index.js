@@ -1,197 +1,197 @@
 /* eslint-disable react/no-multi-comp */
-import React from 'react';
-import { compose } from 'recompose';
-import { mount } from 'enzyme';
+import React from 'react'
+import { compose } from 'recompose'
+import { mount } from 'enzyme'
 
 describe('withResizeObserverProps', () => {
   describe('Resize Observer API is supported', () => {
     const Target = ({ onRef }) => {
-      onRef('ref');
+      onRef('ref')
 
-      return null;
-    };
+      return null
+    }
 
-    let withResizeObserverProps = null;
-    let origResizeObserver = null;
+    let withResizeObserverProps = null
+    let origResizeObserver = null
 
     beforeAll(() => {
-      origResizeObserver = global.ResizeObserver;
-    });
+      origResizeObserver = global.ResizeObserver
+    })
 
     beforeEach(() => {
-      jest.resetModules();
+      jest.resetModules()
 
       global.ResizeObserver = jest.fn(() => ({
         observe: () => {},
         unobserve: () => {}
-      }));
-      withResizeObserverProps = require('../src/').default;
-    });
+      }))
+      withResizeObserverProps = require('../src/').default
+    })
 
     afterAll(() => {
-      global.ResizeObserver = origResizeObserver;
-    });
+      global.ResizeObserver = origResizeObserver
+    })
 
     it('should register observer with DOM node from `onRef`', () => {
-      const mockObserve = jest.fn();
+      const mockObserve = jest.fn()
 
       global.ResizeObserver = jest.fn(() => ({
         observe: mockObserve
-      }));
+      }))
 
-      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target)
 
       mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      expect(global.ResizeObserver.mock.calls).toMatchSnapshot();
-      expect(mockObserve.mock.calls).toMatchSnapshot();
-    });
+      expect(global.ResizeObserver.mock.calls).toMatchSnapshot()
+      expect(mockObserve.mock.calls).toMatchSnapshot()
+    })
 
     it('should register observer with DOM node from `onRef` with a custom handler name', () => {
       const CustomTarget = ({ onMyRef }) => {
-        onMyRef('my-ref');
+        onMyRef('my-ref')
 
-        return null;
-      };
-      const mockObserve = jest.fn();
+        return null
+      }
+      const mockObserve = jest.fn()
 
       global.ResizeObserver = jest.fn(() => ({
         observe: mockObserve
-      }));
+      }))
 
-      const EnhancedCustomTarget = withResizeObserverProps(() => {}, 'onMyRef')(CustomTarget);
+      const EnhancedCustomTarget = withResizeObserverProps(() => {}, 'onMyRef')(CustomTarget)
 
       mount(
-        <EnhancedCustomTarget/>
-      );
+        <EnhancedCustomTarget />
+      )
 
-      expect(global.ResizeObserver.mock.calls).toMatchSnapshot();
-      expect(mockObserve.mock.calls).toMatchSnapshot();
-    });
+      expect(global.ResizeObserver.mock.calls).toMatchSnapshot()
+      expect(mockObserve.mock.calls).toMatchSnapshot()
+    })
 
     it('should call external `onRef` if it has been passed in', () => {
-      const mockOnRef = jest.fn();
+      const mockOnRef = jest.fn()
 
       global.ResizeObserver = jest.fn(() => ({
         observe: () => {}
-      }));
+      }))
 
-      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target)
 
       mount(
-        <EnhancedTarget onRef={mockOnRef}/>
-      );
+        <EnhancedTarget onRef={mockOnRef} />
+      )
 
-      expect(mockOnRef.mock.calls).toMatchSnapshot();
-    });
+      expect(mockOnRef.mock.calls).toMatchSnapshot()
+    })
 
     it('should unregister observer with DOM node on unmount', () => {
-      const mockDisconnect = jest.fn();
+      const mockDisconnect = jest.fn()
 
       global.ResizeObserver = jest.fn(() => ({
         observe: () => {},
         disconnect: mockDisconnect
-      }));
+      }))
 
-      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target)
       const wrapper = mount(
-        <EnhancedTarget/>
-      );
+        <EnhancedTarget />
+      )
 
-      wrapper.unmount();
+      wrapper.unmount()
 
-      expect(mockDisconnect.mock.calls).toMatchSnapshot();
-    });
+      expect(mockDisconnect.mock.calls).toMatchSnapshot()
+    })
 
     it('should map observer state to props with shallow equal check', () => {
-      let observerCallback = null;
+      let observerCallback = null
 
       global.ResizeObserver = jest.fn((callback) => {
-        observerCallback = callback;
+        observerCallback = callback
 
         return {
           observe: () => {}
-        };
-      });
+        }
+      })
 
-      const mockStateToProps = jest.fn((state) => state);
-      const mockRender = jest.fn();
+      const mockStateToProps = jest.fn((state) => state)
+      const mockRender = jest.fn()
       const EnhancedTarget = compose(
         withResizeObserverProps(mockStateToProps),
         (Component) => (props) => {
-          mockRender(props);
+          mockRender(props)
 
           return (
-            <Component {...props}/>
-          );
+            <Component {...props} />
+          )
         }
-      )(Target);
+      )(Target)
 
       mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      observerCallback([ { contentRect: { width: 100, height: 200 } } ]);
-      observerCallback([ { contentRect: { width: 200, height: 300 } } ]);
-      observerCallback([ { contentRect: { width: 200, height: 300 } } ]);
-      expect(mockRender.mock.calls).toMatchSnapshot();
-      expect(mockStateToProps.mock.calls).toMatchSnapshot();
-    });
+      observerCallback([ { contentRect: { width: 100, height: 200 } } ])
+      observerCallback([ { contentRect: { width: 200, height: 300 } } ])
+      observerCallback([ { contentRect: { width: 200, height: 300 } } ])
+      expect(mockRender.mock.calls).toMatchSnapshot()
+      expect(mockStateToProps.mock.calls).toMatchSnapshot()
+    })
 
     describe('display name', () => {
-      let origNodeEnv = null;
+      let origNodeEnv = null
 
       beforeAll(() => {
-        origNodeEnv = process.env.NODE_ENV;
-      });
+        origNodeEnv = process.env.NODE_ENV
+      })
 
       afterAll(() => {
-        process.env.NODE_ENV = origNodeEnv;
-      });
+        process.env.NODE_ENV = origNodeEnv
+      })
 
       it('should wrap display name in non-production env', () => {
-        process.env.NODE_ENV = 'test';
+        process.env.NODE_ENV = 'test'
 
-        const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+        const EnhancedTarget = withResizeObserverProps(() => {})(Target)
         const wrapper = mount(
-          <EnhancedTarget/>
-        );
+          <EnhancedTarget />
+        )
 
-        expect(wrapper).toMatchSnapshot();
-      });
+        expect(wrapper).toMatchSnapshot()
+      })
 
       it('should not wrap display name in production env', () => {
-        process.env.NODE_ENV = 'production';
+        process.env.NODE_ENV = 'production'
 
-        const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+        const EnhancedTarget = withResizeObserverProps(() => {})(Target)
         const wrapper = mount(
-          <EnhancedTarget/>
-        );
+          <EnhancedTarget />
+        )
 
-        expect(wrapper).toMatchSnapshot();
-      });
-    });
-  });
+        expect(wrapper).toMatchSnapshot()
+      })
+    })
+  })
 
   describe('Resize Observer API is not supported', () => {
-    const Target = () => null;
-    let withResizeObserverProps = null;
+    const Target = () => null
+    let withResizeObserverProps = null
 
     beforeEach(() => {
-      jest.resetModules();
+      jest.resetModules()
 
-      withResizeObserverProps = require('../src/').default;
-    });
+      withResizeObserverProps = require('../src/').default
+    })
 
     it('should just pass Target component through', () => {
-      const EnhancedTarget = withResizeObserverProps(() => {})(Target);
+      const EnhancedTarget = withResizeObserverProps(() => {})(Target)
       const wrapper = mount(
-        <EnhancedTarget a={1} b={2}/>
-      );
+        <EnhancedTarget a={1} b={2} />
+      )
 
-      expect(wrapper).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper).toMatchSnapshot()
+    })
+  })
+})

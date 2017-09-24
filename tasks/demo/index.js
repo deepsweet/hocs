@@ -1,20 +1,20 @@
-import React, { createElement } from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import React from 'react'
+import { render } from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
 
-import Demo from '~/demo/';
+import Demo from '~/demo/'
 
 const renderDemo = (Component) => render(
   <AppContainer>
-    <Component/>
+    <Component />
   </AppContainer>,
   global.document.getElementById('root')
-);
+)
 
-renderDemo(Demo);
+renderDemo(Demo)
 
 if (module.hot) {
   module.hot.accept('~/demo/', () => {
-    renderDemo(require('~/demo/').default);
-  });
+    renderDemo(require('~/demo/').default)
+  })
 }

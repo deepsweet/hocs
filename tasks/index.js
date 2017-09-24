@@ -12,8 +12,6 @@ import eslint from 'start-eslint'
 import codecov from 'start-codecov'
 import webpackDevServer from 'start-webpack-dev-server'
 
-import jestConfig from './jest/config'
-
 const start = Start(reporter())
 
 export const buildServerESM = (packageName) => {
@@ -22,7 +20,7 @@ export const buildServerESM = (packageName) => {
   return start(
     files(`packages/${packageName}/build/server-esm/`),
     clean(),
-    files(`packages/${packageName}/src/**/*.js?(x)`),
+    files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigServerESM),
     write(`packages/${packageName}/build/server-esm/`)
@@ -35,7 +33,7 @@ export const buildServerCJS = (packageName) => {
   return start(
     files(`packages/${packageName}/build/server-cjs/`),
     clean(),
-    files(`packages/${packageName}/src/**/*.js?(x)`),
+    files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigServerCJS),
     write(`packages/${packageName}/build/server-cjs/`)
@@ -48,7 +46,7 @@ export const buildBrowserESM = (packageName) => {
   return start(
     files(`packages/${packageName}/build/browser-esm/`),
     clean(),
-    files(`packages/${packageName}/src/**/*.js?(x)`),
+    files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigBrowserESM),
     write(`packages/${packageName}/build/browser-esm/`)
@@ -61,7 +59,7 @@ export const buildBrowserCJS = (packageName) => {
   return start(
     files(`packages/${packageName}/build/browser-cjs/`),
     clean(),
-    files(`packages/${packageName}/src/**/*.js?(x)`),
+    files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigBrowserCJS),
     write(`packages/${packageName}/build/browser-cjs/`)
@@ -74,7 +72,7 @@ export const buildRN = (packageName) => {
   return start(
     files(`packages/${packageName}/build/rn/`),
     clean(),
-    files(`packages/${packageName}/src/**/*.js?(x)`),
+    files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigRN),
     write(`packages/${packageName}/build/rn/`)
@@ -98,7 +96,10 @@ export const build = (packageName) => {
 }
 
 export const lint = () => start(
-  files('packages/*/@(src|test|demo)/**/*.js?(x)'),
+  files([
+    'tasks/**/*.js',
+    'packages/*/@(src|test|demo)/**/*.js'
+  ]),
   eslint({
     cache: true,
     cacheLocation: 'node_modules/.cache/eslint'
@@ -136,10 +137,10 @@ export const ci = () => start(
 )
 
 export const demo = (packageName) => {
-  const webpackConfig = require('./demo/config').default;
+  const webpackConfig = require('./demo/config').default
 
   return start(
     env('NODE_ENV', 'development'),
     webpackDevServer(webpackConfig(packageName), { hot: true })
-  );
+  )
 }
