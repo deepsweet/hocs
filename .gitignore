@@ -1,7 +1,5 @@
 node_modules/
-dist/
-es/
-lib/
+build/
 coverage/
 .npmrc
 .DS_Store

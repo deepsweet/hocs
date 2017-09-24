@@ -5,10 +5,72 @@
     "packages/*"
   ],
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-native": "^4.0.0",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^2.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-test-renderer": "^15.6.1",
+    "recompose": "^0.25.0",
+    "start": "^5.1.0",
+    "start-babel": "^3.0.0",
     "start-babel-cli": "^4.0.2",
-    "start-deepsweet-react-components-monorepo-preset": "^0.0.12"
+    "start-clean": "^2.0.0",
+    "start-codecov": "^2.0.0",
+    "start-env": "^3.0.0",
+    "start-eslint": "^3.0.1",
+    "start-files": "^2.0.0",
+    "start-jest": "^0.3.3",
+    "start-parallel": "^0.2.0",
+    "start-pretty-reporter": "^0.3.0",
+    "start-read": "^0.3.0",
+    "start-rename": "^0.2.0",
+    "start-webpack-dev-server": "^0.2.0",
+    "start-write": "^2.0.2",
+    "webpack": "^3.6.0"
   },
   "scripts": {
-    "start": "start-runner --preset start-deepsweet-react-components-monorepo-preset"
-  }
+    "start": "start-runner --file tasks/index.js"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard",
+      "standard-react"
+    ],
+    "env": {
+      "jest": true
+    }
+  },
+  "eslintIgnore": [
+    "build/"
+  ]
 }
