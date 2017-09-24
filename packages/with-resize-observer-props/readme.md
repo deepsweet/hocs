@@ -70,3 +70,4 @@ export default compose(
 
 * :left_right_arrow: [with-match-media-props](../with-match-media-props)
 * :eyes: [with-intersection-observer-props](../with-intersection-observer-props)
+* :left_right_arrow: [with-view-layout-props](../with-view-layout-props)
