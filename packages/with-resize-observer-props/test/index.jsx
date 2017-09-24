@@ -21,10 +21,10 @@ describe('withResizeObserverProps', () => {
     beforeEach(() => {
       jest.resetModules();
 
-      global.ResizeObserver = () => ({
+      global.ResizeObserver = jest.fn(() => ({
         observe: () => {},
         unobserve: () => {}
-      });
+      }));
       withResizeObserverProps = require('../src/').default;
     });
 
