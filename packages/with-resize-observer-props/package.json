@@ -13,8 +13,8 @@
   "main": "build/server-cjs/index.js",
   "module": "build/server-esm/index.js",
   "browser": {
-    "build/server-cjs/index.js": "build/browser-cjs/index.js",
-    "build/server-esm/index.js": "build/browser-esm/index.js"
+    "./build/server-cjs/index.js": "./build/browser-cjs/index.js",
+    "./build/server-esm/index.js": "./build/browser-esm/index.js"
   },
   "files": [
     "build/"
