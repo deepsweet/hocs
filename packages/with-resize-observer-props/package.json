@@ -10,12 +10,14 @@
     "resize",
     "resizeobserver"
   ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "build/server-cjs/index.js",
+  "module": "build/server-esm/index.js",
+  "browser": {
+    "build/server-cjs/index.js": "build/browser-cjs/index.js",
+    "build/server-esm/index.js": "build/browser-esm/index.js"
+  },
   "files": [
-    "dist/",
-    "es/",
-    "lib/"
+    "build/"
   ],
   "repository": "deepsweet/hocs",
   "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
