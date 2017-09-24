@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
-import shallowEqual from 'shallowequal'
 
 const isResizeObserverSupported = typeof global.ResizeObserver === 'function'
 
@@ -38,14 +37,12 @@ const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Targe
     }
 
     onObserve (entries) {
-      const nextState = entries.reduce((result, entry) => ({
-        ...result,
-        ...mapStateToProps(entry.contentRect)
-      }), {})
-
-      if (shallowEqual(this.state, nextState) === false) {
-        this.setState(nextState)
-      }
+      this.setState(
+        entries.reduce((result, entry) => ({
+          ...result,
+          ...mapStateToProps(entry.contentRect)
+        }), {})
+      )
     }
 
     render () {

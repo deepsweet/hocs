@@ -1,5 +1,6 @@
 import React from 'react'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import { compose, pure } from 'recompose'
 
 import withResizeObserverProps from '../src/'
 
@@ -17,9 +18,12 @@ const Demo = ({ onRef, hasNarrowWidth, hasLongHeight }) => (
   </div>
 )
 
-export default withResizeObserverProps(
-  ({ width, height }) => ({
-    hasNarrowWidth: width < 500,
-    hasLongHeight: height >= 300
-  })
+export default compose(
+  withResizeObserverProps(
+    ({ width, height }) => ({
+      hasNarrowWidth: width < 500,
+      hasLongHeight: height >= 300
+    })
+  ),
+  pure
 )(Demo)

@@ -105,7 +105,7 @@ describe('withResizeObserverProps', () => {
       expect(mockDisconnect.mock.calls).toMatchSnapshot()
     })
 
-    it('should map observer state to props with shallow equal check', () => {
+    it('should map observer state to props', () => {
       let observerCallback = null
 
       global.ResizeObserver = jest.fn((callback) => {
@@ -134,7 +134,6 @@ describe('withResizeObserverProps', () => {
       )
 
       observerCallback([ { contentRect: { width: 100, height: 200 } } ])
-      observerCallback([ { contentRect: { width: 200, height: 300 } } ])
       observerCallback([ { contentRect: { width: 200, height: 300 } } ])
       expect(mockRender.mock.calls).toMatchSnapshot()
       expect(mockStateToProps.mock.calls).toMatchSnapshot()

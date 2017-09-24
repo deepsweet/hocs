@@ -25,7 +25,7 @@ Array [
 ]
 `;
 
-exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 1`] = `
+exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props 1`] = `
 Array [
   Array [
     Object {
@@ -55,18 +55,12 @@ Array [
 ]
 `;
 
-exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props with shallow equal check 2`] = `
+exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props 2`] = `
 Array [
   Array [
     Object {
       "height": 200,
       "width": 100,
-    },
-  ],
-  Array [
-    Object {
-      "height": 300,
-      "width": 200,
     },
   ],
   Array [

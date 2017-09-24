@@ -27,33 +27,35 @@ Where:
 * `onRefName` – in some cases you might want to change it. `'onRef'` by default.
 
 ```js
-import React from 'react';
-import 'resize-observer-polyfill/dist/ResizeObserver.global';
-import withResizeObserverProps from '@hocs/with-resize-observer-props';
+import React from 'react'
+import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import { compose, pure } from 'recompose'
+import withResizeObserverProps from '@hocs/with-resize-observer-props'
 
 const styles = {
   width: 400,
   resize: 'both',
   overflow: 'hidden',
   border: '1px solid #000'
-};
+}
 
 const Demo = ({ onRef, hasNarrowWidth, hasLongHeight }) => (
   <div ref={onRef} style={styles}>
     <h2>resize me!</h2>
     {JSON.stringify({ hasNarrowWidth, hasLongHeight })}
   </div>
-);
+)
 
-export default withResizeObserverProps(
-  ({ width, height }) => ({
-    hasNarrowWidth: width < 500,
-    hasLongHeight: height >= 300
-  })
-)(Demo);
+export default compose(
+  withResizeObserverProps(
+    ({ width, height }) => ({
+      hasNarrowWidth: width < 500,
+      hasLongHeight: height >= 300
+    })
+  ),
+  pure
+)(Demo)
 ```
-
-It uses "shallow equal" under the hood to compare computed props so target component will be re-rendered only when it needs to.
 
 :tv: [Check out live demo](https://www.webpackbin.com/bins/-KsUVUj_IHaULBEW0oKx).
 
