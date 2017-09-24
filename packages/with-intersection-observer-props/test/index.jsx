@@ -18,10 +18,10 @@ describe('withIntersectionObserverProps', () => {
     beforeEach(() => {
       jest.resetModules();
 
-      global.IntersectionObserver = () => ({
+      global.IntersectionObserver = jest.fn(() => ({
         observe: () => {},
         disconnect: () => {}
-      });
+      }));
       withIntersectionObserverProps = require('../src/').default;
     });
 
