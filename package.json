@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "babel-jest": "^20.0.3",
+    "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -34,7 +34,7 @@
     "start-env": "^3.0.0",
     "start-eslint": "^3.0.1",
     "start-files": "^2.0.0",
-    "start-jest": "^0.3.3",
+    "start-jest": "^0.4.0",
     "start-parallel": "^0.2.0",
     "start-pretty-reporter": "^0.3.0",
     "start-read": "^0.3.0",
