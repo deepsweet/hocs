@@ -22,9 +22,8 @@ describe('withViewLayoutProps', () => {
     const wrapper = mount(
       <EnhancedTarget />
     )
-    const target = wrapper.find(Target)
 
-    target.prop('onLayout')({
+    wrapper.find(Target).prop('onLayout')({
       nativeEvent: {
         layout: {
           width: 1,
@@ -34,8 +33,9 @@ describe('withViewLayoutProps', () => {
         }
       }
     })
+    wrapper.update()
 
-    expect(target).toMatchSnapshot()
+    expect(wrapper.find(Target)).toMatchSnapshot()
   })
 
   it('should use provided custom `onLayout` handler name', () => {
