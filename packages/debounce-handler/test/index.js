@@ -39,7 +39,7 @@ describe('debounceHandler', () => {
   })
 
   it('should debounce handler with `delay` option', (done) => {
-    const EnhancedTarget = debounceHandler('testHandler', 50)(Target)
+    const EnhancedTarget = debounceHandler('testHandler', 75)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
       <EnhancedTarget testHandler={mockTestHandler} />
@@ -66,16 +66,16 @@ describe('debounceHandler', () => {
               setTimeout(() => {
                 expect(mockTestHandler.mock.calls).toMatchSnapshot()
                 done()
-              }, 50)
-            }, 50)
-          }, 40)
+              }, 75)
+            }, 75)
+          }, 30)
         }, 30)
       }, 30)
     }, 30)
   })
 
   it('should debounce handler with `leadingCall` option', (done) => {
-    const EnhancedTarget = debounceHandler('testHandler', 50, true)(Target)
+    const EnhancedTarget = debounceHandler('testHandler', 75, true)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
       <EnhancedTarget testHandler={mockTestHandler} />
@@ -102,12 +102,12 @@ describe('debounceHandler', () => {
               setTimeout(() => {
                 expect(mockTestHandler.mock.calls).toMatchSnapshot()
                 done()
-              }, 50)
-            }, 50)
-          }, 20)
-        }, 20)
-      }, 20)
-    }, 20)
+              }, 75)
+            }, 75)
+          }, 30)
+        }, 30)
+      }, 30)
+    }, 30)
   })
 
   describe('display name', () => {

@@ -22,6 +22,9 @@ const jestConfig = {
   snapshotSerializers: [
     'enzyme-to-json/serializer'
   ],
+  setupFiles: [
+    path.resolve('./tasks/jest/setup')
+  ],
   cacheDirectory: 'node_modules/.cache/jest'
 }
 

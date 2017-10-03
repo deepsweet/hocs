@@ -55,6 +55,7 @@ describe('withPageVisibilityProps', () => {
         configurable: true
       })
       global.document.dispatchEvent(new CustomEvent('visibilitychange'))
+      wrapper.update()
 
       expect(wrapper.find(Target)).toMatchSnapshot()
     })

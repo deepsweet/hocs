@@ -27,33 +27,33 @@ Array [
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 1`] = `
-Object {
-  "onRef": [Function],
-}
+<Target
+  onRef={[Function]}
+/>
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 2`] = `
-Object {
-  "bar": false,
-  "foo": false,
-  "onRef": [Function],
-}
+<Target
+  bar={false}
+  foo={false}
+  onRef={[Function]}
+/>
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 3`] = `
-Object {
-  "bar": false,
-  "foo": true,
-  "onRef": [Function],
-}
+<Target
+  bar={false}
+  foo={true}
+  onRef={[Function]}
+/>
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should map observer state to boolean props 4`] = `
-Object {
-  "bar": true,
-  "foo": true,
-  "onRef": [Function],
-}
+<Target
+  bar={true}
+  foo={true}
+  onRef={[Function]}
+/>
 `;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported should pass Intersection Observer options 1`] = `

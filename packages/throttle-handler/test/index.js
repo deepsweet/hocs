@@ -39,7 +39,7 @@ describe('throttleHandler', () => {
   })
 
   it('should throttle handler with `interval` option', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler', 50)(Target)
+    const EnhancedTarget = throttleHandler('testHandler', 75)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
       <EnhancedTarget testHandler={mockTestHandler} />
@@ -66,16 +66,16 @@ describe('throttleHandler', () => {
               setTimeout(() => {
                 expect(mockTestHandler.mock.calls).toMatchSnapshot()
                 done()
-              }, 50)
-            }, 50)
-          }, 20)
-        }, 20)
-      }, 20)
-    }, 20)
+              }, 75)
+            }, 75)
+          }, 30)
+        }, 30)
+      }, 30)
+    }, 30)
   })
 
   it('should throttle handler with `leadingCall` option', (done) => {
-    const EnhancedTarget = throttleHandler('testHandler', 50, true)(Target)
+    const EnhancedTarget = throttleHandler('testHandler', 75, true)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
       <EnhancedTarget testHandler={mockTestHandler} />
@@ -102,12 +102,12 @@ describe('throttleHandler', () => {
               setTimeout(() => {
                 expect(mockTestHandler.mock.calls).toMatchSnapshot()
                 done()
-              }, 50)
-            }, 50)
-          }, 20)
-        }, 20)
-      }, 20)
-    }, 20)
+              }, 75)
+            }, 75)
+          }, 30)
+        }, 30)
+      }, 30)
+    }, 30)
   })
 
   describe('display name', () => {

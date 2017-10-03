@@ -50,8 +50,10 @@ describe('withOnlineStatusProps', () => {
       )
 
       global.dispatchEvent(new CustomEvent('offline'))
+      wrapper.update()
       expect(wrapper.find(Target)).toMatchSnapshot()
       global.dispatchEvent(new CustomEvent('online'))
+      wrapper.update()
       expect(wrapper.find(Target)).toMatchSnapshot()
     })
 

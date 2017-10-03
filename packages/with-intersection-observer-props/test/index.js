@@ -141,15 +141,17 @@ describe('withIntersectionObserverProps', () => {
       const wrapper = mount(
         <EnhancedTarget />
       )
-      const target = wrapper.find(Target)
 
-      expect(target.props()).toMatchSnapshot()
+      expect(wrapper.find(Target)).toMatchSnapshot()
       observerCallback([ { isIntersecting: false, intersectionRatio: 0.5 } ])
-      expect(target.props()).toMatchSnapshot()
+      wrapper.update()
+      expect(wrapper.find(Target)).toMatchSnapshot()
       observerCallback([ { isIntersecting: true, intersectionRatio: 0.5 } ])
-      expect(target.props()).toMatchSnapshot()
+      wrapper.update()
+      expect(wrapper.find(Target)).toMatchSnapshot()
       observerCallback([ { isIntersecting: true, intersectionRatio: 1 } ])
-      expect(target.props()).toMatchSnapshot()
+      wrapper.update()
+      expect(wrapper.find(Target)).toMatchSnapshot()
     })
 
     describe('display name', () => {

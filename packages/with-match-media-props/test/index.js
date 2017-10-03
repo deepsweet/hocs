@@ -126,6 +126,7 @@ describe('withMatchMediaProps', () => {
       )
 
       mockAddListener.mock.calls[0][0]({ matches: true })
+      wrapper.update()
 
       expect(wrapper.find(Target)).toMatchSnapshot()
     })
