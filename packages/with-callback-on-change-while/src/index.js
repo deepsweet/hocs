@@ -1,9 +1,7 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const withCallbackOnChangeWhile = (propName, shouldCall, callback) => (Target) => {
-  const factory = createEagerFactory(Target)
-
   class WithCallbackOnChangeWhile extends Component {
     componentWillReceiveProps (nextProps) {
       if (
@@ -15,7 +13,7 @@ const withCallbackOnChangeWhile = (propName, shouldCall, callback) => (Target) =
     }
 
     render () {
-      return factory(this.props)
+      return createElement(Target, this.props)
     }
   }
 
