@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const isOnlineStatusSupported = global.navigator && typeof global.navigator.onLine !== 'undefined'
 
@@ -7,8 +7,6 @@ const withOnlineStatusProps = (mapStatusToProps) => (Target) => {
   if (!isOnlineStatusSupported) {
     return Target
   }
-
-  const factory = createEagerFactory(Target)
 
   class WithOnlineStatusProps extends Component {
     constructor (props, context) {
@@ -51,7 +49,7 @@ const withOnlineStatusProps = (mapStatusToProps) => (Target) => {
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         ...this.state
       })

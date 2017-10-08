@@ -8,7 +8,11 @@ exports[`withOnlineStatusProps Online Status API is not supported should just pa
 />
 `;
 
-exports[`withOnlineStatusProps Online Status API is supported display name should not wrap display name in production env 1`] = `<WithOnlineStatusProps />`;
+exports[`withOnlineStatusProps Online Status API is supported display name should not wrap display name in production env 1`] = `
+<WithOnlineStatusProps>
+  <Target />
+</WithOnlineStatusProps>
+`;
 
 exports[`withOnlineStatusProps Online Status API is supported display name should wrap display name in non-production env 1`] = `
 <withOnlineStatusProps(Target)>
