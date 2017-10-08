@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const isPageVisibiitySupported = global.document &&
                                  typeof global.document.visibilityState !== 'undefined'
@@ -15,8 +15,6 @@ const withPageVisibilityProps = (mapStatusToProps) => (Target) => {
   if (!isPageVisibiitySupported) {
     return Target
   }
-
-  const factory = createEagerFactory(Target)
 
   class WithPageVisibilityProps extends Component {
     constructor (props, context) {
@@ -45,7 +43,7 @@ const withPageVisibilityProps = (mapStatusToProps) => (Target) => {
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         ...this.state
       })

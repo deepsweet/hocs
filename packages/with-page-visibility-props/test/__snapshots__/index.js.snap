@@ -8,7 +8,11 @@ exports[`withPageVisibilityProps Page Visibility API is not supported should jus
 />
 `;
 
-exports[`withPageVisibilityProps Page Visibility API is supported display name should not wrap display name in production env 1`] = `<WithPageVisibilityProps />`;
+exports[`withPageVisibilityProps Page Visibility API is supported display name should not wrap display name in production env 1`] = `
+<WithPageVisibilityProps>
+  <Target />
+</WithPageVisibilityProps>
+`;
 
 exports[`withPageVisibilityProps Page Visibility API is supported display name should wrap display name in non-production env 1`] = `
 <withPageVisibilityProps(Target)>
