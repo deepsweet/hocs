@@ -26,6 +26,6 @@
   "peerDependencies": {
     "react": "^15.6.1",
     "react-native": "^0.48.3",
-    "recompose": "^0.25.0"
+    "recompose": "^0.26.0"
   }
 }
