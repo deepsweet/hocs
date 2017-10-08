@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withCallbackOnce display name should not wrap display name in production env 1`] = `<WithCallbackOnce />`;
+exports[`withCallbackOnce display name should not wrap display name in production env 1`] = `
+<WithCallbackOnce>
+  <Target />
+</WithCallbackOnce>
+`;
 
 exports[`withCallbackOnce display name should wrap display name in non-production env 1`] = `
 <withCallbackOnce(Target)>
