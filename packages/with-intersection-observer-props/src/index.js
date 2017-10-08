@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const isIntersectionObserverSupported = typeof global.IntersectionObserver === 'function'
 
@@ -7,8 +7,6 @@ const withIntersectionObserverProps = (thresholds, options, onRefName = 'onRef')
   if (!isIntersectionObserverSupported) {
     return Target
   }
-
-  const factory = createEagerFactory(Target)
 
   class WithIntersectionObserverProps extends Component {
     constructor (props, context) {
@@ -52,7 +50,7 @@ const withIntersectionObserverProps = (thresholds, options, onRefName = 'onRef')
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         ...this.state,
         [onRefName]: this.onRef

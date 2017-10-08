@@ -30,7 +30,7 @@
   },
   "peerDependencies": {
     "react": "^15.6.1",
-    "recompose": "^0.25.0"
+    "recompose": "^0.26.0"
   },
   "devDependencies": {
     "resize-observer-polyfill": "^1.4.2"

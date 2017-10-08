@@ -1,10 +1,8 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 import throttle from 'just-throttle'
 
 const throttleHandler = (handlerName, interval, leadingCall) => (Target) => {
-  const factory = createEagerFactory(Target)
-
   class ThrottleHandler extends Component {
     constructor (props, context) {
       super(props, context)
@@ -21,7 +19,7 @@ const throttleHandler = (handlerName, interval, leadingCall) => (Target) => {
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         [handlerName]: this[handlerName]
       })

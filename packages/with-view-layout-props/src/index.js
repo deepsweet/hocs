@@ -1,9 +1,7 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Target) => {
-  const factory = createEagerFactory(Target)
-
   class WithViewLayoutProps extends Component {
     constructor (props, context) {
       super(props, context)
@@ -19,7 +17,7 @@ const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Targ
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         [handlerName]: this.onLayout,
         ...this.state

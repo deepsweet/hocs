@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withSafeTimeout display name should not wrap display name in production env 1`] = `<SafeTimer />`;
+exports[`withSafeTimeout display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    setSafeTimeout={[Function]}
+  />
+</SafeTimer>
+`;
 
 exports[`withSafeTimeout display name should wrap display name in non-production env 1`] = `
 <withSafeTimeout(Target)>

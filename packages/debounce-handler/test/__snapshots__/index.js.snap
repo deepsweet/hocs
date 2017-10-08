@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`debounceHandler display name should not wrap display name in production env 1`] = `<DebounceHandler />`;
+exports[`debounceHandler display name should not wrap display name in production env 1`] = `
+<DebounceHandler>
+  <Target
+    test={[Function]}
+  />
+</DebounceHandler>
+`;
 
 exports[`debounceHandler display name should wrap display name in non-production env 1`] = `
 <debounceHandler(Target)>

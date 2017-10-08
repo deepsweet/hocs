@@ -8,7 +8,13 @@ exports[`withIntersectionObserverProps Intersection Observer API is not supporte
 />
 `;
 
-exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `<WithIntersectionObserverProps />`;
+exports[`withIntersectionObserverProps Intersection Observer API is supported display name should not wrap display name in production env 1`] = `
+<WithIntersectionObserverProps>
+  <Target
+    onRef={[Function]}
+  />
+</WithIntersectionObserverProps>
+`;
 
 exports[`withIntersectionObserverProps Intersection Observer API is supported display name should wrap display name in non-production env 1`] = `
 <withIntersectionObserverProps(Target)>

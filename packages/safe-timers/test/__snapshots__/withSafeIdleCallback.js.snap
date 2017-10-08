@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withSafeIdleCallback display name should not wrap display name in production env 1`] = `<SafeTimer />`;
+exports[`withSafeIdleCallback display name should not wrap display name in production env 1`] = `
+<SafeTimer>
+  <Target
+    requestSafeIdleCallback={[Function]}
+  />
+</SafeTimer>
+`;
 
 exports[`withSafeIdleCallback display name should wrap display name in non-production env 1`] = `
 <withSafeIdleCallback(Target)>

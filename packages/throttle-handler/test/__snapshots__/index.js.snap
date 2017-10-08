@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`throttleHandler display name should not wrap display name in production env 1`] = `<ThrottleHandler />`;
+exports[`throttleHandler display name should not wrap display name in production env 1`] = `
+<ThrottleHandler>
+  <Target
+    undefined={[Function]}
+  />
+</ThrottleHandler>
+`;
 
 exports[`throttleHandler display name should wrap display name in non-production env 1`] = `
 <throttleHandler(Target)>

@@ -7,7 +7,13 @@ exports[`withResizeObserverProps Resize Observer API is not supported should jus
 />
 `;
 
-exports[`withResizeObserverProps Resize Observer API is supported display name should not wrap display name in production env 1`] = `<WithResizeObserverProps />`;
+exports[`withResizeObserverProps Resize Observer API is supported display name should not wrap display name in production env 1`] = `
+<WithResizeObserverProps>
+  <Target
+    onRef={[Function]}
+  />
+</WithResizeObserverProps>
+`;
 
 exports[`withResizeObserverProps Resize Observer API is supported display name should wrap display name in non-production env 1`] = `
 <withResizeObserverProps(Target)>

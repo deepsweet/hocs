@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { createEagerFactory, setDisplayName, wrapDisplayName } from 'recompose'
+import { createElement, Component } from 'react'
+import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const isResizeObserverSupported = typeof global.ResizeObserver === 'function'
 
@@ -7,8 +7,6 @@ const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Targe
   if (!isResizeObserverSupported) {
     return Target
   }
-
-  const factory = createEagerFactory(Target)
 
   class WithResizeObserverProps extends Component {
     constructor (props, context) {
@@ -46,7 +44,7 @@ const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Targe
     }
 
     render () {
-      return factory({
+      return createElement(Target, {
         ...this.props,
         ...this.state,
         [onRefName]: this.onRef
