@@ -44,6 +44,12 @@ export default (methodsArg) => (Target) => {
             methods.onWillUnmount(this.props)
           }
         }
+
+        if (methods.onDidCatch) {
+          this.componentDidCatch = (...args) => {
+            methods.onDidCatch(...args)
+          }
+        }
       }
     }
 

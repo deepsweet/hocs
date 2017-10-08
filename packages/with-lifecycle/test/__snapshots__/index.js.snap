@@ -16,6 +16,20 @@ Array [
 ]
 `;
 
+exports[`withLifecycle as factory onDidCatch 1`] = `
+Array [
+  Array [
+    [Error: oops],
+    Object {
+      "componentStack": "
+    in TargetWithError (created by withLifecycle(TargetWithError))
+    in withLifecycle(TargetWithError) (created by WrapperComponent)
+    in WrapperComponent",
+    },
+  ],
+]
+`;
+
 exports[`withLifecycle as factory onDidMount 1`] = `
 Array [
   Array [
@@ -120,6 +134,20 @@ exports[`withLifecycle as object multiple 2`] = `
 Array [
   Array [
     Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as object onDidCatch 1`] = `
+Array [
+  Array [
+    [Error: oops],
+    Object {
+      "componentStack": "
+    in TargetWithError (created by withLifecycle(TargetWithError))
+    in withLifecycle(TargetWithError) (created by WrapperComponent)
+    in WrapperComponent",
+    },
   ],
 ]
 `;

@@ -4,7 +4,7 @@
 
 Part of a [collection](https://github.com/deepsweet/hocs) of Higher-Order Components for React, especially useful with [Recompose](https://github.com/acdlite/recompose).
 
-Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison with Recompose [`lifecycle`](https://github.com/acdlite/recompose/blob/master/docs/API.md#lifecycle) this HOC provides a handy (and limited) way to use _some_ of [React Component Lifecycle](https://facebook.github.io/react/docs/react-component.html) methods such as:
+Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison with Recompose [`lifecycle`](https://github.com/acdlite/recompose/blob/master/docs/API.md#lifecycle) this HOC provides a handy (and limited) way to use _some_ of [React Component Lifecycle](https://reactjs.org/docs/react-component.html) methods such as:
 
 * `onWillMount(props)`
 * `onDidMount(props)`
@@ -12,6 +12,7 @@ Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison wi
 * `onWillUpdate(props, nextProps)`
 * `onDidUpdate(prevProps, props)`
 * `onWillUnmount(props)`
+* `onDidCatch(error, info)`
 
 So no `this`, `setState` or even `constructor`, you have no direct access to class instance anymore (:tada:).
 

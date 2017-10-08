@@ -86,6 +86,25 @@ describe('withLifecycle', () => {
       expect(mockOnWillUnmount.mock.calls).toMatchSnapshot()
     })
 
+    it('onDidCatch', () => {
+      const mockOnDidCatch = jest.fn()
+      const TargetWithError = () => {
+        throw new Error('oops')
+      }
+      const EnhancedTarget = withLifecycle({ onDidCatch: mockOnDidCatch })(TargetWithError)
+      const consoleError = console.error
+
+      console.error = () => {}
+
+      mount(
+        <EnhancedTarget />
+      )
+
+      console.error = consoleError
+
+      expect(mockOnDidCatch.mock.calls).toMatchSnapshot()
+    })
+
     it('multiple', () => {
       const mockOnWillMount = jest.fn()
       const mockOnDidMount = jest.fn()
@@ -195,6 +214,27 @@ describe('withLifecycle', () => {
       wrapper.unmount()
 
       expect(mockOnWillUnmount.mock.calls).toMatchSnapshot()
+    })
+
+    it('onDidCatch', () => {
+      const mockOnDidCatch = jest.fn()
+      const TargetWithError = () => {
+        throw new Error('oops')
+      }
+      const EnhancedTarget = withLifecycle(
+        () => ({ onDidCatch: mockOnDidCatch })
+      )(TargetWithError)
+      const consoleError = console.error
+
+      console.error = () => {}
+
+      mount(
+        <EnhancedTarget />
+      )
+
+      console.error = consoleError
+
+      expect(mockOnDidCatch.mock.calls).toMatchSnapshot()
     })
 
     it('multiple', () => {
