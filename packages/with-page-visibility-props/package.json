@@ -27,7 +27,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^15.6.1",
+    "react": "^15.6.1 || ^16.0.0",
     "recompose": "^0.26.0"
   }
 }
