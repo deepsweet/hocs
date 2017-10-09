@@ -1,9 +1,10 @@
 {
   "name": "@hocs/omit-props",
-  "version": "0.2.1",
-  "description": "Omit props HOC for React",
+  "version": "0.3.0",
+  "description": "Omit props HOC for React and React Native",
   "keywords": [
     "react",
+    "react-native",
     "hoc",
     "recompose",
     "omit"
