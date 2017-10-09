@@ -1,21 +1,20 @@
 {
   "name": "@hocs/with-log",
-  "library": "withLog",
   "version": "0.2.0",
-  "description": "Console log HOC for React",
+  "description": "Console log HOC for React and React Native",
   "keywords": [
     "react",
+    "react-native",
     "hoc",
     "recompose",
     "log",
     "debug"
   ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "build/node-cjs/index.js",
+  "browser": "build/browser-esm/index.js",
+  "react-native": "build/react-native/index.js",
   "files": [
-    "dist/",
-    "es/",
-    "lib/"
+    "build/"
   ],
   "repository": "deepsweet/hocs",
   "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
