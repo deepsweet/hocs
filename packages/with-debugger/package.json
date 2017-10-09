@@ -1,6 +1,6 @@
 {
   "name": "@hocs/with-debugger",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Debugger HOC for React and React Native",
   "keywords": [
     "react",
