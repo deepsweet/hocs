@@ -1,6 +1,5 @@
 {
   "name": "@hocs/with-intersection-observer-props",
-  "library": "withIntersectionObserverProps",
   "version": "0.3.0",
   "description": "Intersection Observer HOC for React",
   "keywords": [
@@ -10,12 +9,10 @@
     "intersectionobserver",
     "visibility"
   ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "build/node-cjs/index.js",
+  "browser": "build/browser-esm/index.js",
   "files": [
-    "dist/",
-    "es/",
-    "lib/"
+    "build/"
   ],
   "repository": "deepsweet/hocs",
   "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
