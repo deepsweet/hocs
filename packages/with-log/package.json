@@ -1,6 +1,6 @@
 {
   "name": "@hocs/with-log",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Console log HOC for React and React Native",
   "keywords": [
     "react",
