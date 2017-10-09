@@ -1,6 +1,5 @@
 {
   "name": "@hocs/prevent-handlers-default",
-  "library": "preventHandlersDefault",
   "version": "0.2.1",
   "description": "Prevent handlers default HOC for React",
   "keywords": [
@@ -9,12 +8,11 @@
     "recompose",
     "sideeffects"
   ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "build/node-cjs/index.js",
+  "browser": "build/browser-esm/index.js",
+  "react-native": "build/react-native/index.js",
   "files": [
-    "dist/",
-    "es/",
-    "lib/"
+    "build/"
   ],
   "repository": "deepsweet/hocs",
   "author": "Kir Belevich <kir@belevi.ch> (https://github.com/deepsweet)",
