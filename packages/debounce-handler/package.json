@@ -1,9 +1,10 @@
 {
   "name": "@hocs/debounce-handler",
-  "version": "0.2.1",
-  "description": "Debounce handler HOC for React",
+  "version": "0.3.0",
+  "description": "Debounce handler HOC for React and React Native",
   "keywords": [
     "react",
+    "react-native",
     "hoc",
     "recompose",
     "debounce"
