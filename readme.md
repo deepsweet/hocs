@@ -8,7 +8,7 @@ A collection of [Higher-Order Components](https://facebook.github.io/react/docs/
 
 ## Packages
 
-### General purpose
+### Universal
 
 #### :non-potable_water: [omit-props](packages/omit-props)
 
