@@ -1,6 +1,5 @@
 {
   "name": "@hocs/with-resize-observer-props",
-  "library": "withResizeObserverProps",
   "version": "0.3.1",
   "description": "Resize Observer HOC for React",
   "keywords": [
@@ -10,12 +9,8 @@
     "resize",
     "resizeobserver"
   ],
-  "main": "build/server-cjs/index.js",
-  "module": "build/server-esm/index.js",
-  "browser": {
-    "./build/server-cjs/index.js": "./build/browser-cjs/index.js",
-    "./build/server-esm/index.js": "./build/browser-esm/index.js"
-  },
+  "main": "build/node-cjs/index.js",
+  "browser": "build/browser-esm/index.js",
   "files": [
     "build/"
   ],
