@@ -10,7 +10,7 @@
     "layout",
     "dimensions"
   ],
-  "react-native": "build/rn/index.js",
+  "react-native": "build/react-native/index.js",
   "files": [
     "build/"
   ],
