@@ -14,29 +14,14 @@ import webpackDevServer from 'start-webpack-dev-server'
 
 const start = Start(reporter())
 
-export const buildServerESM = (packageName) => {
-  const { babelConfigServerESM } = require('./babel/config')
+export const buildNodeCJS = (packageName) => {
+  const { babelConfigNodeCJS } = require('./babel/config')
 
   return start(
-    files(`packages/${packageName}/build/server-esm/`),
-    clean(),
     files(`packages/${packageName}/src/**/*.js`),
     read(),
-    babel(babelConfigServerESM),
-    write(`packages/${packageName}/build/server-esm/`)
-  )
-}
-
-export const buildServerCJS = (packageName) => {
-  const { babelConfigServerCJS } = require('./babel/config')
-
-  return start(
-    files(`packages/${packageName}/build/server-cjs/`),
-    clean(),
-    files(`packages/${packageName}/src/**/*.js`),
-    read(),
-    babel(babelConfigServerCJS),
-    write(`packages/${packageName}/build/server-cjs/`)
+    babel(babelConfigNodeCJS),
+    write(`packages/${packageName}/build/node-cjs/`)
   )
 }
 
@@ -44,8 +29,6 @@ export const buildBrowserESM = (packageName) => {
   const { babelConfigBrowserESM } = require('./babel/config')
 
   return start(
-    files(`packages/${packageName}/build/browser-esm/`),
-    clean(),
     files(`packages/${packageName}/src/**/*.js`),
     read(),
     babel(babelConfigBrowserESM),
@@ -53,43 +36,28 @@ export const buildBrowserESM = (packageName) => {
   )
 }
 
-export const buildBrowserCJS = (packageName) => {
-  const { babelConfigBrowserCJS } = require('./babel/config')
+export const buildReactNative = (packageName) => {
+  const { babelConfigReactNative } = require('./babel/config')
 
   return start(
-    files(`packages/${packageName}/build/browser-cjs/`),
-    clean(),
     files(`packages/${packageName}/src/**/*.js`),
     read(),
-    babel(babelConfigBrowserCJS),
-    write(`packages/${packageName}/build/browser-cjs/`)
-  )
-}
-
-export const buildRN = (packageName) => {
-  const { babelConfigRN } = require('./babel/config')
-
-  return start(
-    files(`packages/${packageName}/build/rn/`),
-    clean(),
-    files(`packages/${packageName}/src/**/*.js`),
-    read(),
-    babel(babelConfigRN),
-    write(`packages/${packageName}/build/rn/`)
+    babel(babelConfigReactNative),
+    write(`packages/${packageName}/build/react-native/`)
   )
 }
 
 export const build = (packageName) => {
   const pkg = require(`../packages/${packageName}/package.json`)
   const targets = [
-    pkg.main && 'buildServerCJS',
-    pkg.module && 'buildServerESM',
-    pkg.browser && 'buildBrowserCJS',
+    pkg.main && 'buildNodeCJS',
     pkg.browser && 'buildBrowserESM',
-    pkg['react-native'] && 'buildRN'
+    pkg['react-native'] && 'buildReactNative'
   ].filter((target) => target)
 
   return start(
+    files(`packages/${packageName}/build/`),
+    clean(),
     env('NODE_ENV', 'production'),
     parallel(...targets)(packageName)
   )

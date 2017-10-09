@@ -21,40 +21,7 @@ exports.babelConfigBrowserESM = {
   ]
 }
 
-exports.babelConfigBrowserCJS = {
-  babelrc: false,
-  presets: [
-    [
-      'env',
-      {
-        targets: { browsers }
-      }
-    ],
-    'react'
-  ],
-  plugins: [
-    'transform-object-rest-spread'
-  ]
-}
-
-exports.babelConfigServerESM = {
-  babelrc: false,
-  presets: [
-    [
-      'env',
-      {
-        targets: { node },
-        modules: false
-      }
-    ],
-    'react'
-  ],
-  plugins: [
-    'transform-object-rest-spread'
-  ]
-}
-
-exports.babelConfigServerCJS = {
+exports.babelConfigNodeCJS = {
   babelrc: false,
   presets: [
     [
@@ -70,7 +37,7 @@ exports.babelConfigServerCJS = {
   ]
 }
 
-exports.babelConfigRN = {
+exports.babelConfigReactNative = {
   babelrc: false,
   presets: [
     'react-native'
