@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader'
 import Demo from '~/demo/'
 
 const renderDemo = (Component) => render(
-  <AppContainer>
+  <AppContainer warnings={false}>
     <Component />
   </AppContainer>,
   global.document.getElementById('root')
@@ -14,7 +14,5 @@ const renderDemo = (Component) => render(
 renderDemo(Demo)
 
 if (module.hot) {
-  module.hot.accept('~/demo/', () => {
-    renderDemo(require('~/demo/').default)
-  })
+  module.hot.accept('~/demo/', () => renderDemo(Demo))
 }

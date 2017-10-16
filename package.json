@@ -26,7 +26,7 @@
     "raf": "^3.3.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-hot-loader": "^3.0.0-beta.7",
+    "react-hot-loader": "^3.1.1",
     "react-test-renderer": "^16.0.0",
     "recompose": "^0.26.0",
     "start": "^5.1.0",
