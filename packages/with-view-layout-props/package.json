@@ -10,6 +10,7 @@
     "layout",
     "dimensions"
   ],
+  "main": "build/node-cjs/index.js",
   "react-native": "build/react-native/index.js",
   "files": [
     "build/"
