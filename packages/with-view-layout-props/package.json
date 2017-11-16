@@ -1,6 +1,6 @@
 {
   "name": "@hocs/with-view-layout-props",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "View layout dimensions HOC for React Native",
   "keywords": [
     "react",
