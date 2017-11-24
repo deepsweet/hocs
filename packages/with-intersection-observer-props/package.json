@@ -28,6 +28,6 @@
     "recompose": "^0.26.0"
   },
   "devDependencies": {
-    "intersection-observer": "^0.4.0"
+    "intersection-observer": "^0.4.3"
   }
 }

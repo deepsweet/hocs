@@ -28,6 +28,6 @@
     "recompose": "^0.26.0"
   },
   "devDependencies": {
-    "resize-observer-polyfill": "^1.4.2"
+    "resize-observer-polyfill": "^1.5.0"
   }
 }
