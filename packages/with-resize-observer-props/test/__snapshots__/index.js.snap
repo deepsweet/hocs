@@ -64,6 +64,9 @@ Array [
 exports[`withResizeObserverProps Resize Observer API is supported should map observer state to props 2`] = `
 Array [
   Array [
+    Object {},
+  ],
+  Array [
     Object {
       "height": 200,
       "width": 100,

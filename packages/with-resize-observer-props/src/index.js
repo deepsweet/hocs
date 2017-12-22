@@ -12,7 +12,7 @@ const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Targe
     constructor (props, context) {
       super(props, context)
 
-      this.state = {}
+      this.state = mapStateToProps({})
       this.onObserve = this.onObserve.bind(this)
       this.onRef = this.onRef.bind(this)
       this.observer = new global.ResizeObserver(this.onObserve)
