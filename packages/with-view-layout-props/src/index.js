@@ -6,7 +6,7 @@ const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Targ
     constructor (props, context) {
       super(props, context)
 
-      this.state = {}
+      this.state = mapStateToProps({})
       this.onLayout = this.onLayout.bind(this)
     }
 
@@ -19,8 +19,8 @@ const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Targ
     render () {
       return createElement(Target, {
         ...this.props,
-        [handlerName]: this.onLayout,
-        ...this.state
+        ...this.state,
+        [handlerName]: this.onLayout
       })
     }
   }

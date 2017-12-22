@@ -16,9 +16,8 @@ describe('withViewLayoutProps', () => {
   })
 
   it('should map layout dimensions to props', () => {
-    const EnhancedTarget = withViewLayoutProps(
-      ({ width, height, x, y }) => ({ _width: width, _heigth: height, _x: x, _y: y })
-    )(Target)
+    const mockStateToProps = jest.fn((state) => state)
+    const EnhancedTarget = withViewLayoutProps(mockStateToProps)(Target)
     const wrapper = mount(
       <EnhancedTarget />
     )
@@ -35,6 +34,7 @@ describe('withViewLayoutProps', () => {
     })
     wrapper.update()
 
+    expect(mockStateToProps.mock.calls).toMatchSnapshot()
     expect(wrapper.find(Target)).toMatchSnapshot()
   })
 

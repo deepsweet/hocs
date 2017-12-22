@@ -17,12 +17,28 @@ exports[`withViewLayoutProps display name should wrap display name in non-produc
 `;
 
 exports[`withViewLayoutProps should map layout dimensions to props 1`] = `
+Array [
+  Array [
+    Object {},
+  ],
+  Array [
+    Object {
+      "height": 2,
+      "width": 1,
+      "x": 3,
+      "y": 4,
+    },
+  ],
+]
+`;
+
+exports[`withViewLayoutProps should map layout dimensions to props 2`] = `
 <Target
-  _heigth={2}
-  _width={1}
-  _x={3}
-  _y={4}
+  height={2}
   onLayout={[Function]}
+  width={1}
+  x={3}
+  y={4}
 />
 `;
 
