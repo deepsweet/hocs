@@ -20,7 +20,11 @@ exports[`debounceHandler should call \`e.persist()\` if it has been passed 1`] =
 Array [
   Array [
     Object {
-      "persist": [Function],
+      "persist": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      },
     },
   ],
 ]
