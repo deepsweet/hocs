@@ -1,8 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import debounceHandler from '../src/'
-
 const Target = () => null
 
 describe('debounceHandler', () => {
