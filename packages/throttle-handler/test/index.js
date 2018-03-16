@@ -28,7 +28,7 @@ describe('throttleHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a', 'b', 'c')
+    testHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })
@@ -56,7 +56,7 @@ describe('throttleHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a')
+    testHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })
@@ -69,7 +69,7 @@ describe('throttleHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a')
+    testHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })

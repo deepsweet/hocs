@@ -30,7 +30,7 @@ describe('debounceHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a', 'b', 'c')
+    testHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
@@ -58,7 +58,7 @@ describe('debounceHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a')
+    testHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
@@ -71,7 +71,7 @@ describe('debounceHandler', () => {
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
 
-    testHandler('a')
+    testHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
