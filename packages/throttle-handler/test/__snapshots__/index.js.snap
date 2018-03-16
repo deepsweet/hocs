@@ -19,13 +19,9 @@ exports[`throttleHandler display name should wrap display name in non-production
 exports[`throttleHandler should call \`e.persist()\` if it has been passed 1`] = `
 Array [
   Array [
-    Object {
-      "persist": [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-      },
-    },
+    [MockFunction],
+    undefined,
+    undefined,
   ],
 ]
 `;
@@ -36,49 +32,32 @@ Array [
 ]
 `;
 
+exports[`throttleHandler should pass \`interval\` option to \`just-throttle\` 1`] = `
+Array [
+  Array [
+    [MockFunction],
+    75,
+    undefined,
+  ],
+]
+`;
+
+exports[`throttleHandler should pass \`leadingCall\` option to \`just-throttle\` 1`] = `
+Array [
+  Array [
+    [MockFunction],
+    75,
+    true,
+  ],
+]
+`;
+
 exports[`throttleHandler should pass handler arguments through 1`] = `
 Array [
   Array [
-    "a",
-    "b",
-    "c",
-  ],
-]
-`;
-
-exports[`throttleHandler should throttle handler with \`interval\` option 1`] = `
-Array [
-  Array [
-    "a",
-  ],
-  Array [
-    "d",
-  ],
-  Array [
-    "f",
-  ],
-]
-`;
-
-exports[`throttleHandler should throttle handler with \`leadingCall\` option 1`] = `
-Array [
-  Array [
-    "a",
-  ],
-  Array [
-    "a",
-  ],
-  Array [
-    "d",
-  ],
-  Array [
-    "d",
-  ],
-  Array [
-    "f",
-  ],
-  Array [
-    "f",
+    [MockFunction],
+    undefined,
+    undefined,
   ],
 ]
 `;
