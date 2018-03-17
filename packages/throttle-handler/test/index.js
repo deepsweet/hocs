@@ -29,6 +29,7 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })
@@ -43,6 +44,7 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler({ persist: mockPersist })
+    mockTestHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
     expect(mockPersist.mock.calls).toMatchSnapshot()
@@ -57,6 +59,7 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })
@@ -70,6 +73,7 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })

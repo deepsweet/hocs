@@ -29,6 +29,7 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
@@ -43,12 +44,13 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler({ persist: mockPersist })
+    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
     expect(mockPersist.mock.calls).toMatchSnapshot()
   })
 
-  it('should debounce handler with `delay` option', () => {
+  it('should pass `delay` option to `just-debounce-it`', () => {
     const EnhancedTarget = debounceHandler('testHandler', 75)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
@@ -57,11 +59,12 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
 
-  it('should debounce handler with `leadingCall` option', () => {
+  it('should pass `leadingCall` option to `just-debounce-it`', () => {
     const EnhancedTarget = debounceHandler('testHandler', 75, true)(Target)
     const mockTestHandler = jest.fn()
     const wrapper = mount(
@@ -70,6 +73,7 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
+    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })

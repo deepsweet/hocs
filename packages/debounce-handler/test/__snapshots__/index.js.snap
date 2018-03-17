@@ -19,7 +19,11 @@ exports[`debounceHandler display name should wrap display name in non-production
 exports[`debounceHandler should call \`e.persist()\` if it has been passed 1`] = `
 Array [
   Array [
-    [MockFunction],
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    },
     undefined,
     undefined,
   ],
@@ -32,20 +36,28 @@ Array [
 ]
 `;
 
-exports[`debounceHandler should debounce handler with \`delay\` option 1`] = `
+exports[`debounceHandler should pass \`delay\` option to \`just-debounce-it\` 1`] = `
 Array [
   Array [
-    [MockFunction],
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    },
     75,
     undefined,
   ],
 ]
 `;
 
-exports[`debounceHandler should debounce handler with \`leadingCall\` option 1`] = `
+exports[`debounceHandler should pass \`leadingCall\` option to \`just-debounce-it\` 1`] = `
 Array [
   Array [
-    [MockFunction],
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    },
     75,
     true,
   ],
@@ -55,7 +67,11 @@ Array [
 exports[`debounceHandler should pass handler arguments through 1`] = `
 Array [
   Array [
-    [MockFunction],
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    },
     undefined,
     undefined,
   ],
