@@ -8,16 +8,16 @@ exports.babelConfigBrowserESM = {
   babelrc: false,
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
         targets: { browsers },
         modules: false
       }
     ],
-    'react'
+    '@babel/preset-react'
   ],
   plugins: [
-    'transform-object-rest-spread'
+    '@babel/plugin-proposal-object-rest-spread',
   ]
 }
 
@@ -25,15 +25,15 @@ exports.babelConfigNodeCJS = {
   babelrc: false,
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
         targets: { node }
       }
     ],
-    'react'
+    '@babel/preset-react'
   ],
   plugins: [
-    'transform-object-rest-spread'
+    '@babel/plugin-proposal-object-rest-spread',
   ]
 }
 
@@ -43,7 +43,7 @@ exports.babelConfigReactNative = {
     'react-native'
   ],
   plugins: [
-    'transform-object-rest-spread'
+    '@babel/plugin-proposal-object-rest-spread',
   ]
 }
 
@@ -51,16 +51,16 @@ exports.babelConfigJest = {
   babelrc: false,
   presets: [
     [
-      'env',
+      '@babel/env',
       {
         targets: {
           node: 'current'
         }
       }
     ],
-    'react'
+    '@babel/preset-react'
   ],
   plugins: [
-    'transform-object-rest-spread'
+    '@babel/plugin-proposal-object-rest-spread',
   ]
 }
