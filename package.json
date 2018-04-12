@@ -18,7 +18,7 @@
     "@start/plugin-lib-babel": "^0.1.0-0",
     "@start/plugin-lib-eslint": "^0.1.0-0",
     "@start/plugin-lib-jest": "^0.1.0-0",
-    "@start/plugin-lib-webpack-serve": "^0.1.0-0",
+    "@start/plugin-lib-webpack-serve": "^0.1.0-1",
     "@start/plugin-parallel": "^0.1.0-3",
     "@start/plugin-read": "^0.1.0-2",
     "@start/plugin-remove": "^0.1.0-1",
