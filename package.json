@@ -8,22 +8,23 @@
     "babel-core": "^7.0.0-bridge.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/preset-env": "^7.0.0-beta.42",
-    "@babel/preset-react": "^7.0.0-beta.42",
-    "@babel/register": "^7.0.0-beta.42",
-    "@start/cli": "^0.1.0-0",
-    "@start/plugin-babel": "^0.1.0-0",
-    "@start/plugin-clean": "^0.1.0-0",
-    "@start/plugin-env": "^0.1.0-0",
-    "@start/plugin-eslint": "^0.1.0-0",
-    "@start/plugin-find": "^0.1.0-0",
-    "@start/plugin-jest": "^0.1.0-0",
-    "@start/plugin-parallel": "^0.1.0-0",
-    "@start/plugin-read": "^0.1.0-0",
-    "@start/plugin-webpack-serve": "^0.1.0-0",
-    "@start/plugin-write": "^0.1.0-0",
-    "@start/reporter": "^0.1.0-0",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-react": "^7.0.0-beta.44",
+    "@babel/register": "^7.0.0-beta.44",
+    "@start/cli": "^0.1.0-2",
+    "@start/plugin-env": "^0.1.0-2",
+    "@start/plugin-find": "^0.1.0-2",
+    "@start/plugin-lib-babel": "^0.1.0-0",
+    "@start/plugin-lib-eslint": "^0.1.0-0",
+    "@start/plugin-lib-jest": "^0.1.0-0",
+    "@start/plugin-lib-webpack-serve": "^0.1.0-0",
+    "@start/plugin-parallel": "^0.1.0-3",
+    "@start/plugin-read": "^0.1.0-2",
+    "@start/plugin-remove": "^0.1.0-1",
+    "@start/plugin-sequence": "^0.1.0-1",
+    "@start/plugin-write": "^0.1.0-2",
+    "@start/reporter-verbose": "^0.1.0-1",
     "@start/task": "^0.1.0-0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^22.1.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
+    "esm": "^3.0.17",
     "html-webpack-plugin": "^3.0.6",
     "raf": "^3.3.2",
     "react": "^16.2.0",
@@ -50,8 +52,10 @@
   },
   "start": {
     "require": [
+      "esm",
       "@babel/register"
-    ]
+    ],
+    "reporter": "@start/reporter-verbose"
   },
   "babel": {
     "presets": [
