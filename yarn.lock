@@ -2675,8 +2675,8 @@ eslint@^4.18.2:
     text-table "~0.2.0"
 
 esm@^3.0.17:
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.17.tgz#09ff38ed2a5317821372322909063f6a4271a083"
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.18.tgz#afdde98572af447637dc1a2841606945aa02dad0"
 
 espree@^3.5.4:
   version "3.5.4"
