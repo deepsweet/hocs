@@ -66,6 +66,7 @@ export const lint = () =>
       'tasks/**/*.js',
       'packages/*/@(src|test|demo)/**/*.js'
     ]),
+    read,
     eslint()
   )
 
