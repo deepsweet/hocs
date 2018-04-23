@@ -94,7 +94,7 @@ You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.
 4. Put tests written with Jest in `with-foo/test/`.
 5. Put demo in `with-foo/demo/`, it will be rendered and wrapped with HMR.
 
-Available scripts using [Start](https://github.com/start-runner/start):
+Available commands using [Start](https://github.com/deepsweet/start):
 
 ```
 yarn start build <package>
