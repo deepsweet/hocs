@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
-import React from 'react';
-import { compose, withState, withHandlers } from 'recompose';
+import React from 'react'
+import { compose, withState, withHandlers } from 'recompose'
 
-import preventHandlersDefault from '../src/';
+import preventHandlersDefault from '../src/'
 
-const submitAction = (value) => console.log(`Submit: ${value}`);
+const submitAction = (value) => console.log(`Submit: ${value}`)
 
 const Demo = ({ value, onChange, onSubmit }) => (
   <form onSubmit={onSubmit}>
-    <input value={value} onChange={onChange}/>
+    <input value={value} onChange={onChange} />
     <button>Submit</button>
   </form>
-);
+)
 
 export default compose(
   withState('value', 'setValue', ''),
@@ -20,4 +20,4 @@ export default compose(
     onSubmit: ({ value }) => () => submitAction(value)
   }),
   preventHandlersDefault('onSubmit')
-)(Demo);
+)(Demo)
