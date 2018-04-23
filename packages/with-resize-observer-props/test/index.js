@@ -1,4 +1,5 @@
 /* eslint-disable react/no-multi-comp */
+/* eslint-disable react/display-name */
 import React from 'react'
 import { compose } from 'recompose'
 import { mount } from 'enzyme'

@@ -7,7 +7,7 @@ export default (packageName) => ({
   mode: 'development',
   entry: path.resolve('tasks/demo/index.js'),
   output: {
-    publicPath: '/',
+    publicPath: '/'
   },
   devtool: 'cheap-module-source-map',
   resolve: {

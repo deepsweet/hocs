@@ -17,7 +17,7 @@ exports.babelConfigBrowserESM = {
     '@babel/preset-react'
   ],
   plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-object-rest-spread'
   ]
 }
 
@@ -33,7 +33,7 @@ exports.babelConfigNodeCJS = {
     '@babel/preset-react'
   ],
   plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-object-rest-spread'
   ]
 }
 
@@ -43,7 +43,7 @@ exports.babelConfigReactNative = {
     'react-native'
   ],
   plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-object-rest-spread'
   ]
 }
 
@@ -61,6 +61,6 @@ exports.babelConfigJest = {
     '@babel/preset-react'
   ],
   plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-object-rest-spread'
   ]
 }
