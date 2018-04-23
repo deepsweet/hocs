@@ -1,6 +1,6 @@
 import React from 'react'
 import { compose } from 'recompose'
-import withLog from '@hocs/with-log'
+import withLog from '@hocs/with-log/src/'
 
 import withPageVisibilityProps from '../src/'
 
