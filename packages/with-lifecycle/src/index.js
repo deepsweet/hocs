@@ -9,6 +9,10 @@ export default (methodsArg) => (Target) => {
       const methods = typeof methodsArg === 'function' ? methodsArg(props) : methodsArg
 
       if (methods) {
+        if (methods.onConstructor) {
+          methods.onConstructor(props)
+        }
+
         if (methods.onWillMount) {
           this.componentWillMount = () => {
             methods.onWillMount(this.props)

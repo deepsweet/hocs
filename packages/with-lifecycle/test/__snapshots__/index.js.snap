@@ -16,6 +16,17 @@ Array [
 ]
 `;
 
+exports[`withLifecycle as factory onConstructor 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+]
+`;
+
 exports[`withLifecycle as factory onDidCatch 1`] = `
 Array [
   Array [
@@ -134,6 +145,17 @@ exports[`withLifecycle as object multiple 2`] = `
 Array [
   Array [
     Object {},
+  ],
+]
+`;
+
+exports[`withLifecycle as object onConstructor 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
   ],
 ]
 `;

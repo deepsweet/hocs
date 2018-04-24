@@ -16,6 +16,17 @@ describe('withLifecycle', () => {
   })
 
   describe('as object', () => {
+    it('onConstructor', () => {
+      const mockOnConstructor = jest.fn()
+      const EnhancedTarget = withLifecycle({ onConstructor: mockOnConstructor })(Target)
+
+      mount(
+        <EnhancedTarget a={1} b={2} />
+      )
+
+      expect(mockOnConstructor.mock.calls).toMatchSnapshot()
+    })
+
     it('onWillMount', () => {
       const mockOnWillMount = jest.fn()
       const EnhancedTarget = withLifecycle({ onWillMount: mockOnWillMount })(Target)
@@ -132,6 +143,19 @@ describe('withLifecycle', () => {
       )
 
       expect(mockFactory.mock.calls).toMatchSnapshot()
+    })
+
+    it('onConstructor', () => {
+      const mockOnConstructor = jest.fn()
+      const EnhancedTarget = withLifecycle(
+        () => ({ onConstructor: mockOnConstructor })
+      )(Target)
+
+      mount(
+        <EnhancedTarget a={1} b={2} />
+      )
+
+      expect(mockOnConstructor.mock.calls).toMatchSnapshot()
     })
 
     it('onWillMount', () => {
