@@ -1,5 +1,3 @@
-import path from 'path'
-
 const jestConfig = {
   rootDir: '.',
   roots: [
@@ -17,13 +15,13 @@ const jestConfig = {
     'text-summary'
   ],
   transform: {
-    '\\.jsx?$': path.resolve('./tasks/jest/transformer')
+    '\\.jsx?$': './tasks/jest/transformer'
   },
   snapshotSerializers: [
     'enzyme-to-json/serializer'
   ],
   setupFiles: [
-    path.resolve('./tasks/jest/setup')
+    './tasks/jest/setup'
   ],
   cacheDirectory: 'node_modules/.cache/jest'
 }
