@@ -51,7 +51,7 @@ exports.babelConfigJest = {
   babelrc: false,
   presets: [
     [
-      '@babel/env',
+      '@babel/preset-env',
       {
         targets: {
           node: 'current'
