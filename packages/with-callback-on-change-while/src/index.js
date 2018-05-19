@@ -3,12 +3,19 @@ import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const withCallbackOnChangeWhile = (propName, shouldCall, callback) => (Target) => {
   class WithCallbackOnChangeWhile extends Component {
-    componentWillReceiveProps (nextProps) {
-      if (
-        this.props[propName] !== nextProps[propName] &&
-        shouldCall(nextProps) === true
-      ) {
+    static getDerivedStateFromProps (nextProps, prevState) {
+      if (prevState[propName] !== nextProps[propName] && shouldCall(nextProps) === true) {
         callback(nextProps)
+      }
+
+      return null
+    }
+
+    constructor (props, context) {
+      super(props, context)
+
+      this.state = {
+        [propName]: props[propName]
       }
     }
 
