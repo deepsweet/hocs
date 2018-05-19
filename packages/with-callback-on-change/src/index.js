@@ -3,9 +3,19 @@ import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const withCallbackOnChange = (propName, callback) => (Target) => {
   class WithCallbackOnChange extends Component {
-    componentWillReceiveProps (nextProps) {
-      if (this.props[propName] !== nextProps[propName]) {
+    static getDerivedStateFromProps (nextProps, prevState) {
+      if (prevState[propName] !== nextProps[propName]) {
         callback(nextProps)
+      }
+
+      return null
+    }
+
+    constructor (props, context) {
+      super(props, context)
+
+      this.state = {
+        [propName]: props[propName]
       }
     }
 
