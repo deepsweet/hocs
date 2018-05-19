@@ -4,9 +4,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "resolutions": {
-    "babel-core": "^7.0.0-bridge.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.47",
@@ -28,7 +25,6 @@
     "@start/plugin-write": "^0.1.1",
     "@start/reporter-verbose": "^0.1.0",
     "@start/task": "^0.1.0-0",
-    "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.4.4",
     "babel-loader": "^8.0.0-0",
