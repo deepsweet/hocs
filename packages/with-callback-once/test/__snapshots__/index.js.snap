@@ -14,28 +14,7 @@ exports[`withCallbackOnce display name should wrap display name in non-productio
 
 exports[`withCallbackOnce should invoke a callback when condition status has been changed 1`] = `Array []`;
 
-exports[`withCallbackOnce should invoke a callback when condition status has been changed 2`] = `Array []`;
-
-exports[`withCallbackOnce should invoke a callback when condition status has been changed 3`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
-    },
-  ],
-  Array [
-    Object {
-      "a": 11,
-      "b": 2,
-      "c": 3,
-    },
-  ],
-]
-`;
-
-exports[`withCallbackOnce should invoke a callback when condition status has been changed 4`] = `
+exports[`withCallbackOnce should invoke a callback when condition status has been changed 2`] = `
 Array [
   Array [
     Object {
@@ -50,20 +29,6 @@ Array [
 exports[`withCallbackOnce should no-op if condition status is the same 1`] = `Array []`;
 
 exports[`withCallbackOnce should no-op if condition status is the same 2`] = `Array []`;
-
-exports[`withCallbackOnce should no-op if condition status is the same 3`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
-    },
-  ],
-]
-`;
-
-exports[`withCallbackOnce should no-op if condition status is the same 4`] = `Array []`;
 
 exports[`withCallbackOnce should pass props through 1`] = `
 <withCallbackOnce(Target)

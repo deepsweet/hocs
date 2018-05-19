@@ -16,32 +16,28 @@ describe('withCallbackOnce', () => {
   })
 
   it('should invoke a callback when condition status has been changed', () => {
-    const mockShouldCall = jest.fn(() => true).mockImplementationOnce(() => false)
+    const shouldCall = ({ a }) => a === 11
     const mockCallback = jest.fn()
-    const EnhancedTarget = withCallbackOnce(mockShouldCall, mockCallback)(Target)
+    const EnhancedTarget = withCallbackOnce(shouldCall, mockCallback)(Target)
     const wrapper = mount(
       <EnhancedTarget a={1} b={2} c={3} />
     )
 
-    expect(mockShouldCall.mock.calls).toMatchSnapshot()
     expect(mockCallback.mock.calls).toMatchSnapshot()
     wrapper.setProps({ a: 11 })
-    expect(mockShouldCall.mock.calls).toMatchSnapshot()
     expect(mockCallback.mock.calls).toMatchSnapshot()
   })
 
   it('should no-op if condition status is the same', () => {
-    const mockShouldCall = jest.fn(() => true)
+    const shouldCall = ({ b }) => b === 3
     const mockCallback = jest.fn()
-    const EnhancedTarget = withCallbackOnce(mockShouldCall, mockCallback)(Target)
+    const EnhancedTarget = withCallbackOnce(shouldCall, mockCallback)(Target)
     const wrapper = mount(
       <EnhancedTarget a={1} b={2} c={3} />
     )
 
-    expect(mockShouldCall.mock.calls).toMatchSnapshot()
     expect(mockCallback.mock.calls).toMatchSnapshot()
     wrapper.setProps({ a: 11 })
-    expect(mockShouldCall.mock.calls).toMatchSnapshot()
     expect(mockCallback.mock.calls).toMatchSnapshot()
   })
 

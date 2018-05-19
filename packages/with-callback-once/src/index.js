@@ -3,13 +3,22 @@ import { setDisplayName, wrapDisplayName } from 'recompose'
 
 const withCallbackOnce = (shouldCall, callback) => (Target) => {
   class WithCallbackOnce extends Component {
-    componentWillReceiveProps (nextProps) {
+    static getDerivedStateFromProps (nextProps, prevState) {
       if (
-        shouldCall(this.props) === false &&
+        typeof shouldCall === 'function' &&
+        shouldCall(prevState) === false &&
         shouldCall(nextProps) === true
       ) {
         callback(nextProps)
       }
+
+      return null
+    }
+
+    constructor (props, context) {
+      super(props, context)
+
+      this.state = props
     }
 
     render () {
