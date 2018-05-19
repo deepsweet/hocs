@@ -31,7 +31,6 @@ export default (packageName) => ({
             options: {
               ...babelConfigBrowserESM,
               plugins: [
-                ...babelConfigBrowserESM.plugins,
                 'react-hot-loader/babel'
               ],
               cacheDirectory: true
