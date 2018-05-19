@@ -49,28 +49,16 @@ describe('withLifecycle', () => {
       expect(mockOnDidMount.mock.calls).toMatchSnapshot()
     })
 
-    it('onWillReceiveProps', () => {
-      const mockOnWillReceiveProps = jest.fn()
-      const EnhancedTarget = withLifecycle({ onWillReceiveProps: mockOnWillReceiveProps })(Target)
+    it('onReceiveProps', () => {
+      const mockOnReceiveProps = jest.fn()
+      const EnhancedTarget = withLifecycle({ onReceiveProps: mockOnReceiveProps })(Target)
       const wrapper = mount(
         <EnhancedTarget a={1} b={2} />
       )
 
       wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot()
-    })
-
-    it('onWillUpdate', () => {
-      const mockOnWillUpdate = jest.fn()
-      const EnhancedTarget = withLifecycle({ onWillUpdate: mockOnWillUpdate })(Target)
-      const wrapper = mount(
-        <EnhancedTarget a={1} b={2} />
-      )
-
-      wrapper.setProps({ c: 3 })
-
-      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot()
+      expect(mockOnReceiveProps.mock.calls).toMatchSnapshot()
     })
 
     it('onDidUpdate', () => {
@@ -184,10 +172,10 @@ describe('withLifecycle', () => {
       expect(mockOnDidMount.mock.calls).toMatchSnapshot()
     })
 
-    it('onWillReceiveProps', () => {
-      const mockOnWillReceiveProps = jest.fn()
+    it('onReceiveProps', () => {
+      const mockOnReceiveProps = jest.fn()
       const EnhancedTarget = withLifecycle(
-        () => ({ onWillReceiveProps: mockOnWillReceiveProps })
+        () => ({ onReceiveProps: mockOnReceiveProps })
       )(Target)
       const wrapper = mount(
         <EnhancedTarget a={1} b={2} />
@@ -195,21 +183,7 @@ describe('withLifecycle', () => {
 
       wrapper.setProps({ c: 3 })
 
-      expect(mockOnWillReceiveProps.mock.calls).toMatchSnapshot()
-    })
-
-    it('onWillUpdate', () => {
-      const mockOnWillUpdate = jest.fn()
-      const EnhancedTarget = withLifecycle(
-        () => ({ onWillUpdate: mockOnWillUpdate })
-      )(Target)
-      const wrapper = mount(
-        <EnhancedTarget a={1} b={2} />
-      )
-
-      wrapper.setProps({ c: 3 })
-
-      expect(mockOnWillUpdate.mock.calls).toMatchSnapshot()
+      expect(mockOnReceiveProps.mock.calls).toMatchSnapshot()
     })
 
     it('onDidUpdate', () => {

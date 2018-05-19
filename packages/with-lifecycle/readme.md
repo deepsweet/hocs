@@ -9,7 +9,7 @@ Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison wi
 * `onConstructor(props)`
 * `onWillMount(props)`
 * `onDidMount(props)`
-* `onWillReceiveProps(props, nextProps)`
+* `onReceiveProps(props, nextProps)`
 * `onWillUpdate(props, nextProps)`
 * `onDidUpdate(prevProps, props)`
 * `onWillUnmount(props)`
@@ -48,7 +48,7 @@ export default compose(
         setTimeout(() => setLoading(false), 3000);
       })
     },
-    onWillReceiveProps(props, nextProps) {
+    onReceiveProps(props, nextProps) {
       console.log(`isLoading: ${props.isLoading} → ${nextProps.isLoading}`);
     }
   })

@@ -25,15 +25,13 @@ export default (methodsArg) => (Target) => {
           }
         }
 
-        if (methods.onWillReceiveProps) {
-          this.componentWillReceiveProps = (nextProps) => {
-            methods.onWillReceiveProps(this.props, nextProps)
-          }
-        }
+        if (methods.onReceiveProps) {
+          this.state = props
 
-        if (methods.onWillUpdate) {
-          this.componentWillUpdate = (nextProps) => {
-            methods.onWillUpdate(this.props, nextProps)
+          WithLifecycle.getDerivedStateFromProps = (nextProps, prevState) => {
+            methods.onReceiveProps(prevState, nextProps)
+
+            return null
           }
         }
 

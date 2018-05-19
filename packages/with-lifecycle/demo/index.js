@@ -16,7 +16,7 @@ export default compose(
         setTimeout(() => setLoading(false), 3000)
       })
     },
-    onWillReceiveProps (props, nextProps) {
+    onReceiveProps (props, nextProps) {
       console.log(`isLoading: ${props.isLoading} → ${nextProps.isLoading}`)
     }
   })

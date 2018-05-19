@@ -68,6 +68,32 @@ Array [
 ]
 `;
 
+exports[`withLifecycle as factory onReceiveProps 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
 exports[`withLifecycle as factory onWillMount 1`] = `
 Array [
   Array [
@@ -79,44 +105,12 @@ Array [
 ]
 `;
 
-exports[`withLifecycle as factory onWillReceiveProps 1`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
-    },
-  ],
-]
-`;
-
 exports[`withLifecycle as factory onWillUnmount 1`] = `
 Array [
   Array [
     Object {
       "a": 1,
       "b": 2,
-    },
-  ],
-]
-`;
-
-exports[`withLifecycle as factory onWillUpdate 1`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
     },
   ],
 ]
@@ -201,6 +195,32 @@ Array [
 ]
 `;
 
+exports[`withLifecycle as object onReceiveProps 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+  ],
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
 exports[`withLifecycle as object onWillMount 1`] = `
 Array [
   Array [
@@ -212,44 +232,12 @@ Array [
 ]
 `;
 
-exports[`withLifecycle as object onWillReceiveProps 1`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
-    },
-  ],
-]
-`;
-
 exports[`withLifecycle as object onWillUnmount 1`] = `
 Array [
   Array [
     Object {
       "a": 1,
       "b": 2,
-    },
-  ],
-]
-`;
-
-exports[`withLifecycle as object onWillUpdate 1`] = `
-Array [
-  Array [
-    Object {
-      "a": 1,
-      "b": 2,
-    },
-    Object {
-      "a": 1,
-      "b": 2,
-      "c": 3,
     },
   ],
 ]
