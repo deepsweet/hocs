@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 import debounce from 'just-debounce-it'
 
 const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
@@ -27,7 +27,7 @@ const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'debounceHandler'))(DebounceHandler)
+    DebounceHandler.displayName = `debounceHandler(${getDisplayName(Target)})`
   }
 
   return DebounceHandler

@@ -1,6 +1,6 @@
 /* eslint-disable max-params */
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const safeTimerFactory = (setFn, clearFn, propName, hocName) => (Target) => {
   class SafeTimer extends Component {
@@ -35,7 +35,7 @@ const safeTimerFactory = (setFn, clearFn, propName, hocName) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, hocName))(SafeTimer)
+    SafeTimer.displayName = `${hocName}(${getDisplayName(Target)})`
   }
 
   return SafeTimer

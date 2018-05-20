@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 import json2mq from 'json2mq'
 
 const isMatchMediaSupported = typeof global.matchMedia === 'function'
@@ -59,7 +59,7 @@ const withMatchMediaProps = (propsQieries = {}) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withMatchMediaProps'))(WithMatchMediaProps)
+    WithMatchMediaProps.displayName = `withMatchMediaProps(${getDisplayName(Target)})`
   }
 
   return WithMatchMediaProps

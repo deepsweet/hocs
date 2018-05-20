@@ -24,7 +24,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
-    "recompose": "^0.27.0"
+    "react": "^16.3.0"
+  },
+  "dependencies": {
+    "react-display-name": "^0.2.4"
   }
 }

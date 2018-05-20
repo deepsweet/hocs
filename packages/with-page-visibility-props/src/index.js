@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const isPageVisibiitySupported = global.document &&
                                  typeof global.document.visibilityState !== 'undefined'
@@ -51,9 +51,7 @@ const withPageVisibilityProps = (mapStatusToProps) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(
-      wrapDisplayName(Target, 'withPageVisibilityProps')
-    )(WithPageVisibilityProps)
+    WithPageVisibilityProps.displayName = `withPageVisibilityProps(${getDisplayName(Target)})`
   }
 
   return WithPageVisibilityProps

@@ -9,7 +9,7 @@ Injects `console.log` with props or any custom message into render.
 ## Install
 
 ```
-yarn add recompose @hocs/with-log
+yarn add @hocs/with-log
 ```
 
 ## Usage

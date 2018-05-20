@@ -17,7 +17,7 @@ Dynamically map page visibility status to props using [Page Visibility API](http
 ## Install
 
 ```
-yarn add recompose @hocs/with-page-visibility-props
+yarn add @hocs/with-page-visibility-props
 ```
 
 ## Usage

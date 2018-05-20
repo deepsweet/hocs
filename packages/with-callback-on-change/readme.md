@@ -9,7 +9,7 @@ Invokes a callback on prop change, useful to decouple side effects like `onChang
 ## Install
 
 ```
-yarn add recompose @hocs/with-callback-on-change
+yarn add @hocs/with-callback-on-change
 ```
 
 ## Usage

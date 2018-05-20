@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const preventHandlersDefault = (...handlers) => (Target) => {
   class PreventHandlersDefault extends Component {
@@ -30,9 +30,7 @@ const preventHandlersDefault = (...handlers) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(
-      wrapDisplayName(Target, 'preventHandlersDefault')
-    )(PreventHandlersDefault)
+    PreventHandlersDefault.displayName = `preventHandlersDefault(${getDisplayName(Target)})`
   }
 
   return PreventHandlersDefault

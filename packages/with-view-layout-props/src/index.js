@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Target) => {
   class WithViewLayoutProps extends Component {
@@ -26,7 +26,7 @@ const withViewLayoutProps = (mapStateToProps, handlerName = 'onLayout') => (Targ
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withViewLayoutProps'))(WithViewLayoutProps)
+    WithViewLayoutProps.displayName = `withViewLayoutProps(${getDisplayName(Target)})`
   }
 
   return WithViewLayoutProps

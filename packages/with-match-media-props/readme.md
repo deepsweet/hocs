@@ -9,7 +9,7 @@ Dynamically map [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web
 ## Install
 
 ```
-yarn add recompose @hocs/with-match-media-props
+yarn add @hocs/with-match-media-props
 ```
 
 ## Usage

@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const isOnlineStatusSupported = global.navigator && typeof global.navigator.onLine !== 'undefined'
 
@@ -57,7 +57,7 @@ const withOnlineStatusProps = (mapStatusToProps) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withOnlineStatusProps'))(WithOnlineStatusProps)
+    WithOnlineStatusProps.displayName = `withOnlineStatusProps(${getDisplayName(Target)})`
   }
 
   return WithOnlineStatusProps

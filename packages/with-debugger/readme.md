@@ -9,7 +9,7 @@ Injects `debugger` into render.
 ## Install
 
 ```
-yarn add recompose @hocs/with-debugger
+yarn add @hocs/with-debugger
 ```
 
 ## Usage

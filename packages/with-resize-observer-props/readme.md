@@ -9,7 +9,7 @@ Dynamically map *component* size and position changes to props using [Resize Obs
 ## Install
 
 ```
-yarn add recompose @hocs/with-resize-observer-props
+yarn add @hocs/with-resize-observer-props
 ```
 
 ## Usage

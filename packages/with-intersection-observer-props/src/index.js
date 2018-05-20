@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const isIntersectionObserverSupported = typeof global.IntersectionObserver === 'function'
 
@@ -59,9 +59,7 @@ const withIntersectionObserverProps = (thresholds, options, onRefName = 'onRef')
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(
-      wrapDisplayName(Target, 'withIntersectionObserverProps')
-    )(WithIntersectionObserverProps)
+    WithIntersectionObserverProps.displayName = `withIntersectionObserverProps(${getDisplayName(Target)})`
   }
 
   return WithIntersectionObserverProps

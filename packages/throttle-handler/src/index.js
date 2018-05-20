@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 import throttle from 'just-throttle'
 
 const throttleHandler = (handlerName, interval, leadingCall) => (Target) => {
@@ -27,7 +27,7 @@ const throttleHandler = (handlerName, interval, leadingCall) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'throttleHandler'))(ThrottleHandler)
+    ThrottleHandler.displayName = `throttleHandler(${getDisplayName(Target)})`
   }
 
   return ThrottleHandler

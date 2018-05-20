@@ -9,7 +9,7 @@ Helps to debounce handlers like `onChange`.
 ## Install
 
 ```
-yarn add recompose @hocs/debounce-handler
+yarn add @hocs/debounce-handler
 ```
 
 ## Usage

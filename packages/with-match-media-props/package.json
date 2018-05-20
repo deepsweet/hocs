@@ -24,10 +24,10 @@
     "access": "public"
   },
   "dependencies": {
-    "json2mq": "^0.2.0"
+    "json2mq": "^0.2.0",
+    "react-display-name": "^0.2.4"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
-    "recompose": "^0.27.0"
+    "react": "^16.3.0"
   }
 }

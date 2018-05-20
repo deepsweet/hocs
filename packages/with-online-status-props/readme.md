@@ -9,7 +9,7 @@ Dynamically map online/offline status to props using [`navigator.onLine`](https:
 ## Install
 
 ```
-yarn add recompose @hocs/with-online-status-props
+yarn add @hocs/with-online-status-props
 ```
 
 ## Usage

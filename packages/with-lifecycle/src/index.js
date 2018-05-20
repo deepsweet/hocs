@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 export default (methodsArg) => (Target) => {
   class WithLifecycle extends Component {
@@ -67,7 +67,7 @@ export default (methodsArg) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withLifecycle'))(WithLifecycle)
+    WithLifecycle.displayName = `withLifecycle(${getDisplayName(Target)})`
   }
 
   return WithLifecycle

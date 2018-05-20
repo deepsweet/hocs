@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const isResizeObserverSupported = typeof global.ResizeObserver === 'function'
 
@@ -53,9 +53,7 @@ const withResizeObserverProps = (mapStateToProps, onRefName = 'onRef') => (Targe
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(
-      wrapDisplayName(Target, 'withResizeObserverProps')
-    )(WithResizeObserverProps)
+    WithResizeObserverProps.displayName = `withResizeObserverProps(${getDisplayName(Target)})`
   }
 
   return WithResizeObserverProps

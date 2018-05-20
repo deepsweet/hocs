@@ -20,7 +20,7 @@ So no `this`, you have no direct access to class instance anymore (:tada:).
 ## Install
 
 ```
-yarn add recompose @hocs/with-lifecycle
+yarn add @hocs/with-lifecycle
 ```
 
 ## Usage

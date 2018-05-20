@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 import { createElement } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const withDebugger = (Target) => {
   if (process.env.NODE_ENV === 'production') {
@@ -13,7 +13,9 @@ const withDebugger = (Target) => {
     return createElement(Target, props)
   }
 
-  return setDisplayName(wrapDisplayName(Target, 'withDebugger'))(WithDebugger)
+  WithDebugger.displayName = `withDebugger(${getDisplayName(Target)})`
+
+  return WithDebugger
 }
 
 export default withDebugger

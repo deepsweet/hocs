@@ -9,7 +9,7 @@ Invokes a callback on prop change while condition is true, useful to decouple si
 ## Install
 
 ```
-yarn add recompose @hocs/with-callback-on-change-while
+yarn add @hocs/with-callback-on-change-while
 ```
 
 ## Usage

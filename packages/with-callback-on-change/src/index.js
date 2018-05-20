@@ -1,5 +1,5 @@
 import { createElement, Component } from 'react'
-import { setDisplayName, wrapDisplayName } from 'recompose'
+import getDisplayName from 'react-display-name'
 
 const withCallbackOnChange = (propName, callback) => (Target) => {
   class WithCallbackOnChange extends Component {
@@ -25,7 +25,7 @@ const withCallbackOnChange = (propName, callback) => (Target) => {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    return setDisplayName(wrapDisplayName(Target, 'withCallbackOnChange'))(WithCallbackOnChange)
+    WithCallbackOnChange.displayName = `withCallbackOnChange(${getDisplayName(Target)})`
   }
 
   return WithCallbackOnChange

@@ -9,7 +9,7 @@ Helps to omit unnecessary context prop, state setters or anything else you don't
 ## Install
 
 ```
-yarn add recompose @hocs/omit-props
+yarn add @hocs/omit-props
 ```
 
 ## Usage

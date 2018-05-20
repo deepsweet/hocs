@@ -9,7 +9,7 @@ Dynamically map visibility of a component to boolean props using [Intersection O
 ## Install
 
 ```
-yarn add recompose @hocs/with-intersection-observer-props
+yarn add @hocs/with-intersection-observer-props
 ```
 
 ## Usage

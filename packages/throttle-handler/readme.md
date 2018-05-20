@@ -9,7 +9,7 @@ Helps to throttle handlers like `onChange`.
 ## Install
 
 ```
-yarn add recompose @hocs/throttle-handler
+yarn add @hocs/throttle-handler
 ```
 
 ## Usage

@@ -9,7 +9,7 @@ Dynamically map View layout dimensions to props using [`onLayout()`](https://fac
 ## Install
 
 ```
-yarn add recompose @hocs/with-view-layout-props
+yarn add @hocs/with-view-layout-props
 ```
 
 ## Usage

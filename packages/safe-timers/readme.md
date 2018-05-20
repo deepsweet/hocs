@@ -11,7 +11,7 @@ Inspired by [react-timer-mixin](https://github.com/reactjs/react-timer-mixin).
 ## Install
 
 ```
-yarn add recompose @hocs/safe-timers
+yarn add @hocs/safe-timers
 ```
 
 ## Usage

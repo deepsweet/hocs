@@ -9,7 +9,7 @@ Invokes a callback once condition is true (while previous check was false), usef
 ## Install
 
 ```
-yarn add recompose @hocs/with-callback-once
+yarn add @hocs/with-callback-once
 ```
 
 ## Usage

@@ -9,7 +9,7 @@ Decouples [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/AP
 ## Install
 
 ```
-yarn add recompose @hocs/prevent-handlers-default
+yarn add @hocs/prevent-handlers-default
 ```
 
 ## Usage
