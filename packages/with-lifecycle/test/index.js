@@ -61,6 +61,23 @@ describe('withLifecycle', () => {
       expect(mockOnReceiveProps.mock.calls).toMatchSnapshot()
     })
 
+    it('onGetSnapshotBeforeUpdate', () => {
+      const mockOnGetSnapshotBeforeUpdate = jest.fn(() => 'snapshot')
+      const mockOnDidUpdate = jest.fn()
+      const EnhancedTarget = withLifecycle({
+        onGetSnapshotBeforeUpdate: mockOnGetSnapshotBeforeUpdate,
+        onDidUpdate: mockOnDidUpdate
+      })(Target)
+      const wrapper = mount(
+        <EnhancedTarget a={1} b={2} />
+      )
+
+      wrapper.setProps({ c: 3 })
+
+      expect(mockOnGetSnapshotBeforeUpdate.mock.calls).toMatchSnapshot()
+      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot()
+    })
+
     it('onDidUpdate', () => {
       const mockOnDidUpdate = jest.fn()
       const EnhancedTarget = withLifecycle({ onDidUpdate: mockOnDidUpdate })(Target)
@@ -184,6 +201,25 @@ describe('withLifecycle', () => {
       wrapper.setProps({ c: 3 })
 
       expect(mockOnReceiveProps.mock.calls).toMatchSnapshot()
+    })
+
+    it('onGetSnapshotBeforeUpdate', () => {
+      const mockOnGetSnapshotBeforeUpdate = jest.fn(() => 'snapshot')
+      const mockOnDidUpdate = jest.fn()
+      const EnhancedTarget = withLifecycle(
+        () => ({
+          onGetSnapshotBeforeUpdate: mockOnGetSnapshotBeforeUpdate,
+          onDidUpdate: mockOnDidUpdate
+        })
+      )(Target)
+      const wrapper = mount(
+        <EnhancedTarget a={1} b={2} />
+      )
+
+      wrapper.setProps({ c: 3 })
+
+      expect(mockOnGetSnapshotBeforeUpdate.mock.calls).toMatchSnapshot()
+      expect(mockOnDidUpdate.mock.calls).toMatchSnapshot()
     })
 
     it('onDidUpdate', () => {

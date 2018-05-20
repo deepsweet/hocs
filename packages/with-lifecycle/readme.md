@@ -9,9 +9,9 @@ Inspired by [Reassemble](https://github.com/wikiwi/reassemble), in comparison wi
 * `onConstructor(props)`
 * `onWillMount(props)`
 * `onDidMount(props)`
-* `onReceiveProps(props, nextProps)`
-* `onWillUpdate(props, nextProps)`
-* `onDidUpdate(prevProps, props)`
+* `onReceiveProps(props, nextProps)` – `getDerivedStateFromProps` under the hood but without internal state
+* `onGetSnapshotBeforeUpdate(prevProps, props)` – any returned value will be passed as `snapshot` parameter to `onDidUpdate`
+* `onDidUpdate(prevProps, props, snapshot)`
 * `onWillUnmount(props)`
 * `onDidCatch(error, info)`
 

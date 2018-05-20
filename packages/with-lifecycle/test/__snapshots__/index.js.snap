@@ -64,6 +64,40 @@ Array [
       "b": 2,
       "c": 3,
     },
+    undefined,
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onGetSnapshotBeforeUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as factory onGetSnapshotBeforeUpdate 2`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+    "snapshot",
   ],
 ]
 `;
@@ -191,6 +225,40 @@ Array [
       "b": 2,
       "c": 3,
     },
+    undefined,
+  ],
+]
+`;
+
+exports[`withLifecycle as object onGetSnapshotBeforeUpdate 1`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+  ],
+]
+`;
+
+exports[`withLifecycle as object onGetSnapshotBeforeUpdate 2`] = `
+Array [
+  Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    Object {
+      "a": 1,
+      "b": 2,
+      "c": 3,
+    },
+    "snapshot",
   ],
 ]
 `;

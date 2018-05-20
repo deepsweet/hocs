@@ -35,9 +35,15 @@ export default (methodsArg) => (Target) => {
           }
         }
 
+        if (methods.onGetSnapshotBeforeUpdate) {
+          this.getSnapshotBeforeUpdate = (prevProps) => {
+            return methods.onGetSnapshotBeforeUpdate(prevProps, this.props)
+          }
+        }
+
         if (methods.onDidUpdate) {
-          this.componentDidUpdate = (prevProps) => {
-            methods.onDidUpdate(prevProps, this.props)
+          this.componentDidUpdate = (prevProps, _, snapshot) => {
+            methods.onDidUpdate(prevProps, this.props, snapshot)
           }
         }
 
