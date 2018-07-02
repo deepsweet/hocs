@@ -41,7 +41,7 @@ const Demo = ({ isLoading }) => (
 );
 
 export default compose(
-  withState('isLoading', 'setLoading', false),
+  withState('isLoading', 'setLoading', true),
   withLifecycle({
     onDidMount({ setLoading }) {
       setLoading(true, () => {
@@ -81,4 +81,4 @@ withLifecycle(
 
 As a bonus you can "share" stuff across different lifecycle methods in that factory scope with `let mySharedStuff`, just like you did before with `this.mySharedStuff` using a class instance.
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-KqnYNxB-5QdhDSZzOb1).
+:tv: [Check out live demo](https://codesandbox.io/s/1z189o79vj).
