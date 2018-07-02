@@ -55,7 +55,7 @@ export const build = async (packageName) => {
   return sequence(
     find(`packages/${packageName}/build/`),
     remove,
-    env('NODE_ENV', 'production'),
+    env({ NODE_ENV: 'production' }),
     parallel(tasks)(packageName)
   )
 }
@@ -74,7 +74,7 @@ export const test = async () => {
   const { jestConfigFull } = await import('./jest/config')
 
   return sequence(
-    env('NODE_ENV', 'test'),
+    env({ NODE_ENV: 'test' }),
     find('coverage/'),
     remove,
     jest(jestConfigFull)
@@ -85,7 +85,7 @@ export const testWatch = async () => {
   const { jestConfigWatch } = await import('./jest/config')
 
   return sequence(
-    env('NODE_ENV', 'test'),
+    env({ NODE_ENV: 'test' }),
     find('coverage/'),
     remove,
     jest(jestConfigWatch)
@@ -105,7 +105,7 @@ export const demo = async (packageName) => {
   const { default: webpackConfig } = await import('./demo/config')
 
   return sequence(
-    env('NODE_ENV', 'development'),
+    env({ NODE_ENV: 'development' }),
     webpackServe({ config: webpackConfig(packageName) })
   )
 }
