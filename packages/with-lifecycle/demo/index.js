@@ -9,12 +9,10 @@ const Demo = ({ isLoading }) => (
 )
 
 export default compose(
-  withState('isLoading', 'setLoading', false),
+  withState('isLoading', 'setLoading', true),
   withLifecycle({
     onDidMount ({ setLoading }) {
-      setLoading(true, () => {
-        setTimeout(() => setLoading(false), 3000)
-      })
+      setTimeout(() => setLoading(false), 3000)
     },
     onReceiveProps (props, nextProps) {
       console.log(`isLoading: ${props.isLoading} → ${nextProps.isLoading}`)
