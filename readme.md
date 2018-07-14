@@ -84,7 +84,7 @@ Dynamically map View layout dimensions to props using [`onLayout()`](https://fac
 
 ### …and more to come
 
-You can [follow me on Twitter](https://twitter.com/kir_belevich) for updates.
+You can [follow me on Twitter](https://twitter.com/deepsweet) for updates.
 
 ## Development
 
