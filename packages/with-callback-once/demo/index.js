@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react'
 import { compose, withState, withHandlers } from 'recompose'
-import withCallbackOnChangeWhile from '../../with-callback-on-change-while/src'
 
 import withCallbackOnce from '../src'
 
@@ -17,11 +16,6 @@ export default compose(
   withHandlers({
     onButtonClick: ({ setCount, count }) => () => setCount(count - 1)
   }),
-  withCallbackOnChangeWhile(
-    'count',
-    ({ count }) => count >= 0,
-    ({ count }) => console.log(count)
-  ),
   withCallbackOnce(
     ({ count }) => count === 0,
     () => console.log('done!')
