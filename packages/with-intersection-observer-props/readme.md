@@ -69,7 +69,7 @@ export default withIntersectionObserverProps({
 })(Target);
 ```
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-KrRs9rYfAnD3M56N06H).
+:tv: [Check out live demo](https://codesandbox.io/s/p9npqy54jx).
 
 ## Notes
 
