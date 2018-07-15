@@ -44,4 +44,4 @@ export default compose(
 )(Demo);
 ```
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-Kqweef9Ttpo39JZoEsk).
+:tv: [Check out live demo](https://codesandbox.io/s/x7xkvo02v4).
