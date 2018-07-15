@@ -33,7 +33,7 @@ export default withOnlineStatusProps(
 )(Demo);
 ```
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-KsrcK14q0MkyZZIFquj).
+:tv: [Check out live demo](https://codesandbox.io/s/2jx0x9r3rp).
 
 ## Notes
 
