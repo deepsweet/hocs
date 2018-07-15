@@ -42,7 +42,7 @@ export default withMatchMediaProps({
 })(Demo);
 ```
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-KqnRPrbih9tWCY9T1g5).
+:tv: [Check out live demo](https://codesandbox.io/s/lpq4qr3o29).
 
 ## Notes
 
