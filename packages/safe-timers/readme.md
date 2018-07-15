@@ -67,7 +67,7 @@ export default compose(
 )(Target);
 ```
 
-:tv: [Check out live demo](https://www.webpackbin.com/bins/-KrGkap1tBpYQzRPVr_-).
+:tv: [Check out live demo](https://codesandbox.io/s/ly410pk8q7).
 
 The same approach goes for all HOCs in this package:
 
