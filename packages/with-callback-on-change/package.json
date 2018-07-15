@@ -1,6 +1,6 @@
 {
   "name": "@hocs/with-callback-on-change",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Invokes a callback on prop change as a HOC for React and React Native",
   "keywords": [
     "react",
