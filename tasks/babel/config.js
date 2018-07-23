@@ -34,7 +34,7 @@ exports.babelConfigNodeCJS = {
 exports.babelConfigReactNative = {
   babelrc: false,
   presets: [
-    'react-native'
+    'module:metro-react-native-babel-preset'
   ]
 }
 
