@@ -1075,11 +1075,12 @@
     "@shellscape/koa-send" "^4.1.0"
     debug "^2.6.8"
 
-"@start/cli@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@start/cli/-/cli-0.1.2.tgz#b3636c1c5abaed896bbe68391b7f99145a768f07"
+"@start/cli@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@start/cli/-/cli-0.2.0.tgz#a35220a13e55ee16efec278b43a41abd8aa980c3"
   dependencies:
     "@babel/runtime" "^7.0.0-0"
+    esm "^3.0.71"
 
 "@start/plugin-env@^0.3.0":
   version "0.3.0"
@@ -3122,7 +3123,7 @@ eslint@^5.0.0, eslint@^5.0.1:
     table "^4.0.3"
     text-table "^0.2.0"
 
-esm@^3.0.61:
+esm@^3.0.71:
   version "3.0.72"
   resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.72.tgz#8f71b3f54b978bbbcbb9788f7f3569a36578c136"
 
