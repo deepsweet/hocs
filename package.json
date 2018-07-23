@@ -52,7 +52,6 @@
   },
   "start": {
     "require": [
-      "esm",
       "@babel/register"
     ],
     "reporter": "@start/reporter-verbose"
