@@ -8,7 +8,7 @@ describe('debounceHandler', () => {
   let debounceHandler = null
 
   beforeEach(() => {
-    mockJustDebounce = jest.fn(() => () => {})
+    mockJustDebounce = jest.fn(cb => cb)
 
     jest.mock('just-debounce-it', () => mockJustDebounce)
     jest.resetModules()
@@ -29,9 +29,24 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
-    mockTestHandler()
 
-    expect(mockJustDebounce.mock.calls).toMatchSnapshot()
+    expect(mockTestHandler.mock.calls).toMatchSnapshot()
+  })
+
+  it('should call actual handler during lifecycle', () => {
+    const EnhancedTarget = debounceHandler('testHandler')(Target)
+    const mockTestHandlerInitial = jest.fn()
+    const mockTestHandlerUpdated = jest.fn()
+    const wrapper = mount(
+      <EnhancedTarget testHandler={mockTestHandlerInitial} />
+    )
+    wrapper.setProps({testHandler: mockTestHandlerUpdated})
+    const testHandler = wrapper.find(Target).prop('testHandler')
+
+    testHandler()
+
+    expect(mockTestHandlerInitial.mock.calls).toMatchSnapshot()
+    expect(mockTestHandlerUpdated.mock.calls).toMatchSnapshot()
   })
 
   it('should call `e.persist()` if it has been passed', () => {
@@ -44,9 +59,8 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler({ persist: mockPersist })
-    mockTestHandler()
 
-    expect(mockJustDebounce.mock.calls).toMatchSnapshot()
+    expect(mockTestHandler.mock.calls).toMatchSnapshot()
     expect(mockPersist.mock.calls).toMatchSnapshot()
   })
 
@@ -59,7 +73,6 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
-    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
@@ -73,7 +86,6 @@ describe('debounceHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
-    mockTestHandler()
 
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })

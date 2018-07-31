@@ -7,21 +7,25 @@ const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
     constructor (props, context) {
       super(props, context)
 
-      const debounced = debounce(props[handlerName], delay, leadingCall)
+      this.debouncedPropInvoke = debounce(
+        (...args) => this.props[handlerName](...args),
+        delay,
+        leadingCall
+      )
 
-      this[handlerName] = (e, ...rest) => {
+      this.handler = (e, ...rest) => {
         if (e && typeof e.persist === 'function') {
           e.persist()
         }
 
-        return debounced(e, ...rest)
+        return this.debouncedPropInvoke(e, ...rest)
       }
     }
 
     render () {
       return createElement(Target, {
         ...this.props,
-        [handlerName]: this[handlerName]
+        [handlerName]: this.handler
       })
     }
   }
