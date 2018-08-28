@@ -24,7 +24,7 @@ const Demo2 = compose(
   withHandlers({
     onButtonClick: ({ count, setCount }) => () => setCount(count + 1)
   }),
-  throttleHandler('onButtonClick', (props) => props.debounce || 0)
+  throttleHandler('onButtonClick', (props) => props.throttle || 0)
 )(Demo)
 
 const MainDemo = () => (
@@ -40,7 +40,7 @@ const MainDemo = () => (
       }
     </style>
     <Demo1 label='Demo 1' />
-    <Demo2 label='Demo 2 w throttle' debounce={1000} />
+    <Demo2 label='Demo 2 w throttle' throttle={1000} />
     <Demo2 label='Demo 2 w/o throttle' />
   </div>
 )
