@@ -7,7 +7,7 @@ const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
     constructor (props, context) {
       super(props, context)
 
-      const delayValue = typeof delay === 'function' ? delay(props) : delay;
+      const delayValue = typeof delay === 'function' ? delay(props) : delay
 
       this.debouncedPropInvoke = debounce(
         (...args) => this.props[handlerName](...args),
