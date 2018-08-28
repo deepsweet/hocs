@@ -19,19 +19,19 @@ exports[`throttleHandler display name should wrap display name in non-production
 exports[`throttleHandler should call \`e.persist()\` if it has been passed 1`] = `
 Array [
   Array [
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
+    Object {
+      "persist": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
     },
-    undefined,
-    undefined,
   ],
 ]
 `;
@@ -42,20 +42,30 @@ Array [
 ]
 `;
 
+exports[`throttleHandler should call actual handler during lifecycle 1`] = `Array []`;
+
+exports[`throttleHandler should call actual handler during lifecycle 2`] = `
+Array [
+  Array [
+    undefined,
+  ],
+]
+`;
+
+exports[`throttleHandler should pass \`delay\` option to \`just-throttle\` via props 1`] = `
+Array [
+  Array [
+    [Function],
+    75,
+    undefined,
+  ],
+]
+`;
+
 exports[`throttleHandler should pass \`interval\` option to \`just-throttle\` 1`] = `
 Array [
   Array [
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
-    },
+    [Function],
     75,
     undefined,
   ],
@@ -65,17 +75,7 @@ Array [
 exports[`throttleHandler should pass \`leadingCall\` option to \`just-throttle\` 1`] = `
 Array [
   Array [
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
-    },
+    [Function],
     75,
     true,
   ],
@@ -85,18 +85,6 @@ Array [
 exports[`throttleHandler should pass handler arguments through 1`] = `
 Array [
   Array [
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
-    },
-    undefined,
     undefined,
   ],
 ]
