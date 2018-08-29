@@ -39,9 +39,9 @@ const MainDemo = () => (
         }`
       }
     </style>
-    <Demo1 label='Demo 1' />
-    <Demo2 label='Demo 2 w throttle' throttle={1000} />
-    <Demo2 label='Demo 2 w/o throttle' />
+    <Demo1 label='Delay as argument' />
+    <Demo2 label='Delay from props' throttle={300} />
+    <Demo2 label='No delay (zero by default)' />
   </div>
 )
 
