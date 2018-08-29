@@ -40,7 +40,7 @@ describe('debounceHandler', () => {
     const wrapper = mount(
       <EnhancedTarget testHandler={mockTestHandlerInitial} />
     )
-    wrapper.setProps({testHandler: mockTestHandlerUpdated})
+    wrapper.setProps({ testHandler: mockTestHandlerUpdated })
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
