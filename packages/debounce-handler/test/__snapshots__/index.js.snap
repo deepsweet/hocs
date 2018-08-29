@@ -62,6 +62,16 @@ Array [
 ]
 `;
 
+exports[`debounceHandler should pass \`delay\` option to \`just-debounce-it\` via props 1`] = `
+Array [
+  Array [
+    [Function],
+    75,
+    undefined,
+  ],
+]
+`;
+
 exports[`debounceHandler should pass \`leadingCall\` option to \`just-debounce-it\` 1`] = `
 Array [
   Array [

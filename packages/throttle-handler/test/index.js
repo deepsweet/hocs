@@ -8,7 +8,7 @@ describe('throttleHandler', () => {
   let throttleHandler = null
 
   beforeEach(() => {
-    mockJustThrottle = jest.fn(() => () => {})
+    mockJustThrottle = jest.fn(cb => cb)
 
     jest.mock('just-throttle', () => mockJustThrottle)
     jest.resetModules()
@@ -27,11 +27,22 @@ describe('throttleHandler', () => {
       <EnhancedTarget testHandler={mockTestHandler} />
     )
     const testHandler = wrapper.find(Target).prop('testHandler')
-
     testHandler()
-    mockTestHandler()
+    expect(mockTestHandler.mock.calls).toMatchSnapshot()
+  })
 
-    expect(mockJustThrottle.mock.calls).toMatchSnapshot()
+  it('should call actual handler during lifecycle', () => {
+    const EnhancedTarget = throttleHandler('testHandler')(Target)
+    const mockTestHandlerInitial = jest.fn()
+    const mockTestHandlerUpdated = jest.fn()
+    const wrapper = mount(
+      <EnhancedTarget testHandler={mockTestHandlerInitial} />
+    )
+    wrapper.setProps({testHandler: mockTestHandlerUpdated})
+    const testHandler = wrapper.find(Target).prop('testHandler')
+    testHandler()
+    expect(mockTestHandlerInitial.mock.calls).toMatchSnapshot()
+    expect(mockTestHandlerUpdated.mock.calls).toMatchSnapshot()
   })
 
   it('should call `e.persist()` if it has been passed', () => {
@@ -44,9 +55,8 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler({ persist: mockPersist })
-    mockTestHandler()
 
-    expect(mockJustThrottle.mock.calls).toMatchSnapshot()
+    expect(mockTestHandler.mock.calls).toMatchSnapshot()
     expect(mockPersist.mock.calls).toMatchSnapshot()
   })
 
@@ -59,7 +69,20 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
-    mockTestHandler()
+
+    expect(mockJustThrottle.mock.calls).toMatchSnapshot()
+  })
+
+  it('should pass `delay` option to `just-throttle` via props', () => {
+    const EnhancedTarget = throttleHandler('testHandler', (props) =>
+      props.throttle)(Target)
+    const mockTestHandler = jest.fn()
+    const wrapper = mount(
+      <EnhancedTarget testHandler={mockTestHandler} throttle={75} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
+
+    testHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })
@@ -73,7 +96,6 @@ describe('throttleHandler', () => {
     const testHandler = wrapper.find(Target).prop('testHandler')
 
     testHandler()
-    mockTestHandler()
 
     expect(mockJustThrottle.mock.calls).toMatchSnapshot()
   })

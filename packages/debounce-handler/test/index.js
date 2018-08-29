@@ -77,6 +77,20 @@ describe('debounceHandler', () => {
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
 
+  it('should pass `delay` option to `just-debounce-it` via props', () => {
+    const EnhancedTarget = debounceHandler('testHandler', (props) =>
+      props.debounce)(Target)
+    const mockTestHandler = jest.fn()
+    const wrapper = mount(
+      <EnhancedTarget testHandler={mockTestHandler} debounce={75} />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
+
+    testHandler()
+
+    expect(mockJustDebounce.mock.calls).toMatchSnapshot()
+  })
+
   it('should pass `leadingCall` option to `just-debounce-it`', () => {
     const EnhancedTarget = debounceHandler('testHandler', 75, true)(Target)
     const mockTestHandler = jest.fn()

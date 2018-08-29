@@ -7,21 +7,27 @@ const throttleHandler = (handlerName, interval, leadingCall) => (Target) => {
     constructor (props, context) {
       super(props, context)
 
-      const throttled = throttle(props[handlerName], interval, leadingCall)
+      const intervalValue = typeof interval === 'function' ? interval(props) : interval
 
-      this[handlerName] = (e, ...rest) => {
+      this.throttlePropInvoke = throttle(
+        (...args) => this.props[handlerName](...args),
+        intervalValue,
+        leadingCall
+      )
+
+      this.handler = (e, ...rest) => {
         if (e && typeof e.persist === 'function') {
           e.persist()
         }
 
-        return throttled(e, ...rest)
+        return this.throttlePropInvoke(e, ...rest)
       }
     }
 
     render () {
       return createElement(Target, {
         ...this.props,
-        [handlerName]: this[handlerName]
+        [handlerName]: this.handler
       })
     }
   }
