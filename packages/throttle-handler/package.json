@@ -1,6 +1,6 @@
 {
   "name": "@hocs/throttle-handler",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Throttle handler HOC for React and React Native",
   "keywords": [
     "react",
