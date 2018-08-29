@@ -63,9 +63,9 @@ const MainDemo = () => (
         }`
       }
     </style>
-    <Demo1 label='Demo 1' />
-    <Demo2 label='Demo 2 w Debounce' debounce={300} />
-    <Demo2 label='Demo 2 w/o Debounce' />
+    <Demo1 label='Delay as argument' />
+    <Demo2 label='Delay from props' debounce={300} />
+    <Demo2 label='No delay (zero by default)' />
   </div>
 )
 
