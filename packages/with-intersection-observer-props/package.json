@@ -27,7 +27,7 @@
     "react": "^16.3.0"
   },
   "devDependencies": {
-    "intersection-observer": "^0.5.0"
+    "intersection-observer": "^0.6.0"
   },
   "dependencies": {
     "react-display-name": "^0.2.4"
