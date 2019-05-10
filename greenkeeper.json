@@ -1,0 +1,26 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/debounce-handler/package.json",
+        "packages/omit-props/package.json",
+        "packages/prevent-handlers-default/package.json",
+        "packages/safe-timers/package.json",
+        "packages/throttle-handler/package.json",
+        "packages/with-callback-on-change-while/package.json",
+        "packages/with-callback-on-change/package.json",
+        "packages/with-callback-once/package.json",
+        "packages/with-debugger/package.json",
+        "packages/with-intersection-observer-props/package.json",
+        "packages/with-lifecycle/package.json",
+        "packages/with-log/package.json",
+        "packages/with-match-media-props/package.json",
+        "packages/with-online-status-props/package.json",
+        "packages/with-page-visibility-props/package.json",
+        "packages/with-resize-observer-props/package.json",
+        "packages/with-view-layout-props/package.json"
+      ]
+    }
+  }
+}
