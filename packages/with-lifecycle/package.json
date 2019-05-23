@@ -1,6 +1,6 @@
 {
   "name": "@hocs/with-lifecycle",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Component lifecycle HOC for React and React Native",
   "keywords": [
     "react",
