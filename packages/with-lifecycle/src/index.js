@@ -26,7 +26,7 @@ export default (methodsArg) => (Target) => {
         }
 
         if (methods.onReceiveProps) {
-          this.state = props
+          this.state = { ...props }
 
           WithLifecycle.getDerivedStateFromProps = (nextProps, prevState) => {
             methods.onReceiveProps(prevState, nextProps)
