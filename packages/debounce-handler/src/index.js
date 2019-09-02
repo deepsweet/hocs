@@ -9,11 +9,15 @@ const debounceHandler = (handlerName, delay, leadingCall) => (Target) => {
 
       const delayValue = typeof delay === 'function' ? delay(props) : delay
 
-      this.debouncedPropInvoke = debounce(
-        (...args) => this.props[handlerName](...args),
-        delayValue,
-        leadingCall
-      )
+      if (this.props[handlerName]) {
+        this.debouncedPropInvoke = debounce(
+          (...args) => this.props[handlerName](...args),
+          delayValue,
+          leadingCall
+        )
+      } else {
+        this.debouncedPropInvoke = () => {}
+      }
 
       this.handler = (e, ...rest) => {
         if (e && typeof e.persist === 'function') {

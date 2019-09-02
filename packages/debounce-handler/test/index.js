@@ -104,6 +104,15 @@ describe('debounceHandler', () => {
     expect(mockJustDebounce.mock.calls).toMatchSnapshot()
   })
 
+  it('should not error if prop is not present', () => {
+    const EnhancedTarget = debounceHandler('testHandler', 75, true)(Target)
+    const wrapper = mount(
+      <EnhancedTarget />
+    )
+    const testHandler = wrapper.find(Target).prop('testHandler')
+    testHandler()
+  })
+
   describe('display name', () => {
     const origNodeEnv = process.env.NODE_ENV
 
