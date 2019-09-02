@@ -6,6 +6,7 @@ const withCallbackOnChange = (propName, callback) => (Target) => {
     static getDerivedStateFromProps (nextProps, prevState) {
       if (prevState[propName] !== nextProps[propName]) {
         callback(nextProps)
+        return { [propName]: nextProps[propName] }
       }
 
       return null
