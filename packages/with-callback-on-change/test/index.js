@@ -39,6 +39,19 @@ describe('withCallbackOnChange', () => {
     expect(mockCallback.mock.calls).toMatchSnapshot()
   })
 
+  it('should no-op if prop is the same after a first change', () => {
+    const mockCallback = jest.fn()
+    const EnhancedTarget = withCallbackOnChange('a', mockCallback)(Target)
+    const wrapper = mount(
+      <EnhancedTarget a={1} b={2} c={3} />
+    )
+
+    wrapper.setProps({ a: 2 })
+    expect(mockCallback.mock.calls.length).toBe(1)
+    wrapper.setProps({ b: 4 })
+    expect(mockCallback.mock.calls.length).toBe(1)
+  })
+
   describe('display name', () => {
     const origNodeEnv = process.env.NODE_ENV
 
